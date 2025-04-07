@@ -68,7 +68,6 @@
     "typecheck": "pnpm run --stream --color \"/^typecheck:/\"",
     "typecheck:tsc": "tsc --noEmit"
   },
-  "dependencies": {},
   "peerDependencies": {
     "eslint": "^9.0.0"
   },
@@ -77,6 +76,7 @@
     "@kazupon/eslint-config": "^0.26.1",
     "@kazupon/prettier-config": "^0.1.1",
     "@types/node": "^22.14.0",
+    "@typescript-eslint/utils": "^8.29.0",
     "@vitest/eslint-plugin": "^1.1.39",
     "bumpp": "^10.1.0",
     "eslint": "^9.24.0",
@@ -89,6 +89,7 @@
     "eslint-plugin-unicorn": "^58.0.0",
     "eslint-plugin-unused-imports": "^4.1.4",
     "eslint-plugin-yml": "^1.17.0",
+    "eslint-vitest-rule-tester": "^2.2.0",
     "gh-changelogen": "^0.2.8",
     "knip": "^5.47.0",
     "lint-staged": "^15.5.0",

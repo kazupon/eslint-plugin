@@ -20,13 +20,13 @@ type RuleModule<T extends readonly unknown[]> = Rule.RuleModule & {
  */
 function RuleCreator(urlCreator: (name: string) => string) {
   // This function will get much easier to call when this is merged https://github.com/Microsoft/TypeScript/pull/26349
-  // TODO - when the above PR lands; add type checking for the context.report `data` property
-  return function createNamedRule<TOptions extends readonly unknown[], TMessageIds extends string>({
+  // TODO: when the above PR lands; add type checking for the context.report `data` property
+  return function createNamedRule<Options extends readonly unknown[], MessageIds extends string>({
     name,
     meta,
     ...rule
-  }: Readonly<RuleWithMetaAndName<TOptions, TMessageIds>>): RuleModule<TOptions> {
-    return createRule<TOptions, TMessageIds>({
+  }: Readonly<RuleWithMetaAndName<Options, MessageIds>>): RuleModule<Options> {
+    return createRule<Options, MessageIds>({
       meta: {
         ...meta,
         docs: {
@@ -45,19 +45,19 @@ function RuleCreator(urlCreator: (name: string) => string) {
  * @returns Well-typed TSESLint custom ESLint rule.
  * @remarks It is generally better to provide a docs URL function to RuleCreator.
  */
-function createRule<TOptions extends readonly unknown[], TMessageIds extends string>({
+function createRule<Options extends readonly unknown[], MessageIds extends string>({
   create,
   defaultOptions,
   meta
-}: Readonly<RuleWithMeta<TOptions, TMessageIds>>): RuleModule<TOptions> {
+}: Readonly<RuleWithMeta<Options, MessageIds>>): RuleModule<Options> {
   return {
-    create: ((context: Readonly<RuleContext<TMessageIds, TOptions>>): RuleListener => {
+    create: ((context: Readonly<RuleContext<MessageIds, Options>>): RuleListener => {
       const optionsWithDefault = context.options.map((options, index) => {
         return {
           ...(defaultOptions[index] as Record<string, unknown>),
           ...(options as Record<string, unknown>)
         }
-      }) as unknown as TOptions
+      }) as unknown as Options
       return create(context, optionsWithDefault)
     }) as any, // eslint-disable-line @typescript-eslint/no-explicit-any
     defaultOptions,
@@ -71,8 +71,8 @@ export const createEslintRule = RuleCreator(
     return `${blobUrl}${ns}/${ruleName}.test.ts`
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-) as any as <TOptions extends readonly unknown[], TMessageIds extends string>({
+) as any as <Options extends readonly unknown[], MessageIds extends string>({
   name,
   meta,
   ...rule
-}: Readonly<RuleWithMetaAndName<TOptions, TMessageIds>>) => RuleModule<TOptions>
+}: Readonly<RuleWithMetaAndName<Options, MessageIds>>) => RuleModule<Options>

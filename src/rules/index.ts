@@ -1,6 +1,7 @@
-import type { Rule } from 'eslint'
-import commentRequireHeader from './comment-require-header.ts'
+import commentEnforceHeader from './comment-enforce-header.ts'
 
-export const rules: Record<string, Rule.RuleModule> = {
-  'comment-require-header': commentRequireHeader
+import type { Linter } from '@typescript-eslint/utils/ts-eslint'
+
+export const rules: Linter.PluginRules = {
+  'comment-enforce-header': commentEnforceHeader
 }

@@ -68,8 +68,12 @@
     "typecheck": "pnpm run --stream --color \"/^typecheck:/\"",
     "typecheck:tsc": "tsc --noEmit"
   },
+  "dependencies": {
+    "@es-joy/jsdoccomment": "^0.50.0"
+  },
   "peerDependencies": {
-    "eslint": "^9.0.0"
+    "eslint": "^9.0.0",
+    "typescript-eslint": "^8.29.1"
   },
   "devDependencies": {
     "@eslint/markdown": "^6.3.0",

@@ -8,7 +8,7 @@ import type { Rule } from 'eslint'
 
 const blobUrl = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules/'
 
-type CreateNmaedRule<PluginDocs = unknown> = <
+type CreateNamedRule<PluginDocs = unknown> = <
   Options extends readonly unknown[],
   MessageIds extends string
 >(
@@ -23,7 +23,7 @@ type CreateNmaedRule<PluginDocs = unknown> = <
  */
 function RuleCreator<PluginDocs = unknown>(
   urlCreator: (ruleName: string) => string
-): CreateNmaedRule<PluginDocs> {
+): CreateNamedRule<PluginDocs> {
   return function createNamedRule<Options extends readonly unknown[], MessageIds extends string>({
     meta,
     name,

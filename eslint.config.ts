@@ -26,6 +26,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   promise(),
   unicorn({
     rules: {
+      'unicorn/no-null': 'off',
       'unicorn/prevent-abbreviations': 'off'
     }
   }),
@@ -50,6 +51,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   vitest(),
   prettier(),
+  // @ts-expect-error -- FIXME
   globalIgnores(['.vscode', '**/lib/**', 'lib', 'tsconfig.json', 'pnpm-lock.yaml'])
 )
 

@@ -1,7 +1,7 @@
 import fs from 'node:fs'
 
-type PakcageJson = typeof import('../../package.json')
+type PackageJson = typeof import('../../package.json')
 
-export function readPackageJson(path: URL): PakcageJson {
-  return JSON.parse(fs.readFileSync(path, 'utf8')) as PakcageJson
+export function readPackageJson(path: URL): PackageJson {
+  return JSON.parse(fs.readFileSync(path, 'utf8')) as PackageJson
 }

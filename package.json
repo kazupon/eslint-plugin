@@ -26,23 +26,23 @@
   "type": "module",
   "sideEffects": false,
   "files": [
-    "dist"
+    "lib"
   ],
-  "module": "dist/index.js",
+  "module": "lib/index.js",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.js",
-      "default": "./dist/index.js"
+      "types": "./lib/index.d.ts",
+      "import": "./lib/index.js",
+      "require": "./lib/index.js",
+      "default": "./lib/index.js"
     },
     "./package.json": "./package.json"
   },
-  "types": "dist/index.d.ts",
+  "types": "lib/index.d.ts",
   "typesVersions": {
     "*": {
       "*": [
-        "./dist/*",
+        "./lib/*",
         "./*"
       ]
     }

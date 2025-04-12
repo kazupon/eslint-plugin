@@ -107,7 +107,7 @@ const rule: ReturnType<typeof createRule> = createRule({
         if (hasCommentOnly) {
           taregetComments = comments
         } else {
-          // if `Program` node has body, we need to check the last comment, which is on the first programme statement node
+          // if `Program` node has body, we need to check the last comment, which is on the first programe statement node
           const lastComment = comments.at(-1)!
           const firstNode = node.body[0]
           const distance = Math.abs(lastComment.range[1] - firstNode.range[0])

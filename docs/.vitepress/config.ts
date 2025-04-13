@@ -27,15 +27,32 @@ export default defineConfig({
 
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Introduction', link: '/' },
-      { text: 'Guide', link: '/guide/setup' },
-      { text: 'Rules', link: '/rules/' }
+      {
+        text: 'Introduction',
+        link: '/'
+      },
+      {
+        text: 'Getting Started',
+        link: '/started'
+      },
+      {
+        text: 'Rules',
+        items: []
+      }
     ],
 
     sidebar: [
       {
-        text: 'Guide',
-        items: [{ text: 'Setup', link: '/guide/setup' }]
+        text: 'Introduction',
+        link: '/introduction'
+      },
+      {
+        text: 'Getting Started',
+        link: '/started'
+      },
+      {
+        text: 'Available Rules',
+        link: '/rules/'
       },
       {
         text: 'Rules',

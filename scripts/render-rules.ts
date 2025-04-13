@@ -1,6 +1,6 @@
 /**
  * This script is inspired from tools script of `eslint-plugin-module-interop`
- * @see https://github.com/ota-meshi/eslint-plugin-module-interop/tree/main/tools/render-rules
+ * @see https://github.com/ota-meshi/eslint-plugin-module-interop/tree/main/tools/render-rules.ts
  *
  * @author kazuya kawaguchi (a.k.a. kazupon)
  * @license MIT

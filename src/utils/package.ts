@@ -1,3 +1,8 @@
+/**
+ * @author kazuya kawaguchi (a.k.a. kazupon)
+ * @license MIT
+ */
+
 import fs from 'node:fs'
 
 type PackageJson = typeof import('../../package.json')

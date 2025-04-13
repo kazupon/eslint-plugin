@@ -1,3 +1,8 @@
+/**
+ * @author kazuya kawaguchi (a.k.a. kazupon)
+ * @license MIT
+ */
+
 import type { RuleContext } from '@typescript-eslint/utils/ts-eslint'
 
 type SourceCode = RuleContext<string, unknown[]>['sourceCode']

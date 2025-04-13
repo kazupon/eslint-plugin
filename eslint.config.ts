@@ -1,3 +1,8 @@
+/**
+ * @author kazuya kawaguchi (a.k.a. kazupon)
+ * @license MIT
+ */
+
 import {
   comments,
   defineConfig,
@@ -13,6 +18,15 @@ import {
   yaml
 } from '@kazupon/eslint-config'
 import { globalIgnores } from 'eslint/config'
+import { plugin } from './src/index.ts'
+
+function _kazuponESLint() {
+  // @ts-expect-error -- TODO
+  return plugin.configs.recommended.map(config => ({
+    ...config,
+    ignores: ['**/*.md', '**/*.md/**/*.js']
+  }))
+}
 
 const config: ReturnType<typeof defineConfig> = defineConfig(
   javascript(),
@@ -44,15 +58,26 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   yaml({
     prettier: true
   }),
+  // @ts-expect-error -- FIXME
+  ...plugin.configs.recommended,
   markdown({
     rules: {
-      'import/extensions': 'off'
+      'import/extensions': 'off',
+      'unused-imports/no-unused-imports': 'off'
     }
   }),
   vitest(),
   prettier(),
   // @ts-expect-error -- FIXME
-  globalIgnores(['.vscode', '**/lib/**', 'lib', 'tsconfig.json', 'pnpm-lock.yaml'])
+  globalIgnores([
+    '.vscode',
+    '**/lib/**',
+    'lib',
+    '**/dist/**',
+    'docs/.vitepress/cache',
+    'tsconfig.json',
+    'pnpm-lock.yaml'
+  ])
 )
 
 export default config

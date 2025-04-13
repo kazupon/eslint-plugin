@@ -1,3 +1,8 @@
+/**
+ * @author kazuya kawaguchi (a.k.a. kazupon)
+ * @license MIT
+ */
+
 import { run } from 'eslint-vitest-rule-tester'
 import rule from './comment-enforce-header.ts'
 
@@ -175,7 +180,7 @@ import { foo } from 'bar'
  * @license
  */
 
-import { foo } from "bar"
+import { foo } from 'bar'
 `,
     errors: [
       { message: 'Header `@author` tag need a value' },

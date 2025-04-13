@@ -1,3 +1,8 @@
+/**
+ * @author kazuya kawaguchi (a.k.a. kazupon)
+ * @license MIT
+ */
+
 import { parseComment } from '@es-joy/jsdoccomment'
 import { createRule } from '../utils/rule.ts'
 
@@ -98,6 +103,7 @@ const rule: ReturnType<typeof createRule> = createRule({
           .getAllComments()
           .filter(comment => comment.range[1] <= start) // only get comments before `Program` node
           .filter(comment => comment.type === 'Block')
+          .filter(comment => comment.value.startsWith('*')) // only jsdoc comments
 
         if (comments.length === 0) {
           taregetComments = []
@@ -119,19 +125,19 @@ const rule: ReturnType<typeof createRule> = createRule({
        * NOTE:
        * lint the target comments on `Program:exit` node.
        */
-      'Program:exit': _node => {
+      'Program:exit': node => {
         const comments = taregetComments
 
         // if no header comment found, eslint will report
         if (comments.length === 0) {
           const topLoc = {
             start: {
-              line: 0,
-              column: 0
+              line: node.loc.start.line - 1,
+              column: node.loc.start.column
             },
             end: {
-              line: 0,
-              column: 0
+              line: node.loc.end.line - 1,
+              column: node.loc.end.column
             }
           }
           ctx.report({ loc: topLoc, messageId: 'headerCommentEnforce' })

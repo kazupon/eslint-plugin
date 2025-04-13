@@ -1,6 +1,6 @@
 # Getting Started
 
-## Install
+## Installation
 
 ::: code-group
 

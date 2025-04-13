@@ -11,7 +11,8 @@ const config: KnipConfig = {
     'eslint.config.ts',
     'tsdown.config.ts',
     'docs/.vitepress/config.ts',
-    'docs/.vitepress/theme/index.ts'
+    'docs/.vitepress/theme/index.ts',
+    'scripts/*.ts'
   ],
   ignoreDependencies: ['lint-staged']
 }

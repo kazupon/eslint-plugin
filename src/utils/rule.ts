@@ -11,7 +11,7 @@ import type {
 import type { RuleContext, RuleModule } from '@typescript-eslint/utils/ts-eslint'
 import type { Rule } from 'eslint'
 
-const blobUrl = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules/'
+const blobUrl = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules'
 
 type CreateNamedRule<PluginDocs = unknown> = <
   Options extends readonly unknown[],
@@ -80,10 +80,9 @@ function _createRule<
 }
 
 type RuleMetaData = NonNullable<Rule.RuleMetaData['docs']>
-type RestRuleMetaData = Pick<RuleMetaData, 'category' | 'recommended'>
+export type RestRuleMetaData = Pick<RuleMetaData, 'category' | 'recommended'>
 
 export const createRule: ReturnType<typeof RuleCreator<RestRuleMetaData>> =
   RuleCreator<RestRuleMetaData>(ruleName => {
-    const ns = ruleName.split('-')[0]
-    return `${blobUrl}${ns}/${ruleName}.ts`
+    return `${blobUrl}/${ruleName}.ts`
   })

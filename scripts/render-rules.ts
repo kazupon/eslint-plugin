@@ -61,10 +61,10 @@ export async function renderRulesTableContent(
   function toRuleRow(rule: RuleModule<string, unknown[], RuleMetaDataForScript>) {
     const fixableMark = rule.meta.fixable ? '🔧' : ''
     const recommendedMark = rule.meta.docs?.recommended ? '⭐' : ''
-    const cateogry = rule.meta.docs?.category || ''
+    const category = rule.meta.docs?.category || ''
     const link = `[${rule.meta.docs?.ruleId}](${resolveRulePath(rule.meta.docs?.ruleName || '')})`
     const description = rule.meta.docs?.description || '(no description)'
-    return `| ${link} | ${description} | ${cateogry} | ${fixableMark} | ${recommendedMark} |`
+    return `| ${link} | ${description} | ${category} | ${fixableMark} | ${recommendedMark} |`
   }
 
   function toDeprecatedRuleRow(rule: RuleModule<string, unknown[], RuleMetaDataForScript>) {
@@ -84,7 +84,7 @@ export async function renderRulesTableContent(
   let rulesTableContent = `
 #${'#'.repeat(categoryLevel)} ${pluginName} Rules
 
-| Rule ID | Description | Cateogry | Fixable | RECOMMENDED |
+| Rule ID | Description | Category | Fixable | RECOMMENDED |
 |:--------|:------------|:---------|:-------:|:-----------:|
 ${pluginRules.map(toRuleRow).join('\n')}
 `

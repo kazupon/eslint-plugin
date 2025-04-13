@@ -47,7 +47,7 @@ export default defineConfig(
   {
     // ...
   }
-  // ... something other configrations
+  // ... something other configurations
 )
 ```
 
@@ -60,7 +60,7 @@ The rules with the following star ⭐ are included in the configs.
 
 ### @kazupon/eslint-plugin Rules
 
-| Rule ID                                                                                                | Description                                     | Cateogry | Fixable | RECOMMENDED |
+| Rule ID                                                                                                | Description                                     | Category | Fixable | RECOMMENDED |
 | :----------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :------- | :-----: | :---------: |
 | [@kazupon/enforce-header-comment](https://eslint-plugin.kazupon.dev/rules/enforce-header-comment.html) | Enforce heading the comment in source code file | Comment  |         |     ⭐      |
 

@@ -7,7 +7,7 @@ The rules with the following star ⭐ are included in the configs.
 
 ## @kazupon/eslint-plugin Rules
 
-| Rule ID                                                        | Description                                     | Cateogry | Fixable | RECOMMENDED |
+| Rule ID                                                        | Description                                     | Category | Fixable | RECOMMENDED |
 | :------------------------------------------------------------- | :---------------------------------------------- | :------- | :-----: | :---------: |
 | [@kazupon/enforce-header-comment](./enforce-header-comment.md) | Enforce heading the comment in source code file | Comment  |         |     ⭐      |
 

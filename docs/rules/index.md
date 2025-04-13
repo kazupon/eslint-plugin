@@ -2,4 +2,4 @@
 
 TODO:
 
-- [`@kazupon/comment-enforce-header`](./comment-enforce-header.md)
+- [`@kazupon/enforce-header-comment`](./enforce-header-comment.md)

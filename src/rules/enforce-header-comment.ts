@@ -27,13 +27,13 @@ function validTagDiagnosis(tagDiagnosis: TagDiagnosis) {
 }
 
 const rule: ReturnType<typeof createRule> = createRule({
-  name: 'comment-enforce-header',
+  name: 'enforce-header-comment',
   meta: {
     type: 'suggestion',
     hasSuggestions: true,
     docs: {
       description: 'Enforce heading the comment in source code file',
-      category: 'Recommended',
+      category: 'Comment',
       recommended: true
     },
     messages: {

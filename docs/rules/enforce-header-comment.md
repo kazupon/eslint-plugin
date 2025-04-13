@@ -1,12 +1,12 @@
 ---
 pageClass: 'rule-details'
 sidebarDepth: 0
-title: '@kazupon/comment-enforce-header'
+title: '@kazupon/enforce-header-comment'
 description: 'enforce header comment'
 since: 'v0.1.0'
 ---
 
-# @kazupon/comment-enforce-header
+# @kazupon/enforce-header-comment
 
 > enforce header comment
 
@@ -34,7 +34,7 @@ Some examples of **incorrect** code for this rule:
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 import { foo } from 'bar'
@@ -43,7 +43,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 /**
@@ -54,7 +54,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 /**
@@ -67,7 +67,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 /**
@@ -80,7 +80,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 /**
@@ -94,7 +94,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 /**
@@ -108,7 +108,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✗ BAD */
 /**
@@ -122,7 +122,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /**
  * This module is a sample module
@@ -152,7 +152,7 @@ export function add(a, b) {
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /**
  * This module is a sample module
@@ -186,7 +186,7 @@ Some examples of **correct** code for this rule:
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✓ GOOD */
 /**
@@ -200,7 +200,7 @@ import { foo } from 'bar'
 <!-- eslint-skip -->
 
 ```js
-/* eslint @kazupon/comment-enforce-header: 'error' */
+/* eslint @kazupon/enforce-header-comment: 'error' */
 
 /* ✓ GOOD */
 /**
@@ -290,5 +290,5 @@ This rule was introduced in `@kazupon/eslint-plugin` v0.1.0
 
 ## Implementation
 
-- [Rule source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/comment-enforce-header.ts)
-- [Test source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/comment-enforce-header.test.ts)
+- [Rule source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/enforce-header-comment.ts)
+- [Test source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/enforce-header-comment.test.ts)

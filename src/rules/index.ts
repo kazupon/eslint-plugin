@@ -3,10 +3,10 @@
  * @license MIT
  */
 
-import commentEnforceHeader from './comment-enforce-header.ts'
+import enforceHeaderComment from './enforce-header-comment.ts'
 
 import type { Linter } from '@typescript-eslint/utils/ts-eslint'
 
 export const rules: Linter.PluginRules = {
-  'comment-enforce-header': commentEnforceHeader
+  'enforce-header-comment': enforceHeaderComment
 }

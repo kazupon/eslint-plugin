@@ -4,7 +4,7 @@
  */
 
 import { run } from 'eslint-vitest-rule-tester'
-import rule from './comment-enforce-header.ts'
+import rule from './enforce-header-comment.ts'
 
 import type { InvalidTestCase, ValidTestCase } from 'eslint-vitest-rule-tester'
 
@@ -243,7 +243,7 @@ export function add(a, b) {
 ]
 
 run({
-  name: 'comment-enforce-header',
+  name: 'enforce-header-comment',
   rule,
   valid: valids,
   invalid: invalids

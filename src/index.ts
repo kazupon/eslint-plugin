@@ -31,7 +31,7 @@ const commentConfig: ESLinter.Config[] = [
     },
     rules: {
       // TODO: we should rename namespace with helper function
-      '@kazupon/comment-enforce-header': 'error'
+      '@kazupon/enforce-header-comment': 'error'
     }
   }
 ]

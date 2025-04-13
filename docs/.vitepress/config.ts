@@ -44,7 +44,7 @@ export default defineConfig({
     sidebar: [
       {
         text: 'Introduction',
-        link: '/introduction'
+        link: '/'
       },
       {
         text: 'Getting Started',

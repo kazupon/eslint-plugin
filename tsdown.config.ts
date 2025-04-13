@@ -1,7 +1,4 @@
-/**
- * @author kazuya kawaguchi (a.k.a. kazupon)
- * @license MIT
- */
+// eslint-disable-next-line @kazupon/enforce-header-comment
 
 import { defineConfig } from 'tsdown'
 

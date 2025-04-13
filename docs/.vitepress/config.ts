@@ -1,7 +1,4 @@
-/**
- * @author kazuya kawaguchi (a.k.a. kazupon)
- * @license MIT
- */
+// eslint-disable-next-line @kazupon/enforce-header-comment
 
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import child_process from 'node:child_process'

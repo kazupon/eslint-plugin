@@ -20,14 +20,6 @@ import {
 import { globalIgnores } from 'eslint/config'
 import { plugin } from './src/index.ts'
 
-function _kazuponESLint() {
-  // @ts-expect-error -- TODO
-  return plugin.configs.recommended.map(config => ({
-    ...config,
-    ignores: ['**/*.md', '**/*.md/**/*.js']
-  }))
-}
-
 const config: ReturnType<typeof defineConfig> = defineConfig(
   javascript(),
   imports({

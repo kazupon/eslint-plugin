@@ -9,6 +9,7 @@ import { createTwoslasher as createTwoslasherESLint } from 'twoslash-eslint'
 import eslint4b from 'vite-plugin-eslint4b'
 import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
+import pkg from '../../package.json' with { type: 'json' }
 import { plugin } from '../../src/index.ts'
 
 import type { DefaultTheme, UserConfig } from 'vitepress'
@@ -24,8 +25,8 @@ export default async (): Promise<UserConfig<DefaultTheme.Config>> => {
 
   // https://vitepress.dev/reference/site-config
   return defineConfig({
-    title: '@kazupon/eslint-plugin',
-    description: 'ESLint Plugin for @kazupon',
+    title: pkg.name,
+    description: pkg.description,
     head: [],
     lastUpdated: true,
 

@@ -15,7 +15,7 @@ type TagDiagnosis = {
 }
 
 function initializeTagDiagnosis(tags: string[]) {
-  const tagDiagnosis: TagDiagnosis = {}
+  const tagDiagnosis: TagDiagnosis = Object.create(null)
   for (const tag of tags) {
     tagDiagnosis[tag] = 'require'
   }

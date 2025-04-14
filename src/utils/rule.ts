@@ -13,7 +13,7 @@ import type {
 import type { RuleContext, RuleModule } from '@typescript-eslint/utils/ts-eslint'
 import type { Linter, Rule } from 'eslint'
 
-const blobUrl = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules'
+const BLOB_URL = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules'
 
 type CreateNamedRule<PluginDocs = unknown> = <
   Options extends readonly unknown[],
@@ -94,5 +94,5 @@ export type RestRuleMetaData = Pick<RuleMetaData, 'category' | 'recommended'> & 
 
 export const createRule: ReturnType<typeof RuleCreator<RestRuleMetaData>> =
   RuleCreator<RestRuleMetaData>(ruleName => {
-    return `${blobUrl}/${ruleName}.ts`
+    return `${BLOB_URL}/${ruleName}.ts`
   }, ruleNamespance)

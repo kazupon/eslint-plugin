@@ -8,6 +8,7 @@ import { defineConfig } from 'vitepress'
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons'
 import pkg from '../../package.json' with { type: 'json' }
 import { plugin } from '../../src/index.ts'
+import { rules } from '../../src/rules/index.ts'
 
 import type { DefaultTheme, UserConfig } from 'vitepress'
 
@@ -19,6 +20,14 @@ function updateRulesIndex() {
 export default async (): Promise<UserConfig<DefaultTheme.Config>> => {
   // Update rules index
   updateRulesIndex()
+
+  // get rules for sidebar
+  const sidebarRulesItems = Object.entries(rules).map(([ruleName, _rule]) => {
+    return {
+      text: ruleName,
+      link: `/rules/${ruleName}`
+    }
+  })
 
   // https://vitepress.dev/reference/site-config
   return defineConfig({
@@ -47,7 +56,7 @@ export default async (): Promise<UserConfig<DefaultTheme.Config>> => {
         },
         {
           text: 'Rules',
-          items: []
+          link: '/rules/'
         }
       ],
 
@@ -65,9 +74,9 @@ export default async (): Promise<UserConfig<DefaultTheme.Config>> => {
           link: '/rules/'
         },
         {
-          text: 'Rules',
+          text: `${pkg.name} Rules`,
           collapsed: false,
-          items: []
+          items: sidebarRulesItems
         }
       ],
 

@@ -10,7 +10,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 
 import type { RuleModule } from '@typescript-eslint/utils/eslint-utils'
-import type { RuleMetaDataForScript } from './types.ts'
+import type { RestRuleMetaData } from '../src/utils/rule.ts'
 
 /**
  * Load rules
@@ -21,8 +21,8 @@ import type { RuleMetaDataForScript } from './types.ts'
 export async function loadRules(
   rootPath: string,
   ns: string = ''
-): Promise<RuleModule<string, unknown[], RuleMetaDataForScript>[]> {
-  const rules: Promise<RuleModule<string, unknown[], RuleMetaDataForScript>>[] = []
+): Promise<RuleModule<string, unknown[], RestRuleMetaData>[]> {
+  const rules: Promise<RuleModule<string, unknown[], RestRuleMetaData>>[] = []
   const names = fs
     .readdirSync(rootPath)
     .filter(n => n.endsWith('.ts'))
@@ -36,11 +36,11 @@ export async function loadRules(
       import(path.join(rootPath, name))
         .then(m => m.default || m)
         .then(rule => {
-          rule.meta.docs.ruleName = ruleName
-          rule.meta.docs.ruleId = ruleId
+          rule.meta.docs.ruleName = rule.meta.docs.ruleName || ruleName
+          rule.meta.docs.ruleId = rule.meta.docs.ruleId || ruleId
           return rule
         })
     )
   }
-  return Promise.all<RuleModule<string, unknown[], RuleMetaDataForScript>>(rules)
+  return Promise.all<RuleModule<string, unknown[], RestRuleMetaData>>(rules)
 }

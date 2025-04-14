@@ -30,6 +30,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   unicorn({
     rules: {
       'unicorn/no-null': 'off',
+      'unicorn/no-array-reduce': 'off',
       'unicorn/no-array-callback-reference': 'off',
       'unicorn/prevent-abbreviations': 'off'
     }

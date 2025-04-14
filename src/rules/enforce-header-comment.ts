@@ -34,7 +34,8 @@ const rule: ReturnType<typeof createRule> = createRule({
     docs: {
       description: 'Enforce heading the comment in source code file',
       category: 'Comment',
-      recommended: true
+      recommended: true,
+      defaultSeverity: 'error'
     },
     messages: {
       headerCommentEnforce: 'Header comment is enforced',

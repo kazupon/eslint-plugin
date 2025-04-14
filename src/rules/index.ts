@@ -5,8 +5,9 @@
 
 import enforceHeaderComment from './enforce-header-comment.ts'
 
-import type { Linter } from '@typescript-eslint/utils/ts-eslint'
+import type { RuleModule } from '@typescript-eslint/utils/ts-eslint'
+import type { RestRuleMetaData } from '../utils/rule.ts'
 
-export const rules: Linter.PluginRules = {
+export const rules: Record<string, RuleModule<string, readonly unknown[], RestRuleMetaData>> = {
   'enforce-header-comment': enforceHeaderComment
 }

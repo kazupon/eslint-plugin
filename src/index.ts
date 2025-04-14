@@ -3,19 +3,16 @@
  * @license MIT
  */
 
-import { URL } from 'node:url'
 import { rules } from './rules/index.ts'
-import { readPackageJson } from './utils/package.ts'
+import { name, namespace, version } from './utils/meta.ts'
 
 // import type { Linter } from '@typescript-eslint/utils/ts-eslint'
 import type { ESLint, Linter as ESLinter } from 'eslint'
 
-const pkg = readPackageJson(new URL('../package.json', import.meta.url))
-
 export const plugin: ESLint.Plugin = {
   meta: {
-    name: pkg.name,
-    version: pkg.version
+    name,
+    version
   },
   // @ts-expect-error -- TODO: we need to fix this, and `utils/rule.ts` too!
   rules
@@ -27,12 +24,16 @@ const commentConfig: ESLinter.Config[] = [
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     ignores: ['**/*.md', '**/*.md/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     plugins: {
-      '@kazupon': plugin
+      [namespace]: plugin
     },
-    rules: {
-      // TODO: we should rename namespace with helper function
-      '@kazupon/enforce-header-comment': 'error'
-    }
+    rules: Object.entries(rules).reduce(
+      (rules, [ruleName, rule]) => {
+        const ruleId = rule.meta.docs?.ruleId || (namespace ? `${namespace}/${ruleName}` : ruleName)
+        rules[ruleId] = rule.meta.docs?.defaultSeverity || 'warn'
+        return rules
+      },
+      Object.create(null) as ESLinter.RulesRecord
+    )
   }
 ]
 

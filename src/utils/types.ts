@@ -26,7 +26,6 @@ declare module '@eslint/core' {
      */
     defaultSeverity?: Linter.StringSeverity | undefined
   }
-
   /**
    * Extends the `RuleMetaData` interface for plugin authors to add custom properties.
    */

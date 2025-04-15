@@ -239,6 +239,26 @@ export function add(a, b) {
       { message: 'Header comment need `@author` tag' },
       { message: 'Header comment need `@license` tag' }
     ]
+  },
+  {
+    filename: 'index.js',
+    description: 'header comment with standalone license and multiple tags',
+    code: `/**
+ * The entry for usage generator.
+ * @example
+ * \`\`\`js
+ * import { generate } from 'gunshi/generator'
+ * \`\`\`
+ * @module
+ */
+
+import { cli } from './cli.ts'
+import { create } from './utils.ts'
+`,
+    errors: [
+      { message: 'Header comment need `@author` tag' },
+      { message: 'Header comment need `@license` tag' }
+    ]
   }
 ]
 

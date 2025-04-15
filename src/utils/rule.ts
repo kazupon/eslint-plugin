@@ -5,7 +5,7 @@
 
 import type { RuleCreateOptions, RuleModule } from './types.ts'
 
-import { namespace as ruleNamespance } from './meta.ts'
+import { namespace as ruleNamespance } from './constants.ts'
 
 const BLOB_URL = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules'
 

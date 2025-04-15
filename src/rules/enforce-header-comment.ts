@@ -44,7 +44,6 @@ const rule: ReturnType<typeof createRule> = createRule({
     },
     schema: []
   },
-  defaultOptions: [{}],
   create(ctx) {
     /**
      * Report the tag diagnosis
@@ -65,7 +64,7 @@ const rule: ReturnType<typeof createRule> = createRule({
           continue
         }
         ctx.report({
-          loc: comment.loc,
+          loc: comment.loc!,
           messageId:
             tagDiagnosis[tag] === 'require' ? 'headerCommentNeedTag' : 'headerCommentNeedTagValue',
           data: { tag }
@@ -97,12 +96,12 @@ const rule: ReturnType<typeof createRule> = createRule({
         const hasCommentOnly = node.body.length === 0
 
         // keep `Program` node start position
-        const start = hasCommentOnly ? node.range[1] : node.range[0]
+        const start = hasCommentOnly ? node.range![1] : node.range![0]
 
         // get all block comments on `Program` node only
         const comments = ctx.sourceCode
           .getAllComments()
-          .filter(comment => comment.range[1] <= start) // only get comments before `Program` node
+          .filter(comment => comment.range![1] <= start) // only get comments before `Program` node
           .filter(comment => comment.type === 'Block')
           .filter(comment => comment.value.startsWith('*')) // only jsdoc comments
 
@@ -117,7 +116,7 @@ const rule: ReturnType<typeof createRule> = createRule({
           // if `Program` node has body, we need to check the last comment, which is on the first programme statement node
           const lastComment = comments.at(-1)!
           const firstNode = node.body[0]
-          const distance = Math.abs(lastComment.range[1] - firstNode.range[0])
+          const distance = Math.abs(lastComment.range![1] - firstNode.range![0])
           taregetComments = distance > 1 ? comments : comments.slice(0, -1)
         }
       },
@@ -133,12 +132,12 @@ const rule: ReturnType<typeof createRule> = createRule({
         if (comments.length === 0) {
           const topLoc = {
             start: {
-              line: node.loc.start.line - 1,
-              column: node.loc.start.column
+              line: node.loc!.start.line - 1,
+              column: node.loc!.start.column
             },
             end: {
-              line: node.loc.end.line - 1,
-              column: node.loc.end.column
+              line: node.loc!.end.line - 1,
+              column: node.loc!.end.column
             }
           }
           ctx.report({ loc: topLoc, messageId: 'headerCommentEnforce' })

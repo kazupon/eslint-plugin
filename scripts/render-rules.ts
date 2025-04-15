@@ -8,8 +8,7 @@
 
 import { loadRules } from './load-rules.ts'
 
-import type { RuleModule } from '@typescript-eslint/utils/eslint-utils'
-import type { RestRuleMetaData } from '../src/utils/rule.ts'
+import type { RuleModule } from '../src/utils/types.ts'
 
 const DEFAULT_RESOLVE_RULE_PATH = (ruleName: string) => `./${ruleName}.md`
 
@@ -55,21 +54,21 @@ export async function renderRulesTableContent(
   } = params
 
   const rules = await loadRules(rulesRootPath, namespace)
-  const pluginRules = rules.filter(rule => !rule.meta.deprecated)
-  const deprecatedRules = rules.filter(rule => rule.meta.deprecated)
+  const pluginRules = rules.filter(rule => !rule.meta?.deprecated)
+  const deprecatedRules = rules.filter(rule => rule.meta?.deprecated)
 
-  function toRuleRow(rule: RuleModule<string, unknown[], RestRuleMetaData>) {
-    const fixableMark = rule.meta.fixable ? '🔧' : ''
-    const recommendedMark = rule.meta.docs?.recommended ? '⭐' : ''
-    const category = rule.meta.docs?.category || ''
-    const link = `[${rule.meta.docs?.ruleId}](${resolveRulePath(rule.meta.docs?.ruleName || '')})`
-    const description = rule.meta.docs?.description || '(no description)'
+  function toRuleRow(rule: RuleModule) {
+    const fixableMark = rule.meta?.fixable ? '🔧' : ''
+    const recommendedMark = rule.meta?.docs?.recommended ? '⭐' : ''
+    const category = rule.meta?.docs?.category || ''
+    const link = `[${rule.meta?.docs?.ruleId}](${resolveRulePath(rule.meta?.docs?.ruleName || '')})`
+    const description = rule.meta?.docs?.description || '(no description)'
     return `| ${link} | ${description} | ${category} | ${fixableMark} | ${recommendedMark} |`
   }
 
-  function toDeprecatedRuleRow(rule: RuleModule<string, unknown[], RestRuleMetaData>) {
-    const link = `[${rule.meta.docs?.ruleId}](${resolveRulePath(rule.meta.docs?.ruleName || '')})`
-    const replacedRules = rule.meta.replacedBy || []
+  function toDeprecatedRuleRow(rule: RuleModule) {
+    const link = `[${rule.meta?.docs?.ruleId}](${resolveRulePath(rule.meta?.docs?.ruleName || '')})`
+    const replacedRules = rule.meta?.replacedBy || []
     // eslint-disable-next-line unicorn/consistent-function-scoping
     const resolveRuleId = (name: string) => {
       return namespace ? `${namespace}/${name}` : name

@@ -5,9 +5,8 @@
 
 import enforceHeaderComment from './enforce-header-comment.ts'
 
-import type { RuleModule } from '@typescript-eslint/utils/ts-eslint'
-import type { RestRuleMetaData } from '../utils/rule.ts'
+import type { RuleModule } from '../utils/types.ts'
 
-export const rules: Record<string, RuleModule<string, readonly unknown[], RestRuleMetaData>> = {
+export const rules: Record<string, RuleModule> = {
   'enforce-header-comment': enforceHeaderComment
 }

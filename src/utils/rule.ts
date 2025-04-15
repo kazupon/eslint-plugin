@@ -7,7 +7,7 @@ import type { RuleCreateOptions, RuleModule } from './types.ts'
 
 import { namespace as ruleNamespance } from './constants.ts'
 
-const BLOB_URL = 'https://github.com/kazupon/eslint-plugin/tree/main/src/rules'
+const BLOB_URL = 'https://eslint-plugin.kazupon.dev/rules'
 
 type CreateNamedRule = (options: RuleCreateOptions) => RuleModule
 
@@ -37,5 +37,5 @@ function RuleCreator(
 }
 
 export const createRule: ReturnType<typeof RuleCreator> = RuleCreator(ruleName => {
-  return `${BLOB_URL}/${ruleName}.ts`
+  return `${BLOB_URL}/${ruleName}`
 }, ruleNamespance)

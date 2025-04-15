@@ -9,8 +9,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 
-import type { RuleModule } from '@typescript-eslint/utils/eslint-utils'
-import type { RestRuleMetaData } from '../src/utils/rule.ts'
+import type { RuleModule } from '../src/utils/types.ts'
 
 /**
  * Load rules
@@ -18,11 +17,8 @@ import type { RestRuleMetaData } from '../src/utils/rule.ts'
  * @param ns A namespace of rule id
  * @returns Loaded rules
  */
-export async function loadRules(
-  rootPath: string,
-  ns: string = ''
-): Promise<RuleModule<string, unknown[], RestRuleMetaData>[]> {
-  const rules: Promise<RuleModule<string, unknown[], RestRuleMetaData>>[] = []
+export async function loadRules(rootPath: string, ns: string = ''): Promise<RuleModule[]> {
+  const rules: Promise<RuleModule>[] = []
   const names = fs
     .readdirSync(rootPath)
     .filter(n => n.endsWith('.ts'))
@@ -42,5 +38,5 @@ export async function loadRules(
         })
     )
   }
-  return Promise.all<RuleModule<string, unknown[], RestRuleMetaData>>(rules)
+  return Promise.all<RuleModule>(rules)
 }

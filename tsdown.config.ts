@@ -6,8 +6,8 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
   entry: ['./src/index.ts'],
   outDir: 'lib',
   publint: true,
-  dts: true,
-  external: ['@typescript-eslint/utils']
+  clean: true,
+  dts: true
 })
 
 export default config

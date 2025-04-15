@@ -74,11 +74,11 @@
     "typecheck:tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@es-joy/jsdoccomment": "^0.50.0"
+    "@es-joy/jsdoccomment": "^0.50.0",
+    "@eslint/core": "^0.13.0"
   },
   "peerDependencies": {
-    "eslint": "^9.0.0",
-    "typescript-eslint": "^8.29.1"
+    "eslint": "^9.0.0"
   },
   "devDependencies": {
     "@eslint/markdown": "^6.3.0",
@@ -86,7 +86,6 @@
     "@kazupon/prettier-config": "^0.1.1",
     "@shikijs/vitepress-twoslash": "^3.2.2",
     "@types/node": "^22.14.1",
-    "@typescript-eslint/utils": "^8.29.1",
     "@vitest/eslint-plugin": "^1.1.42",
     "bumpp": "^10.1.0",
     "eslint": "^9.24.0",
@@ -106,7 +105,7 @@
     "pkg-pr-new": "^0.0.42",
     "prettier": "^3.5.3",
     "publint": "^0.3.11",
-    "tsdown": "^0.7.5",
+    "tsdown": "^0.8.0-beta.2",
     "tsx": "^4.19.3",
     "twoslash-eslint": "^0.3.1",
     "typescript": "^5.8.3",

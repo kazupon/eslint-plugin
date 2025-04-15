@@ -1,5 +1,3 @@
-// eslint-disable-next-line @kazupon/enforce-header-comment
-
 import { defineConfig } from 'tsdown'
 import pkg from './package.json' with { type: 'json' }
 

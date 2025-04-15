@@ -1,5 +1,3 @@
-// eslint-disable-next-line @kazupon/enforce-header-comment
-
 import {
   comments,
   defineConfig,

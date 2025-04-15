@@ -25,7 +25,11 @@ const commentConfig: Linter.Config[] = [
   {
     name: '@kazupon/eslint-plugin/comment',
     files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    ignores: ['**/*.md', '**/*.md/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    ignores: [
+      '**/*.md',
+      '**/*.md/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+      '**/*.config.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+    ],
     plugins: {
       [namespace]: plugin
     },

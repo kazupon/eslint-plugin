@@ -1,5 +1,3 @@
-// eslint-disable-next-line @kazupon/enforce-header-comment
-
 import type { KnipConfig } from 'knip'
 
 const config: KnipConfig = {

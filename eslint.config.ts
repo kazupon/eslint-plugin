@@ -7,6 +7,7 @@ import {
   markdown,
   prettier,
   promise,
+  stylistic,
   typescript,
   unicorn,
   vitest,
@@ -17,13 +18,14 @@ import { plugin } from './src/index.ts'
 
 const config: ReturnType<typeof defineConfig> = defineConfig(
   javascript(),
+  stylistic(),
+  comments(),
   imports({
     typescript: true,
     rules: {
       'import/extensions': ['error', 'always', { ignorePackages: true }]
     }
   }),
-  comments(),
   promise(),
   unicorn({
     rules: {

@@ -17,18 +17,22 @@ interface RenderRulesTableContentParams {
    * The level of the category in the table. For example, if you want to render a table under a heading like "## Category", set this to 2.
    */
   categoryLevel: number
+
   /**
    * The plugin name to be displayed in the title of the rules table.
    */
   pluginName: string
+
   /**
    * The root path of the rules directory. This is where the rules are loaded from.
    */
   rulesRootPath: string
+
   /**
    * The namespace of the rules. This is used to construct the rule IDs.
    */
   namespace?: string
+
   /**
    * Resolve the path for the rule. This is used to create links to the rule documentation.
    * @param ruleName The name of the rule to resolve the path for.

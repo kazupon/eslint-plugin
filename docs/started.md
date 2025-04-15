@@ -41,6 +41,7 @@ export default defineConfig(
   {
     // ...
   }
+
   // ... something other configurations
 )
 ```

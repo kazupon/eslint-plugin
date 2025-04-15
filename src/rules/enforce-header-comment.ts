@@ -146,34 +146,42 @@ const rule: ReturnType<typeof createRule> = createRule({
           return
         }
 
+        // parse the comments and map with comment ASTs
         const commentWithAstNodes = comments.map(comment => ({
           comment,
           ast: parseComment(comment)
         }))
 
-        let reported = false
-        for (const { comment, ast } of commentWithAstNodes) {
-          if (reported) {
-            break
-          }
+        const headerCommentWithAstNodes = commentWithAstNodes.find(({ ast }) =>
+          ast.tags.some(tag => ENFORCED_TAGS.includes(tag.tag))
+        )
 
-          const found = ast.tags.some(tag => ENFORCED_TAGS.includes(tag.tag))
-          if (ast.tags.length > 0 && !found) {
-            continue
-          }
-
+        if (headerCommentWithAstNodes) {
           const tagDiagnosis = initializeTagDiagnosis(ENFORCED_TAGS)
+          const { comment, ast } = headerCommentWithAstNodes
           for (const tag of ast.tags) {
             if (tagDiagnosis[tag.tag]) {
               tagDiagnosis[tag.tag] = tag.description ? 'ok' : 'enforce'
             }
           }
-
-          if (validTagDiagnosis(tagDiagnosis)) {
-            break
+          if (!validTagDiagnosis(tagDiagnosis)) {
+            reportTagDiagnosis(comment, ENFORCED_TAGS, tagDiagnosis)
           }
-
-          reported = reportTagDiagnosis(comment, ENFORCED_TAGS, tagDiagnosis)
+        } else {
+          const firstComment = commentWithAstNodes[0].comment
+          const lastComment = commentWithAstNodes.at(-1)!.comment
+          const topLoc = {
+            start: {
+              line: firstComment.loc!.start.line,
+              column: firstComment.loc!.start.column
+            },
+            end: {
+              line: lastComment.loc!.end.line,
+              column: lastComment.loc!.end.column
+            }
+          }
+          ctx.report({ loc: topLoc, messageId: 'headerCommentNeedTag', data: { tag: 'author' } })
+          ctx.report({ loc: topLoc, messageId: 'headerCommentNeedTag', data: { tag: 'license' } })
         }
       }
     }

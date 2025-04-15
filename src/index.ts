@@ -4,16 +4,21 @@
  */
 
 import { rules } from './rules/index.ts'
-import { name, namespace, version } from './utils/meta.ts'
+import { name, namespace, version } from './utils/constants.ts'
 
 import type { ESLint, Linter } from 'eslint'
 
-export const plugin: ESLint.Plugin = {
+type PluginConfigs = {
+  recommended: Linter.Config<Linter.RulesRecord>[]
+  comment: Linter.Config<Linter.RulesRecord>[]
+}
+export const plugin: Omit<ESLint.Plugin, 'configs'> & { configs: PluginConfigs } = {
   meta: {
     name,
     version
   },
-  rules
+  rules,
+  configs: {} as PluginConfigs
 }
 
 const commentConfig: Linter.Config[] = [
@@ -36,10 +41,13 @@ const commentConfig: Linter.Config[] = [
   }
 ]
 
-export const configs: ESLint.Plugin['configs'] = {
+export const configs: {
+  recommended: typeof commentConfig
+  comment: typeof commentConfig
+} = {
   recommended: [...commentConfig],
   comment: commentConfig
-} satisfies ESLint.Plugin['configs']
+}
 
 plugin.configs = configs
 

@@ -49,7 +49,6 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   yaml({
     prettier: true
   }),
-  // @ts-expect-error -- FIXME
   ...plugin.configs.recommended,
   markdown({
     rules: {

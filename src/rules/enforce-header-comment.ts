@@ -168,12 +168,12 @@ const rule: ReturnType<typeof createRule> = createRule({
             reportTagDiagnosis(comment, ENFORCED_TAGS, tagDiagnosis)
           }
         } else {
-          const fistComment = commentWithAstNodes[0].comment
+          const firstComment = commentWithAstNodes[0].comment
           const lastComment = commentWithAstNodes.at(-1)!.comment
           const topLoc = {
             start: {
-              line: fistComment.loc!.start.line,
-              column: fistComment.loc!.start.column
+              line: firstComment.loc!.start.line,
+              column: firstComment.loc!.start.column
             },
             end: {
               line: lastComment.loc!.end.line,

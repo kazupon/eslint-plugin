@@ -19,8 +19,8 @@ importers:
         specifier: ^6.4.0
         version: 6.4.0
       '@kazupon/eslint-config':
-        specifier: ^0.28.0
-        version: 0.28.0(a53365df3e22df8b2161711ffa857f44)
+        specifier: ^0.29.0
+        version: 0.29.0(a53365df3e22df8b2161711ffa857f44)
       '@kazupon/prettier-config':
         specifier: ^0.1.1
         version: 0.1.1
@@ -726,10 +726,6 @@ packages:
     resolution: {integrity: sha512-gtF186CXhIl1p4pJNGZw8Yc6RlshoePRvE0X91oPGb3vZ8pM3qOS9W9NGPat9LziaBV7XrJWGylNQXkGcnM3IQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/js@9.24.0':
-    resolution: {integrity: sha512-uIY/y3z0uvOGX8cp1C2fiC4+ZmBhp6yZWkojtHL1YEMnRt1Y63HB9TM17proGEmeG7HeUY+UP36F0aknKYTpYA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
   '@eslint/js@9.25.0':
     resolution: {integrity: sha512-iWhsUS8Wgxz9AXNfvfOPFSW4VfMXdVhp1hjkZVhXCrpgh/aLcc45rX6MPu+tIVUWDw0HfNwth7O28M1xDxNf9w==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
@@ -801,8 +797,8 @@ packages:
     resolution: {integrity: sha512-f5DRIOZf7wxogefH03RjMPMdBF7ADTWUMoOs9kaJo06EfwF+aFhMZMDZxHg/Xe12hptN9xoZjGso2fdjapBRIA==}
     engines: {node: '>=10'}
 
-  '@kazupon/eslint-config@0.28.0':
-    resolution: {integrity: sha512-EkSu4I9sp28NOENa/3FI9/XpvTIerFozvX10ouEXj3yeX2DU3ehq/Hsr4ewWIUzk9U0j3KjaFj1jlubbkD98Rg==}
+  '@kazupon/eslint-config@0.29.0':
+    resolution: {integrity: sha512-KHTObT13X6RXXydWEdw42R0aZ/iJ3NL+JJ1xq2L6NTRKmj2g5EyGXesAISzcss6hzApC1xp3nlTxqNSARWeirg==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@eslint/css': '>=0.5.0'
@@ -885,6 +881,12 @@ packages:
         optional: true
       typescript-eslint:
         optional: true
+
+  '@kazupon/eslint-plugin@0.2.2':
+    resolution: {integrity: sha512-Ij8i7Tc4fN9EDW2JdA0n/3XK8oFf3mg8U2EsJWOWhbEnUFCChRk06M4mKvwdXuR2xZf2FLl0uDTeJLAFkqAkAg==}
+    engines: {node: '>= 20'}
+    peerDependencies:
+      eslint: ^9.0.0
 
   '@kazupon/jts-utils@0.6.0':
     resolution: {integrity: sha512-DYmeKgWI2jtTjITFtgbH70WIC3sdXF9C7Kt8k0UXGbs5MuUibhc4rlDiRzfsH4r1Y6EHp+Q34cwSEv4myuXQ9A==}
@@ -4613,8 +4615,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@eslint/js@9.24.0': {}
-
   '@eslint/js@9.25.0': {}
 
   '@eslint/markdown@6.4.0':
@@ -4697,10 +4697,11 @@ snapshots:
       string-argv: 0.3.2
       type-detect: 4.1.0
 
-  '@kazupon/eslint-config@0.28.0(a53365df3e22df8b2161711ffa857f44)':
+  '@kazupon/eslint-config@0.29.0(a53365df3e22df8b2161711ffa857f44)':
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.4.1(eslint@9.25.0(jiti@2.4.2))
-      '@eslint/js': 9.24.0
+      '@eslint/js': 9.25.0
+      '@kazupon/eslint-plugin': 0.2.2(eslint@9.25.0(jiti@2.4.2))
       '@kazupon/jts-utils': 0.6.0(@vue/reactivity@3.5.13)(publint@0.3.12)(typescript@5.8.3)
       '@stylistic/eslint-plugin': 4.2.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
       eslint: 9.25.0(jiti@2.4.2)
@@ -4728,6 +4729,12 @@ snapshots:
       - supports-color
       - typescript
       - unplugin-unused
+
+  '@kazupon/eslint-plugin@0.2.2(eslint@9.25.0(jiti@2.4.2))':
+    dependencies:
+      '@es-joy/jsdoccomment': 0.50.0
+      '@eslint/core': 0.13.0
+      eslint: 9.25.0(jiti@2.4.2)
 
   '@kazupon/jts-utils@0.6.0(@vue/reactivity@3.5.13)(publint@0.3.12)(typescript@5.8.3)':
     dependencies:
@@ -4886,7 +4893,7 @@ snapshots:
 
   '@oxc-parser/binding-wasm32-wasi@0.62.0':
     dependencies:
-      '@napi-rs/wasm-runtime': 0.2.8
+      '@napi-rs/wasm-runtime': 0.2.9
     optional: true
 
   '@oxc-parser/binding-wasm32-wasi@0.64.0':
@@ -4944,7 +4951,7 @@ snapshots:
 
   '@oxc-resolver/binding-wasm32-wasi@5.2.0':
     dependencies:
-      '@napi-rs/wasm-runtime': 0.2.8
+      '@napi-rs/wasm-runtime': 0.2.9
     optional: true
 
   '@oxc-resolver/binding-win32-arm64-msvc@5.2.0':
@@ -4997,7 +5004,7 @@ snapshots:
 
   '@oxc-transform/binding-wasm32-wasi@0.62.0':
     dependencies:
-      '@napi-rs/wasm-runtime': 0.2.8
+      '@napi-rs/wasm-runtime': 0.2.9
     optional: true
 
   '@oxc-transform/binding-wasm32-wasi@0.64.0':
@@ -5223,7 +5230,7 @@ snapshots:
 
   '@stylistic/eslint-plugin@4.2.0(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)':
     dependencies:
-      '@typescript-eslint/utils': 8.29.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
+      '@typescript-eslint/utils': 8.30.1(eslint@9.25.0(jiti@2.4.2))(typescript@5.8.3)
       eslint: 9.25.0(jiti@2.4.2)
       eslint-visitor-keys: 4.2.0
       espree: 10.3.0

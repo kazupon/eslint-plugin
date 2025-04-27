@@ -1,2 +1,4 @@
 onlyBuiltDependencies:
   - esbuild
+  - rolldown
+  - unrs-resolver

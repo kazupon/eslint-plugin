@@ -12,8 +12,8 @@ importers:
         specifier: ^0.50.0
         version: 0.50.0
       '@eslint/core':
-        specifier: ^0.13.0
-        version: 0.13.0
+        specifier: ^0.14.0
+        version: 0.14.0
     devDependencies:
       '@eslint/markdown':
         specifier: ^6.4.0
@@ -741,6 +741,10 @@ packages:
 
   '@eslint/core@0.13.0':
     resolution: {integrity: sha512-yfkgDw1KR66rkT5A8ci4irzDysN7FRpq3ttJolR88OqQikAWqwA8j5VZyas+vjyBNFIJ7MfybJ9plMILI2UrCw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@eslint/core@0.14.0':
+    resolution: {integrity: sha512-qIbV0/JZr7iSDjqAc60IqbLdsj9GDt16xQtWD+B78d/HAlvysGdZZ6rpJHGAc2T0FQx1X6thsSPdnoiGKdNtdg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@eslint/eslintrc@3.3.1':
@@ -4695,6 +4699,10 @@ snapshots:
       '@types/json-schema': 7.0.15
 
   '@eslint/core@0.13.0':
+    dependencies:
+      '@types/json-schema': 7.0.15
+
+  '@eslint/core@0.14.0':
     dependencies:
       '@types/json-schema': 7.0.15
 

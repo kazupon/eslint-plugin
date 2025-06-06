@@ -1,3 +1,4 @@
+import { includeIgnoreFile } from '@eslint/compat'
 import {
   comments,
   defineConfig,
@@ -14,7 +15,11 @@ import {
   yaml
 } from '@kazupon/eslint-config'
 import { globalIgnores } from 'eslint/config'
-import { plugin } from './src/index.ts'
+import { fileURLToPath } from 'node:url'
+
+import type { Linter } from 'eslint'
+
+const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 
 const config: ReturnType<typeof defineConfig> = defineConfig(
   javascript(),
@@ -49,7 +54,6 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   yaml({
     prettier: true
   }),
-  ...plugin.configs.recommended,
   markdown({
     rules: {
       'import/extensions': 'off',
@@ -60,16 +64,17 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   vitest(),
   prettier(),
-  // @ts-expect-error -- FIXME
+  includeIgnoreFile(gitignorePath),
   globalIgnores([
     '.vscode',
     '**/lib/**',
     'lib',
     '**/dist/**',
     'docs/.vitepress/cache',
+    'CHANGELOG.md',
     'tsconfig.json',
     'pnpm-lock.yaml'
-  ])
+  ]) as Linter.Config
 )
 
 export default config

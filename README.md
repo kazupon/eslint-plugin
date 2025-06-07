@@ -64,6 +64,7 @@ The rules with the following star ⭐ are included in the configs.
 | Rule ID                                                                                                | Description                                     | Category | Fixable | RECOMMENDED |
 | :----------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :------- | :-----: | :---------: |
 | [@kazupon/enforce-header-comment](https://eslint-plugin.kazupon.dev/rules/enforce-header-comment.html) | Enforce heading the comment in source code file | Comment  |         |     ⭐      |
+| [@kazupon/no-tag-comments](https://eslint-plugin.kazupon.dev/rules/no-tag-comments.html)               | disallow tag comments                           | Comment  |         |             |
 
 <!--RULES_TABLE_END-->
 

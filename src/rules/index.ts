@@ -4,9 +4,11 @@
  */
 
 import enforceHeaderComment from './enforce-header-comment.ts'
+import noTagComments from './no-tag-comments.ts'
 
 import type { RuleModule } from '../utils/types.ts'
 
 export const rules: Record<string, RuleModule> = {
-  'enforce-header-comment': enforceHeaderComment
+  'enforce-header-comment': enforceHeaderComment,
+  'no-tag-comments': noTagComments
 }

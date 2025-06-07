@@ -14,7 +14,7 @@ since: 'v0.2.0'
 
 This rule reports comments where tag are used.
 
-Comments with tags such as `FIXME`, `ISSUE` and `BUG` should generally be fixed before shipping to production.
+Comments with tags such as `FIXME`, `BUG` and `ISSUE` should generally be fixed before shipping to production.
 
 Tags only detect the **start** of comments.
 
@@ -144,7 +144,7 @@ function loop() {
 
 /* ✓ GOOD */
 // Line comment case
-// THis code was fixed!
+// This code was fixed!
 
 /* Block comment case */
 /* eslint-disable-next-line @stylistic/multiline-comment-style */

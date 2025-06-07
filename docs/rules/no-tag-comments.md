@@ -99,7 +99,7 @@ function loop() {
  * This code has still issues...
  */
 
-// FIXME: `FIXME` tag is not report, so rule options are overrided by 'ISSUE'
+// FIXME: `FIXME` tag is not report, so rule options are overridden by 'ISSUE'
 ```
 
 </eslint-code-block>
@@ -153,7 +153,7 @@ function loop() {
  * This code was fixed!
  */
 
-// FIXME: `FIXME` tag is not report, so rule options are overrided by 'ISSUE'
+// FIXME: `FIXME` tag is not report, so rule options are overridden by 'ISSUE'
 ```
 
 </eslint-code-block>

@@ -149,7 +149,6 @@ function loop() {
 /* Block comment case */
 /* eslint-disable-next-line @stylistic/multiline-comment-style */
 /*
- * ISSUE:
  * This code was fixed!
  */
 

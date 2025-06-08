@@ -32,7 +32,7 @@ const rule: ReturnType<typeof createRule> = createRule({
       defaultSeverity: 'warn'
     },
     messages: {
-      avoidTagComment: "Fix '{{tag}}' tag comment"
+      tagComment: "Exist '{{tag}}' tag comment"
     },
     schema: [
       {
@@ -76,7 +76,7 @@ const rule: ReturnType<typeof createRule> = createRule({
      */
     function reportTag(comment: Comment, tag: string) {
       ctx.report({
-        messageId: 'avoidTagComment',
+        messageId: 'tagComment',
         data: { tag },
         loc: comment.loc!
       })

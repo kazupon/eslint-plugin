@@ -74,12 +74,12 @@ function loop() {
 }`,
     errors: [
       {
-        message: "Fix 'FIXME' tag comment",
+        message: "Exist 'FIXME' tag comment",
         line: 1,
         column: 1
       },
       {
-        message: "Fix 'BUG' tag comment",
+        message: "Exist 'BUG' tag comment",
         line: 8,
         column: 5
       }
@@ -111,12 +111,12 @@ function loop() {
 }`,
     errors: [
       {
-        message: "Fix 'FIXME' tag comment",
+        message: "Exist 'FIXME' tag comment",
         line: 1,
         column: 1
       },
       {
-        message: "Fix 'BUG' tag comment",
+        message: "Exist 'BUG' tag comment",
         line: 11,
         column: 5
       }
@@ -138,12 +138,12 @@ function loop() {
 // FIXME: \`FIXME\` tag is not report, so rule options are overridden by 'ISSUE'`,
     errors: [
       {
-        message: "Fix 'ISSUE' tag comment",
+        message: "Exist 'ISSUE' tag comment",
         line: 2,
         column: 1
       },
       {
-        message: "Fix 'ISSUE' tag comment",
+        message: "Exist 'ISSUE' tag comment",
         line: 5,
         column: 1
       }
@@ -155,7 +155,7 @@ function loop() {
     code: `// BUG: this is a bug`,
     errors: [
       {
-        message: "Fix 'BUG' tag comment",
+        message: "Exist 'BUG' tag comment",
         line: 1,
         column: 1
       }
@@ -167,7 +167,7 @@ function loop() {
     code: `// FIXME this should also be detected`,
     errors: [
       {
-        message: "Fix 'FIXME' tag comment",
+        message: "Exist 'FIXME' tag comment",
         line: 1,
         column: 1
       }

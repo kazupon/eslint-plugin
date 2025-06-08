@@ -12,3 +12,4 @@ docs/.vitepress/cache
 *.tgz
 *.zip
 *~
+.claude

@@ -8,6 +8,7 @@ import {
   markdown,
   prettier,
   promise,
+  regexp,
   stylistic,
   typescript,
   unicorn,
@@ -32,6 +33,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
     }
   }),
   promise(),
+  regexp(),
   unicorn({
     rules: {
       'unicorn/no-null': 'off',

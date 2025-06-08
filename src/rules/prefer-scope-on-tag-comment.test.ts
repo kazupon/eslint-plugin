@@ -1,0 +1,305 @@
+/**
+ * @author kazuya kawaguchi (a.k.a. kazupon)
+ * @license MIT
+ */
+
+import { run } from 'eslint-vitest-rule-tester'
+import rule from './prefer-scope-on-tag-comment.ts'
+
+import type { InvalidTestCase, ValidTestCase } from 'eslint-vitest-rule-tester'
+
+const valids: ValidTestCase[] = [
+  {
+    filename: 'index.js',
+    description: 'TODO with scope',
+    code: `// TODO(kazupon): This is todo comment`
+  },
+  {
+    filename: 'index.js',
+    description: 'TODO with scope in block comment',
+    code: `/* TODO(kazupon): This is todo comment */`
+  },
+  {
+    filename: 'index.js',
+    description: 'FIXME with team scope',
+    code: `// FIXME(auth-team): Fix authentication issue`
+  },
+  {
+    filename: 'index.js',
+    description: 'TODO with ticket number scope',
+    code: `// TODO(ISSUE-123): Implement new feature`
+  },
+  {
+    filename: 'index.js',
+    description: 'HACK with module scope',
+    code: `// HACK(frontend): Temporary workaround for rendering`
+  },
+  {
+    filename: 'index.js',
+    description: 'BUG with author scope',
+    code: `// BUG(kazupon): This code has still bug ...`
+  },
+  {
+    filename: 'index.js',
+    description: 'NOTE with scope',
+    code: `// NOTE(security): Check permissions here`
+  },
+  {
+    filename: 'index.js',
+    description: 'no tag comment',
+    code: `// This is just a regular comment`
+  },
+  {
+    filename: 'index.js',
+    description: 'tag in middle of comment',
+    code: `// This is not a TODO at the start`
+  },
+  {
+    filename: 'index.js',
+    description: 'block comment with scope',
+    code: `/**
+ * TODO(john): Implement this function
+ * with proper error handling
+ */`
+  },
+  {
+    filename: 'index.js',
+    description: 'JSDoc style comment with scope',
+    code: `/**
+ * FIXME(alice): Fix memory leak
+ * in the event handler
+ */`
+  },
+  {
+    filename: 'index.js',
+    description: 'custom tags option - only check specified tags',
+    options: [{ tags: ['CUSTOM'] }],
+    code: `// TODO: This TODO is not checked
+// CUSTOM(dev): This custom tag has scope`
+  },
+  {
+    filename: 'index.js',
+    description: 'custom tags option with ISSUE tag',
+    options: [{ tags: ['ISSUE'] }],
+    code: `// ISSUE(kazupon): This code has still issue ...
+// TODO: This TODO is not reported`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope with numbers and special characters',
+    code: `// TODO(user-123_456): Complex scope identifier`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope with dots',
+    code: `// TODO(v1.2.3): Version-based scope`
+  }
+]
+
+const invalids: InvalidTestCase[] = [
+  {
+    filename: 'index.js',
+    description: 'TODO without scope',
+    code: `// TODO: This is todo comment`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'TODO without scope in block comment',
+    code: `/* TODO: This is todo comment */`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'FIXME without scope',
+    code: `// FIXME: Fix this bug`,
+    errors: [
+      {
+        message: "Tag comment 'FIXME' is missing a scope. Use format: FIXME(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 9
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'HACK without scope',
+    code: `// HACK: Temporary workaround`,
+    errors: [
+      {
+        message: "Tag comment 'HACK' is missing a scope. Use format: HACK(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'BUG without scope',
+    code: `// BUG: This code has still bug ...`,
+    errors: [
+      {
+        message: "Tag comment 'BUG' is missing a scope. Use format: BUG(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 7
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'NOTE without scope',
+    code: `// NOTE: Important information`,
+    errors: [
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'tag with no colon',
+    code: `// TODO this should also be detected`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'empty parentheses should be invalid',
+    code: `// TODO(): Empty scope`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'whitespace-only scope should be invalid',
+    code: `// TODO(   ): Whitespace only`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'block comment without scope',
+    code: `/**
+ * TODO:
+ * Implement this function
+ */`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 2,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'JSDoc style comment without scope',
+    code: `/**
+ * FIXME:
+ * Fix memory leak
+ */`,
+    errors: [
+      {
+        message: "Tag comment 'FIXME' is missing a scope. Use format: FIXME(scope)",
+        line: 2,
+        column: 4,
+        endColumn: 9
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'multiple tags without scope',
+    code: `// TODO: First task
+// FIXME: Second issue
+/* HACK: Third workaround */`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 8
+      },
+      {
+        message: "Tag comment 'FIXME' is missing a scope. Use format: FIXME(scope)",
+        line: 2,
+        column: 4,
+        endColumn: 9
+      },
+      {
+        message: "Tag comment 'HACK' is missing a scope. Use format: HACK(scope)",
+        line: 3,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'custom tags option',
+    options: [{ tags: ['CUSTOM', 'SPECIAL'] }],
+    code: `// CUSTOM: Custom tag without scope
+// SPECIAL: Special tag without scope
+// TODO: This TODO is not checked`,
+    errors: [
+      {
+        message: "Tag comment 'CUSTOM' is missing a scope. Use format: CUSTOM(scope)",
+        line: 1,
+        column: 4,
+        endColumn: 10
+      },
+      {
+        message: "Tag comment 'SPECIAL' is missing a scope. Use format: SPECIAL(scope)",
+        line: 2,
+        column: 4,
+        endColumn: 11
+      }
+    ]
+  }
+]
+
+run({
+  name: 'prefer-scope-on-tag-comment',
+  rule,
+  valid: valids,
+  invalid: invalids
+})

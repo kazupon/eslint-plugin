@@ -76,12 +76,14 @@ function loop() {
       {
         message: "Exist 'FIXME' tag comment",
         line: 1,
-        column: 1
+        column: 4,
+        endColumn: 9
       },
       {
         message: "Exist 'BUG' tag comment",
         line: 8,
-        column: 5
+        column: 8,
+        endColumn: 11
       }
     ]
   },
@@ -112,13 +114,15 @@ function loop() {
     errors: [
       {
         message: "Exist 'FIXME' tag comment",
-        line: 1,
-        column: 1
+        line: 2,
+        column: 4,
+        endColumn: 9
       },
       {
         message: "Exist 'BUG' tag comment",
-        line: 11,
-        column: 5
+        line: 12,
+        column: 8,
+        endColumn: 11
       }
     ]
   },
@@ -140,12 +144,14 @@ function loop() {
       {
         message: "Exist 'ISSUE' tag comment",
         line: 2,
-        column: 1
+        column: 4,
+        endColumn: 9
       },
       {
         message: "Exist 'ISSUE' tag comment",
-        line: 5,
-        column: 1
+        line: 6,
+        column: 4,
+        endColumn: 9
       }
     ]
   },
@@ -157,7 +163,8 @@ function loop() {
       {
         message: "Exist 'BUG' tag comment",
         line: 1,
-        column: 1
+        column: 4,
+        endColumn: 7
       }
     ]
   },
@@ -169,7 +176,8 @@ function loop() {
       {
         message: "Exist 'FIXME' tag comment",
         line: 1,
-        column: 1
+        column: 4,
+        endColumn: 9
       }
     ]
   }

@@ -18,6 +18,17 @@ pnpm docs:dev         # Start VitePress documentation server
 pnpm docs:build       # Build documentation for production
 ```
 
+### Important: Command Execution
+
+When running npm scripts in this project, **execute commands one by one** instead of chaining them with `&&`.
+
+For example:
+
+- ✅ Good: `pnpm test` then `pnpm lint` then `pnpm typecheck`
+- ❌ Avoid: `pnpm test && pnpm lint && pnpm typecheck`
+
+This ensures better error visibility and debugging capabilities.
+
 ## Code Architecture
 
 ### Plugin Structure

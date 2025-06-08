@@ -21,6 +21,33 @@ function stripJSDocPrefix(line: string): string {
   return trimmed.startsWith('*') ? trimmed.slice(1).trim() : trimmed
 }
 
+function calculateTagLocation(
+  comment: Comment,
+  line: string,
+  lineIndex: number,
+  tag: string
+): { line: number; column: number } | null {
+  const tagIndex = line.indexOf(tag)
+  if (tagIndex === -1) return null
+
+  if (lineIndex === 0) {
+    // First line: account for comment opener
+    const tagIndexInValue = comment.value.indexOf(tag)
+    return tagIndexInValue === -1
+      ? null
+      : {
+          line: comment.loc!.start.line,
+          column: comment.loc!.start.column + 2 + tagIndexInValue
+        }
+  } else {
+    // Subsequent lines
+    return {
+      line: comment.loc!.start.line + lineIndex,
+      column: tagIndex
+    }
+  }
+}
+
 const rule: ReturnType<typeof createRule> = createRule({
   name: 'prefer-scope-on-tag-comment',
   meta: {
@@ -61,7 +88,10 @@ const rule: ReturnType<typeof createRule> = createRule({
      */
     function getTagInfo(text: string): { tag: string; hasScope: boolean } | null {
       for (const tag of tags) {
-        if (text.startsWith(tag)) {
+        // Use word boundary regex to ensure tag is a standalone word
+        const tagRegex = new RegExp(`^${tag}\\b`)
+        const match = text.match(tagRegex)
+        if (match) {
           const afterTag = text.slice(tag.length)
 
           // Check if tag is followed by a scope in parentheses
@@ -93,6 +123,16 @@ const rule: ReturnType<typeof createRule> = createRule({
       tag: string,
       loc?: { line: number; column: number }
     ) {
+      if (!comment.loc) {
+        // Fallback if comment location is not available
+        ctx.report({
+          messageId: 'missingScope',
+          data: { tag },
+          node: ctx.sourceCode.ast
+        })
+        return
+      }
+
       if (loc && comment.loc) {
         // For block comments, report specific location
         ctx.report({
@@ -114,7 +154,7 @@ const rule: ReturnType<typeof createRule> = createRule({
         ctx.report({
           messageId: 'missingScope',
           data: { tag },
-          loc: comment.loc!
+          loc: comment.loc
         })
       }
     }
@@ -142,14 +182,12 @@ const rule: ReturnType<typeof createRule> = createRule({
 
       // Block comment
       const lines = value.split('\n')
-      let currentLine = comment.loc!.start.line
 
       for (const [i, line] of lines.entries()) {
         const trimmedLine = line.trim()
 
         // Skip empty lines
         if (!trimmedLine) {
-          currentLine++
           continue
         }
 
@@ -159,32 +197,12 @@ const rule: ReturnType<typeof createRule> = createRule({
 
         if (tagInfo && !tagInfo.hasScope) {
           // For the first line, handle the comment opener
-          if (i === 0) {
-            // For single line block comments like /* TODO: ... */
-            // We need to account for the position within the comment
-            const tagIndexInValue = value.indexOf(tagInfo.tag)
-            if (tagIndexInValue !== -1) {
-              // Add 2 for /* and then the position of the tag
-              reportMissingScope(comment, tagInfo.tag, {
-                line: currentLine,
-                column: comment.loc!.start.column + 2 + tagIndexInValue
-              })
-              break
-            }
-          } else {
-            // For subsequent lines, find where the tag starts
-            const tagIndex = line.indexOf(tagInfo.tag)
-            if (tagIndex !== -1) {
-              reportMissingScope(comment, tagInfo.tag, {
-                line: currentLine,
-                column: tagIndex
-              })
-              break
-            }
+          const location = calculateTagLocation(comment, line, i, tagInfo.tag)
+          if (location) {
+            reportMissingScope(comment, tagInfo.tag, location)
+            break
           }
         }
-
-        currentLine++
       }
     }
 

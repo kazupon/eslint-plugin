@@ -98,7 +98,7 @@ default `{ tags: ["TODO", "FIXME", "HACK", "BUG", "NOTE"] }` options:
 ```js
 /* eslint @kazupon/prefer-scope-on-tag-comment: ['error', { tags: ['ISSUE'] }] */
 
-/* ✗ BAD */
+/* ✓ GOOD */
 
 // ISSUE(kazupon): This code has still issue ...
 

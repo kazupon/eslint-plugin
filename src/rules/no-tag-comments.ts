@@ -21,7 +21,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     docs: {
       description: 'disallow tag comments',
       category: 'Comment',
-      recommended: false,
+      recommended: true,
       defaultSeverity: 'warn'
     },
     messages: {

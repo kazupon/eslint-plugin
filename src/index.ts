@@ -21,6 +21,32 @@ export const plugin: Omit<ESLint.Plugin, 'configs'> & { configs: PluginConfigs }
   configs: {} as PluginConfigs
 }
 
+const recommendedConfig: Linter.Config[] = [
+  {
+    name: '@kazupon/eslint-plugin/recommended',
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    ignores: [
+      '**/*.md',
+      '**/*.md/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
+      '**/*.config.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
+    ],
+    plugins: {
+      [namespace]: plugin
+    },
+    rules: Object.entries(rules).reduce(
+      (acc, [ruleName, rule]) => {
+        if (rule.meta?.docs?.recommended) {
+          const ruleId =
+            rule.meta?.docs?.ruleId || (namespace ? `${namespace}/${ruleName}` : ruleName)
+          acc[ruleId] = rule.meta?.docs?.defaultSeverity || 'warn'
+        }
+        return acc
+      },
+      Object.create(null) as Linter.RulesRecord
+    )
+  }
+]
+
 const commentConfig: Linter.Config[] = [
   {
     name: '@kazupon/eslint-plugin/comment',
@@ -46,10 +72,10 @@ const commentConfig: Linter.Config[] = [
 ]
 
 export const configs: {
-  recommended: typeof commentConfig
+  recommended: typeof recommendedConfig
   comment: typeof commentConfig
 } = {
-  recommended: [...commentConfig],
+  recommended: recommendedConfig,
   comment: commentConfig
 }
 

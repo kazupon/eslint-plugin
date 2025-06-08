@@ -3,6 +3,7 @@
  * @license MIT
  */
 
+import { calculateTagLocation, detectTag, stripJSDocPrefix } from '../utils/comment.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
@@ -12,14 +13,6 @@ type Options = {
 }
 
 const DEFAULT_TAGS = ['FIXME', 'BUG']
-
-/**
- * Remove JSDoc asterisk prefix if present
- */
-function stripJSDocPrefix(line: string): string {
-  const trimmed = line.trim()
-  return trimmed.startsWith('*') ? trimmed.slice(1).trim() : trimmed
-}
 
 const rule: ReturnType<typeof createRule> = createRule({
   name: 'no-tag-comments',
@@ -55,21 +48,6 @@ const rule: ReturnType<typeof createRule> = createRule({
     const options: Options = ctx.options[0] || { tags: DEFAULT_TAGS }
     const tags = options.tags || DEFAULT_TAGS
     const sourceCode = ctx.sourceCode
-
-    /**
-     * Check if the text starts with a tag followed by valid delimiter
-     */
-    function hasTag(text: string): string | null {
-      for (const tag of tags) {
-        if (text.startsWith(tag)) {
-          const afterTag = text.slice(tag.length)
-          if (afterTag === '' || afterTag.startsWith(':') || afterTag.startsWith(' ')) {
-            return tag
-          }
-        }
-      }
-      return null
-    }
 
     /**
      * Report a tag comment violation
@@ -108,12 +86,12 @@ const rule: ReturnType<typeof createRule> = createRule({
       const { value, type } = comment
 
       if (type === 'Line') {
-        const tag = hasTag(value.trim())
-        if (tag) {
+        const tagInfo = detectTag(value.trim(), tags)
+        if (tagInfo) {
           // Calculate the exact position of the tag in the line comment
-          const tagIndex = value.indexOf(tag)
+          const tagIndex = value.indexOf(tagInfo.tag)
           if (tagIndex !== -1) {
-            reportTag(comment, tag, {
+            reportTag(comment, tagInfo.tag, {
               line: comment.loc!.start.line,
               column: comment.loc!.start.column + 2 + tagIndex // +2 for "//"
             })
@@ -124,54 +102,27 @@ const rule: ReturnType<typeof createRule> = createRule({
 
       // Block comment
       const lines = value.split('\n')
-      let currentLine = comment.loc!.start.line
 
       for (const [i, line] of lines.entries()) {
         const trimmedLine = line.trim()
 
         // Skip empty lines
         if (!trimmedLine) {
-          currentLine++
           continue
         }
 
         // Remove JSDoc prefix if present
         const contentToCheck = stripJSDocPrefix(line)
-        const tag = hasTag(contentToCheck)
+        const tagInfo = detectTag(contentToCheck, tags)
 
-        if (tag) {
-          // Calculate the exact column position of the tag
-          let columnOffset = comment.loc!.start.column
-
-          // For the first line, add the comment opener length
-          if (i === 0) {
-            const opener = line.match(/^(\s*\/\*+\s*)/)?.[0] || ''
-            columnOffset += opener.length
-
-            // Find tag position after opener
-            const afterOpener = line.slice(opener.length)
-            const tagIndexInAfterOpener = afterOpener.indexOf(tag)
-            if (tagIndexInAfterOpener !== -1) {
-              reportTag(comment, tag, {
-                line: currentLine,
-                column: columnOffset + tagIndexInAfterOpener
-              })
-              break
-            }
-          } else {
-            // For subsequent lines, find where the tag starts
-            const tagIndex = line.indexOf(tag)
-            if (tagIndex !== -1) {
-              reportTag(comment, tag, {
-                line: currentLine,
-                column: tagIndex
-              })
-              break
-            }
+        if (tagInfo) {
+          // Use shared location calculation logic
+          const location = calculateTagLocation(comment, line, i, tagInfo.tag)
+          if (location) {
+            reportTag(comment, tagInfo.tag, location)
+            break
           }
         }
-
-        currentLine++
       }
     }
 

@@ -4,6 +4,7 @@
  */
 
 import { createRule } from '../utils/rule.ts'
+import { stripJSDocPrefix, detectTag, calculateTagLocation } from '../utils/comment.ts'
 
 import type { Comment } from '../utils/types.ts'
 
@@ -12,41 +13,6 @@ type Options = {
 }
 
 const DEFAULT_TAGS = ['TODO', 'FIXME', 'HACK', 'BUG', 'NOTE']
-
-/**
- * Remove JSDoc asterisk prefix if present
- */
-function stripJSDocPrefix(line: string): string {
-  const trimmed = line.trim()
-  return trimmed.startsWith('*') ? trimmed.slice(1).trim() : trimmed
-}
-
-function calculateTagLocation(
-  comment: Comment,
-  line: string,
-  lineIndex: number,
-  tag: string
-): { line: number; column: number } | null {
-  const tagIndex = line.indexOf(tag)
-  if (tagIndex === -1) return null
-
-  if (lineIndex === 0) {
-    // First line: account for comment opener
-    const tagIndexInValue = comment.value.indexOf(tag)
-    return tagIndexInValue === -1
-      ? null
-      : {
-          line: comment.loc!.start.line,
-          column: comment.loc!.start.column + 2 + tagIndexInValue
-        }
-  } else {
-    // Subsequent lines
-    return {
-      line: comment.loc!.start.line + lineIndex,
-      column: tagIndex
-    }
-  }
-}
 
 const rule: ReturnType<typeof createRule> = createRule({
   name: 'prefer-scope-on-tag-comment',
@@ -82,38 +48,6 @@ const rule: ReturnType<typeof createRule> = createRule({
     const options: Options = ctx.options[0] || { tags: DEFAULT_TAGS }
     const tags = options.tags || DEFAULT_TAGS
     const sourceCode = ctx.sourceCode
-
-    /**
-     * Check if the text starts with a tag and return tag info
-     */
-    function getTagInfo(text: string): { tag: string; hasScope: boolean } | null {
-      for (const tag of tags) {
-        // Use word boundary regex to ensure tag is a standalone word
-        const tagRegex = new RegExp(`^${tag}\\b`)
-        const match = text.match(tagRegex)
-        if (match) {
-          const afterTag = text.slice(tag.length)
-
-          // Check if tag is followed by a scope in parentheses
-          if (afterTag.startsWith('(')) {
-            const closingParenIndex = afterTag.indexOf(')')
-            if (closingParenIndex > 0) {
-              // Has scope if there's content between parentheses
-              const scope = afterTag.slice(1, closingParenIndex).trim()
-              return { tag, hasScope: scope.length > 0 }
-            }
-            // If we have opening paren but no closing or empty scope, it's invalid
-            return { tag, hasScope: false }
-          }
-
-          // Check if tag is followed by valid delimiter without scope
-          if (afterTag === '' || afterTag.startsWith(':') || afterTag.startsWith(' ')) {
-            return { tag, hasScope: false }
-          }
-        }
-      }
-      return null
-    }
 
     /**
      * Report a missing scope violation
@@ -166,7 +100,7 @@ const rule: ReturnType<typeof createRule> = createRule({
       const { value, type } = comment
 
       if (type === 'Line') {
-        const tagInfo = getTagInfo(value.trim())
+        const tagInfo = detectTag(value.trim(), tags)
         if (tagInfo && !tagInfo.hasScope) {
           // Calculate the exact position of the tag in the line comment
           const tagIndex = value.indexOf(tagInfo.tag)
@@ -193,7 +127,7 @@ const rule: ReturnType<typeof createRule> = createRule({
 
         // Remove JSDoc prefix if present
         const contentToCheck = stripJSDocPrefix(line)
-        const tagInfo = getTagInfo(contentToCheck)
+        const tagInfo = detectTag(contentToCheck, tags)
 
         if (tagInfo && !tagInfo.hasScope) {
           // For the first line, handle the comment opener

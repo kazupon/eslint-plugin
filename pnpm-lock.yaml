@@ -22,8 +22,8 @@ importers:
         specifier: ^6.5.0
         version: 6.5.0
       '@kazupon/eslint-config':
-        specifier: ^0.30.0
-        version: 0.30.0(@eslint/markdown@6.5.0)(@vitest/eslint-plugin@1.2.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.2.2(@types/debug@4.1.12)(@types/node@22.15.30)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.8.0)))(@vue/reactivity@3.5.16)(eslint-config-prettier@10.1.5(eslint@9.28.0(jiti@2.4.2)))(eslint-import-resolver-typescript@4.4.3)(eslint-plugin-import@2.31.0)(eslint-plugin-jsonc@2.20.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-module-interop@0.3.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-promise@7.2.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unicorn@58.0.0(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unused-imports@4.1.4(@typescript-eslint/eslint-plugin@8.33.1(@typescript-eslint/parser@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-yml@1.18.0(eslint@9.28.0(jiti@2.4.2)))(eslint@9.28.0(jiti@2.4.2))(publint@0.3.12)(typescript-eslint@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(typescript@5.8.3)
+        specifier: ^0.31.0
+        version: 0.31.0(@eslint/markdown@6.5.0)(@vitest/eslint-plugin@1.2.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.2.2(@types/debug@4.1.12)(@types/node@22.15.30)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.8.0)))(@vue/reactivity@3.5.16)(eslint-config-prettier@10.1.5(eslint@9.28.0(jiti@2.4.2)))(eslint-import-resolver-typescript@4.4.3)(eslint-plugin-import@2.31.0)(eslint-plugin-jsonc@2.20.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-module-interop@0.3.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-promise@7.2.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unicorn@58.0.0(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unused-imports@4.1.4(@typescript-eslint/eslint-plugin@8.33.1(@typescript-eslint/parser@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-yml@1.18.0(eslint@9.28.0(jiti@2.4.2)))(eslint@9.28.0(jiti@2.4.2))(publint@0.3.12)(typescript-eslint@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(typescript@5.8.3)
       '@kazupon/prettier-config':
         specifier: ^0.1.1
         version: 0.1.1
@@ -856,8 +856,8 @@ packages:
     resolution: {integrity: sha512-f5DRIOZf7wxogefH03RjMPMdBF7ADTWUMoOs9kaJo06EfwF+aFhMZMDZxHg/Xe12hptN9xoZjGso2fdjapBRIA==}
     engines: {node: '>=10'}
 
-  '@kazupon/eslint-config@0.30.0':
-    resolution: {integrity: sha512-ejmJiq2LNwYnmX7XIlX7xl1A3TcJERcuo+olcPRi/k+XdWzXLp9oogoHiEJeXqlkEsEzgJeKrFvhk24v2fJDvQ==}
+  '@kazupon/eslint-config@0.31.0':
+    resolution: {integrity: sha512-pDAhyrQOQkbsw9RVN3rG8DpOP1ipXl+TSrRjI/+cD27jb6IGAhnYRq+24bB1J1ZdKLlpy08i/kqBVcsNaZNi1A==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@eslint/css': '>=0.5.0'
@@ -944,8 +944,8 @@ packages:
       typescript-eslint:
         optional: true
 
-  '@kazupon/eslint-plugin@0.2.2':
-    resolution: {integrity: sha512-Ij8i7Tc4fN9EDW2JdA0n/3XK8oFf3mg8U2EsJWOWhbEnUFCChRk06M4mKvwdXuR2xZf2FLl0uDTeJLAFkqAkAg==}
+  '@kazupon/eslint-plugin@0.3.0':
+    resolution: {integrity: sha512-rCGqRyZ9b6vNdImIi+V3Wk4hyw+4PZacE/yWXFz2akPaShfw1WXGYcY98IXOya9ivMOUGbnmLKdeJiMRpsAdBQ==}
     engines: {node: '>= 20'}
     peerDependencies:
       eslint: ^9.0.0
@@ -4959,11 +4959,11 @@ snapshots:
       string-argv: 0.3.2
       type-detect: 4.1.0
 
-  '@kazupon/eslint-config@0.30.0(@eslint/markdown@6.5.0)(@vitest/eslint-plugin@1.2.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.2.2(@types/debug@4.1.12)(@types/node@22.15.30)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.8.0)))(@vue/reactivity@3.5.16)(eslint-config-prettier@10.1.5(eslint@9.28.0(jiti@2.4.2)))(eslint-import-resolver-typescript@4.4.3)(eslint-plugin-import@2.31.0)(eslint-plugin-jsonc@2.20.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-module-interop@0.3.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-promise@7.2.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unicorn@58.0.0(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unused-imports@4.1.4(@typescript-eslint/eslint-plugin@8.33.1(@typescript-eslint/parser@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-yml@1.18.0(eslint@9.28.0(jiti@2.4.2)))(eslint@9.28.0(jiti@2.4.2))(publint@0.3.12)(typescript-eslint@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(typescript@5.8.3)':
+  '@kazupon/eslint-config@0.31.0(@eslint/markdown@6.5.0)(@vitest/eslint-plugin@1.2.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)(vitest@3.2.2(@types/debug@4.1.12)(@types/node@22.15.30)(jiti@2.4.2)(tsx@4.19.4)(yaml@2.8.0)))(@vue/reactivity@3.5.16)(eslint-config-prettier@10.1.5(eslint@9.28.0(jiti@2.4.2)))(eslint-import-resolver-typescript@4.4.3)(eslint-plugin-import@2.31.0)(eslint-plugin-jsonc@2.20.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-module-interop@0.3.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-promise@7.2.1(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unicorn@58.0.0(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-unused-imports@4.1.4(@typescript-eslint/eslint-plugin@8.33.1(@typescript-eslint/parser@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(eslint@9.28.0(jiti@2.4.2)))(eslint-plugin-yml@1.18.0(eslint@9.28.0(jiti@2.4.2)))(eslint@9.28.0(jiti@2.4.2))(publint@0.3.12)(typescript-eslint@8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3))(typescript@5.8.3)':
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.5.0(eslint@9.28.0(jiti@2.4.2))
       '@eslint/js': 9.28.0
-      '@kazupon/eslint-plugin': 0.2.2(eslint@9.28.0(jiti@2.4.2))
+      '@kazupon/eslint-plugin': 0.3.0(eslint@9.28.0(jiti@2.4.2))
       '@kazupon/jts-utils': 0.6.0(@vue/reactivity@3.5.16)(publint@0.3.12)(typescript@5.8.3)
       '@stylistic/eslint-plugin': 4.4.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.3)
       eslint: 9.28.0(jiti@2.4.2)
@@ -4992,10 +4992,10 @@ snapshots:
       - typescript
       - unplugin-unused
 
-  '@kazupon/eslint-plugin@0.2.2(eslint@9.28.0(jiti@2.4.2))':
+  '@kazupon/eslint-plugin@0.3.0(eslint@9.28.0(jiti@2.4.2))':
     dependencies:
       '@es-joy/jsdoccomment': 0.50.2
-      '@eslint/core': 0.13.0
+      '@eslint/core': 0.14.0
       eslint: 9.28.0(jiti@2.4.2)
 
   '@kazupon/jts-utils@0.6.0(@vue/reactivity@3.5.16)(publint@0.3.12)(typescript@5.8.3)':

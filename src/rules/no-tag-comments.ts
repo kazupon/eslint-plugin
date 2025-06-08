@@ -74,24 +74,31 @@ const rule: ReturnType<typeof createRule> = createRule({
     /**
      * Report a tag comment violation
      */
-    function reportTag(comment: Comment, tag: string) {
-      ctx.report({
-        messageId: 'tagComment',
-        data: { tag },
-        loc: comment.loc!
-      })
-    }
-
-    /**
-     * Process a single line of text for tags
-     */
-    function checkLine(text: string, comment: Comment): boolean {
-      const tag = hasTag(text)
-      if (tag) {
-        reportTag(comment, tag)
-        return true
+    function reportTag(comment: Comment, tag: string, loc?: { line: number; column: number }) {
+      if (loc && comment.loc) {
+        // For block comments, report specific location
+        ctx.report({
+          messageId: 'tagComment',
+          data: { tag },
+          loc: {
+            start: {
+              line: loc.line,
+              column: loc.column
+            },
+            end: {
+              line: loc.line,
+              column: loc.column + tag.length
+            }
+          }
+        })
+      } else {
+        // For line comments, report whole comment
+        ctx.report({
+          messageId: 'tagComment',
+          data: { tag },
+          loc: comment.loc!
+        })
       }
-      return false
     }
 
     /**
@@ -101,34 +108,70 @@ const rule: ReturnType<typeof createRule> = createRule({
       const { value, type } = comment
 
       if (type === 'Line') {
-        checkLine(value.trim(), comment)
+        const tag = hasTag(value.trim())
+        if (tag) {
+          // Calculate the exact position of the tag in the line comment
+          const tagIndex = value.indexOf(tag)
+          if (tagIndex !== -1) {
+            reportTag(comment, tag, {
+              line: comment.loc!.start.line,
+              column: comment.loc!.start.column + 2 + tagIndex // +2 for "//"
+            })
+          }
+        }
         return
       }
 
       // Block comment
       const lines = value.split('\n')
+      let currentLine = comment.loc!.start.line
 
-      // Single line block comment
-      if (lines.length === 1) {
-        checkLine(value.trim(), comment)
-        return
-      }
-
-      // Multiline block comment - check each line
-      for (const line of lines) {
+      for (const [i, line] of lines.entries()) {
         const trimmedLine = line.trim()
 
         // Skip empty lines
         if (!trimmedLine) {
+          currentLine++
           continue
         }
 
+        // Remove JSDoc prefix if present
         const contentToCheck = stripJSDocPrefix(line)
+        const tag = hasTag(contentToCheck)
 
-        // Stop checking once a tag is found
-        if (checkLine(contentToCheck, comment)) {
-          break
+        if (tag) {
+          // Calculate the exact column position of the tag
+          let columnOffset = comment.loc!.start.column
+
+          // For the first line, add the comment opener length
+          if (i === 0) {
+            const opener = line.match(/^(\s*\/\*+\s*)/)?.[0] || ''
+            columnOffset += opener.length
+
+            // Find tag position after opener
+            const afterOpener = line.slice(opener.length)
+            const tagIndexInAfterOpener = afterOpener.indexOf(tag)
+            if (tagIndexInAfterOpener !== -1) {
+              reportTag(comment, tag, {
+                line: currentLine,
+                column: columnOffset + tagIndexInAfterOpener
+              })
+              break
+            }
+          } else {
+            // For subsequent lines, find where the tag starts
+            const tagIndex = line.indexOf(tag)
+            if (tagIndex !== -1) {
+              reportTag(comment, tag, {
+                line: currentLine,
+                column: columnOffset + tagIndex
+              })
+              break
+            }
+          }
         }
+
+        currentLine++
       }
     }
 

@@ -164,7 +164,7 @@ const rule: ReturnType<typeof createRule> = createRule({
             if (tagIndex !== -1) {
               reportTag(comment, tag, {
                 line: currentLine,
-                column: columnOffset + tagIndex
+                column: tagIndex
               })
               break
             }

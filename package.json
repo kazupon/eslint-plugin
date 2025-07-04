@@ -112,7 +112,7 @@
     "twoslash-eslint": "^0.3.1",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.33.1",
-    "vite-plugin-eslint4b": "^0.5.1",
+    "vite-plugin-eslint4b": "^0.6.0",
     "vitepress": "^1.6.3",
     "vitepress-plugin-group-icons": "^1.6.0",
     "vitest": "^3.2.2"

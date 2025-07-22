@@ -107,7 +107,7 @@
     "pkg-pr-new": "^0.0.54",
     "prettier": "^3.5.3",
     "publint": "^0.3.12",
-    "tsdown": "^0.12.7",
+    "tsdown": "^0.13.0",
     "tsx": "^4.19.4",
     "twoslash-eslint": "^0.3.1",
     "typescript": "^5.8.3",

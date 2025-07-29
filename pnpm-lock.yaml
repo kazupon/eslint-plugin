@@ -22,8 +22,8 @@ importers:
         specifier: ^6.6.0
         version: 6.6.0
       '@kazupon/eslint-config':
-        specifier: ^0.31.1
-        version: 0.31.1(d935e8804a064eee54d0d35c4d12f8e7)
+        specifier: ^0.32.0
+        version: 0.32.0(d935e8804a064eee54d0d35c4d12f8e7)
       '@kazupon/prettier-config':
         specifier: ^0.1.1
         version: 0.1.1
@@ -694,12 +694,12 @@ packages:
     resolution: {integrity: sha512-f5DRIOZf7wxogefH03RjMPMdBF7ADTWUMoOs9kaJo06EfwF+aFhMZMDZxHg/Xe12hptN9xoZjGso2fdjapBRIA==}
     engines: {node: '>=10'}
 
-  '@kazupon/eslint-config@0.31.1':
-    resolution: {integrity: sha512-ZYBWB+aXt5UPaoj+msvs9ACWSHSXlavCRJZstp8B/KlXI3DYEOweWxQmGhRTHwxslXdHX2QSXGcXro8u95r+BQ==}
+  '@kazupon/eslint-config@0.32.0':
+    resolution: {integrity: sha512-Bwg3TJrrs44S/qIqmvpTPbESHK4mwbTIPuFcr7wGEe6v7IFFRUObjmgwLaWQqfmnRBqBmPQwJJWb+AVKdYhmvw==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@eslint/css': '>=0.5.0'
-      '@eslint/markdown': '>=6.1.0'
+      '@eslint/markdown': '>=7.0.0'
       '@html-eslint/eslint-plugin': '>=0.41.0'
       '@intlify/eslint-plugin-vue-i18n': '>=4.0.0'
       '@vitest/eslint-plugin': '>=1.0.0'
@@ -707,7 +707,7 @@ packages:
       eslint-config-prettier: '>=9.1.0'
       eslint-import-resolver-typescript: '>=3.6.0'
       eslint-plugin-import: '>=2.31.0'
-      eslint-plugin-jsdoc: '>=48.5.0'
+      eslint-plugin-jsdoc: '>=51.0.0'
       eslint-plugin-jsonc: '>=2.16.0'
       eslint-plugin-module-interop: '>=0.3.0'
       eslint-plugin-promise: '>=6.4.0'
@@ -4544,7 +4544,7 @@ snapshots:
       string-argv: 0.3.2
       type-detect: 4.1.0
 
-  '@kazupon/eslint-config@0.31.1(d935e8804a064eee54d0d35c4d12f8e7)':
+  '@kazupon/eslint-config@0.32.0(d935e8804a064eee54d0d35c4d12f8e7)':
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.5.0(eslint@9.32.0(jiti@2.5.1))
       '@eslint/js': 9.32.0

@@ -58,6 +58,52 @@ default `{ tags: ["TODO", "FIXME", "HACK", "BUG", "NOTE"] }` options:
 // TODO: `TODO` tag is not reported
 ```
 
+For comment directives, default `{ directives: ["eslint-disable", "eslint-disable-next-line", "eslint-disable-line", "@ts-expect-error", "@ts-ignore", "@ts-nocheck"] }`
+
+<!-- eslint-skip -->
+
+```js
+/* eslint no-alert: 'error' */
+/* eslint quotes: 'error' */
+/* eslint semi: 'error' */
+/* eslint @kazupon/prefer-scope-on-tag-comment: 'error' */
+
+/* ✗ BAD */
+
+/* eslint-disable no-alert -- NOTE: To avoid something */
+alert("foo");
+/* eslint-enable no-alert */
+
+alert("foo"); // eslint-disable-line no-alert -- NOTE: To avoid something
+
+/* eslint-disable-next-line
+   quotes,
+   semi
+   --
+   NOTE: To suppress for warning styles
+*/
+const b = '1'
+
+// @ts-expect-error -- TODO: We should be taken care of it later
+// @ts-ignore NOTE: To avoid something reasons ...
+```
+
+`{ directives: ['custom-directive'] }` options:
+
+<!-- eslint-skip -->
+
+```js
+/* eslint @kazupon/prefer-scope-on-tag-comment: ['error', { directives: ['custom-directive'] }] */
+
+/* ✗ BAD */
+
+// custom-directive -- NOTE: This is custom directive comment
+
+/* custom-directive NOTE: This is custom directive comment */
+
+// eslint-disable -- NOTE: `eslint-disable` directive is not reported
+```
+
 </eslint-code-block>
 
 ### Pass
@@ -105,6 +151,52 @@ default `{ tags: ["TODO", "FIXME", "HACK", "BUG", "NOTE"] }` options:
 // TODO: `TODO` tag is not reported
 ```
 
+For comment directives, default `{ directives: ["eslint-disable", "eslint-disable-next-line", "eslint-disable-line", "@ts-expect-error", "@ts-ignore", "@ts-nocheck"] }`
+
+<!-- eslint-skip -->
+
+```js
+/* eslint no-alert: 'error' */
+/* eslint quotes: 'error' */
+/* eslint semi: 'error' */
+/* eslint @kazupon/prefer-scope-on-tag-comment: 'error' */
+
+/* ✗ BAD */
+
+/* eslint-disable no-alert -- NOTE(kazupon): To avoid something */
+alert("foo");
+/* eslint-enable no-alert */
+
+alert("foo"); // eslint-disable-line no-alert -- NOTE(kazupon): To avoid something
+
+/* eslint-disable-next-line
+   quotes,
+   semi
+   --
+   NOTE(kazupon): To suppress for warning styles
+*/
+const b = '1'
+
+// @ts-expect-error -- TODO(milestone-1): We should be taken care of it later
+// @ts-ignore NOTE(kazupon): To avoid something reasons ...
+```
+
+`{ directives: ['custom-directive'] }` options:
+
+<!-- eslint-skip -->
+
+```js
+/* eslint @kazupon/prefer-scope-on-tag-comment: ['error', { directives: ['custom-directive'] }] */
+
+/* ✗ BAD */
+
+// custom-directive -- NOTE(kazupon): This is custom directive comment
+
+/* custom-directive NOTE(kazupon): This is custom directive comment */
+
+// eslint-disable -- NOTE: `eslint-disable` directive is not reported
+```
+
 </eslint-code-block>
 
 ## 🔧 Options
@@ -114,13 +206,24 @@ default `{ tags: ["TODO", "FIXME", "HACK", "BUG", "NOTE"] }` options:
   "@kazupon/prefer-scope-on-tag-comment": [
     "error",
     {
-      "tags": ["TODO", "FIXME", "HACK", "BUG", "NOTE"]
+      "tags": ["TODO", "FIXME", "HACK", "BUG", "NOTE"],
+      "directives": [
+        "eslint-disable",
+        "eslint-disable-next-line",
+        "eslint-disable-line",
+        "@ts-expect-error",
+        "@ts-ignore",
+        "@ts-nocheck"
+      ]
     }
   ]
 }
 ```
 
-- **`tags`** (default: `["TODO", "FIXME", "HACK", "BUG", "NOTE"]`) - Array of tag keywords to check
+- **`tags`** (default: `["TODO", "FIXME", "HACK", "BUG", "NOTE"]`)
+  - Tag keywords to check
+- **`directive`** (default: `["eslint-disable", "eslint-disable-next-line", "eslint-disable-line", "@ts-expect-error", "@ts-ignore", "@ts-nocheck"]`)
+  - Include tag checks for comment directives
 
 ## 🔗 See Also
 

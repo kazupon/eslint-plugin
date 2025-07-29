@@ -38,14 +38,14 @@ declare module '@eslint/core' {
 }
 
 /**
- * NOTE:
+ * NOTE(kazupon):
  * The current `RuleDefinition` is inferred by the `SourceCode` of `@eslint/core` whose type parameter is the context passed to create.
  * We want to use interfaces of `SourceCode` of `eslint`, so we redefine it so that we can use them.
  */
 export type RuleCreateOptions = Omit<RuleDefinition, 'create'> & Pick<Rule.RuleModule, 'create'>
 
 /**
- * NOTE:
+ * NOTE(kazupon):
  * Currently, `RuleModule` does not infer the type `meta` defined in `eslint` even if you extend `RulesMetaDocs` using `declare module`.
  * So, we can override it by inheriting from an existing `RuleModule` and defining your own `meta`.
  */

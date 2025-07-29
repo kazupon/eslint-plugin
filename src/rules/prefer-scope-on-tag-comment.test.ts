@@ -93,6 +93,54 @@ const valids: ValidTestCase[] = [
     filename: 'index.js',
     description: 'scope with dots',
     code: `// TODO(v1.2.3): Version-based scope`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on `eslint-disable` directive at block comment with rule',
+    code: `/* eslint no-alert: 'error' */
+/* eslint-disable no-alert -- NOTE(kazupon): To avoid something */
+alert("foo");
+/* eslint-enable no-alert */
+`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on `eslint-disable-line` directive at line comment',
+    code: `/* eslint no-alert: 'error' */
+alert("foo"); // eslint-disable-line no-alert -- NOTE(kazupon): To avoid something
+`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on `eslint-disable-next-line` directive at block comment',
+    code: `/* eslint quotes: 'error' */
+/* eslint semi: 'error' */
+/* eslint-disable-next-line
+   quotes,
+   semi
+   --
+   NOTE(kazupon): To suppress for warning styles
+*/
+const b = '1'
+`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on typescript comment directive `@ts-expect-error`',
+    code: `// @ts-expect-error -- TODO(kazupon): We should be taken care of it later`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on typescript comment directive `@ts-ignore` without terminator',
+    code: `// @ts-ignore NOTE(kazupon): We should be taken care of it later`
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on custom directive',
+    options: [{ directives: ['custom-directive'] }],
+    code: `// custom-directive -- NOTE(kazupon): This is custom directive comment with terminator
+/* custom-directive NOTE(kazupon): This is custom directive comment without terminator */
+`
   }
 ]
 
@@ -292,6 +340,108 @@ const invalids: InvalidTestCase[] = [
         line: 2,
         column: 4,
         endColumn: 11
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on `eslint-disable` directive at block comment with rule',
+    code: `/* eslint no-alert: 'error' */
+/* eslint-disable no-alert -- NOTE: To avoid something */
+alert("foo");
+/* eslint-enable no-alert */
+`,
+    errors: [
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 2,
+        column: 31,
+        endColumn: 35
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on `eslint-disable-line` directive at line comment',
+    code: `/* eslint no-alert: 'error' */
+alert("foo"); // eslint-disable-line no-alert -- NOTE: To avoid something
+`,
+    errors: [
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 2,
+        column: 50,
+        endColumn: 54
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on `eslint-disable-next-line` directive at block comment',
+    code: `/* eslint quotes: 'error' */
+/* eslint semi: 'error' */
+/* eslint-disable-next-line
+   quotes,
+   semi
+   --
+   NOTE: To suppress for warning styles
+*/
+const b = '1'
+`,
+    errors: [
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 7,
+        column: 4,
+        endColumn: 8
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on typescript comment directive `@ts-expect-error`',
+    code: `// @ts-expect-error -- TODO: We should be taken care of it later`,
+    errors: [
+      {
+        message: "Tag comment 'TODO' is missing a scope. Use format: TODO(scope)",
+        line: 1,
+        column: 24,
+        endColumn: 28
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on typescript comment directive `@ts-ignore` without terminator',
+    code: `// @ts-ignore NOTE: We should be taken care of it later`,
+    errors: [
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 1,
+        column: 15,
+        endColumn: 19
+      }
+    ]
+  },
+  {
+    filename: 'index.js',
+    description: 'scope on custom directive',
+    options: [{ directives: ['custom-directive'] }],
+    code: `// custom-directive -- NOTE: This is custom directive comment with terminator
+/* custom-directive NOTE: This is custom directive comment without terminator */
+`,
+    errors: [
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 1,
+        column: 24,
+        endColumn: 28
+      },
+      {
+        message: "Tag comment 'NOTE' is missing a scope. Use format: NOTE(scope)",
+        line: 2,
+        column: 21,
+        endColumn: 25
       }
     ]
   }

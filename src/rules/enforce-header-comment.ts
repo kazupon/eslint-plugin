@@ -82,7 +82,7 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     return {
       /**
-       * NOTE:
+       * NOTE(kazupon):
        * collect comments on `Program` node.
        * we need to care the below cases:
        * - source code file has no body in `Program` node
@@ -122,7 +122,7 @@ const rule: ReturnType<typeof createRule> = createRule({
       },
 
       /**
-       * NOTE:
+       * NOTE(kazupon):
        * lint the target comments on `Program:exit` node.
        */
       'Program:exit': node => {

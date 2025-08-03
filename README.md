@@ -61,11 +61,12 @@ The rules with the following star ⭐ are included in the configs.
 
 ### @kazupon/eslint-plugin Rules
 
-| Rule ID                                                                                                          | Description                                     | Category | Fixable | RECOMMENDED |
-| :--------------------------------------------------------------------------------------------------------------- | :---------------------------------------------- | :------- | :-----: | :---------: |
-| [@kazupon/enforce-header-comment](https://eslint-plugin.kazupon.dev/rules/enforce-header-comment.html)           | Enforce heading the comment in source code file | Comment  |         |     ⭐      |
-| [@kazupon/no-tag-comments](https://eslint-plugin.kazupon.dev/rules/no-tag-comments.html)                         | disallow tag comments                           | Comment  |         |     ⭐      |
-| [@kazupon/prefer-scope-on-tag-comment](https://eslint-plugin.kazupon.dev/rules/prefer-scope-on-tag-comment.html) | enforce adding a scope to tag comments          | Comment  |         |     ⭐      |
+| Rule ID                                                                                                                      | Description                                                   | Category | Fixable | RECOMMENDED |
+| :--------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------ | :------- | :-----: | :---------: |
+| [@kazupon/enforce-header-comment](https://eslint-plugin.kazupon.dev/rules/enforce-header-comment.html)                       | Enforce heading the comment in source code file               | Comment  |         |     ⭐      |
+| [@kazupon/no-tag-comments](https://eslint-plugin.kazupon.dev/rules/no-tag-comments.html)                                     | disallow tag comments                                         | Comment  |         |     ⭐      |
+| [@kazupon/prefer-inline-code-words-comments](https://eslint-plugin.kazupon.dev/rules/prefer-inline-code-words-comments.html) | enforce the use of inline code for specific words on comments | Comment  |   🔧    |     ⭐      |
+| [@kazupon/prefer-scope-on-tag-comment](https://eslint-plugin.kazupon.dev/rules/prefer-scope-on-tag-comment.html)             | enforce adding a scope to tag comments                        | Comment  |         |     ⭐      |
 
 <!--RULES_TABLE_END-->
 

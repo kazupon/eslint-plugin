@@ -117,13 +117,11 @@ const rule: ReturnType<typeof createRule> = createRule({
               column = comment.loc!.start.column + 2 + beforeMatch.length // +2 for "/*"
             } else {
               // For subsequent lines in block comments
-              // We need to find the position in the specific line
-              const allLines = value.split('\n')
-              const currentLine = allLines[lineIndex]
-              const wordIndexInLine = currentLine.indexOf(word)
-
-              // The column matches calculateTagLocation: just the index in the line
-              column = wordIndexInLine
+              const columnInValue =
+                beforeMatch.length -
+                beforeLines.slice(0, -1).join('\n').length -
+                (lineIndex > 0 ? 1 : 0)
+              column = columnInValue
             }
           }
 

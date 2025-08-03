@@ -108,7 +108,6 @@ const rule: ReturnType<typeof createRule> = createRule({
           } else {
             // Block comment
             const beforeMatch = value.slice(0, Math.max(0, index))
-            // const lines = value.split('\n')
             const beforeLines = beforeMatch.split('\n')
             const lineIndex = beforeLines.length - 1
             line = comment.loc!.start.line + lineIndex

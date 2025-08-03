@@ -1,4 +1,4 @@
-// eslint-disable-next-line @kazupon/enforce-header-comment
+// eslint-disable-next-line @kazupon/enforce-header-comment -- NOTE(kazupon): This file is configuration file
 
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import child_process from 'node:child_process'
@@ -16,7 +16,7 @@ function updateRulesIndex() {
   child_process.execSync('pnpm docs:rules')
 }
 
-// eslint-disable-next-line unicorn/no-anonymous-default-export
+// eslint-disable-next-line unicorn/no-anonymous-default-export -- NOTE(kazupon): This file is configuration file
 export default async (): Promise<UserConfig<DefaultTheme.Config>> => {
   // Update rules index
   updateRulesIndex()

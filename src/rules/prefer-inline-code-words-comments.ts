@@ -83,10 +83,13 @@ const rule: ReturnType<typeof createRule> = createRule({
               start: position,
               end: { line: position.line, column: position.column + word.length }
             },
-            fix(fixer) {
-              const startOffset = comment.range![0] + 2 + index // +2 for comment start
-              const endOffset = startOffset + word.length
-              return fixer.replaceTextRange([startOffset, endOffset], `\`${word}\``)
+            *fix(fixer) {
+              const start = comment.range![0] + 2 + index // +2 for comment start "//" or "/*"
+              const end = start + word.length
+              return [
+                yield fixer.insertTextBeforeRange([start, start], '`'),
+                yield fixer.insertTextAfterRange([start, end], '`')
+              ]
             }
           })
         }

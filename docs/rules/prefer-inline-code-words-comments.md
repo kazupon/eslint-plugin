@@ -121,4 +121,4 @@ This rule was introduced in `@kazupon/eslint-plugin` v0.6.0
 ## Implementation
 
 - [Rule source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/prefer-inline-code-words-comments.ts)
-- [Test source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/prefer-inline-code-words-comments.ts)
+- [Test source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/prefer-inline-code-words-comments.test.ts)

@@ -225,6 +225,16 @@ const b = '1'
 - **`directive`** (default: `["eslint-disable", "eslint-disable-next-line", "eslint-disable-line", "@ts-expect-error", "@ts-ignore", "@ts-nocheck"]`)
   - Include tag checks for comment directives
 
+## Version
+
+This rule was introduced in `@kazupon/eslint-plugin` v0.4.0
+
+## Implementation
+
+- [Rule source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/prefer-scope-on-tag-comment.ts)
+- [Test source](https://github.com/kazupon/eslint-plugin/blob/main/src/rules/prefer-scope-on-tag-comment.test.ts)
+
+
 ## 🔗 See Also
 
 - [no-warning-comments](https://eslint.org/docs/latest/rules/no-warning-comments)

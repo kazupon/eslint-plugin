@@ -59,7 +59,7 @@ The rules with the following star ⭐ are included in the configs.
 
 <!--RULES_TABLE_START-->
 
-### @kazupon/eslint-plugin Rules
+### `@kazupon/eslint-plugin` Rules
 
 | Rule ID                                                                                                                      | Description                                                   | Category | Fixable | RECOMMENDED |
 | :--------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------ | :------- | :-----: | :---------: |

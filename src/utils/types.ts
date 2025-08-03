@@ -50,10 +50,19 @@ export type RuleCreateOptions = Omit<RuleDefinition, 'create'> & Pick<Rule.RuleM
  * So, we can override it by inheriting from an existing `RuleModule` and defining your own `meta`.
  */
 export interface RuleModule extends Rule.RuleModule {
+  /**
+   * The metadata for the rule.
+   */
   meta: RuleDefinition['meta'] // extend from `RuleDefinition`
+  /**
+   * The create function for the rule.
+   */
   create(context: Rule.RuleContext): Rule.RuleListener
 }
 
 type SourceCode = Rule.RuleContext['sourceCode']
 
+/**
+ * A comment node type used in the ESLint source code.
+ */
 export type Comment = ReturnType<SourceCode['getAllComments']>[number]

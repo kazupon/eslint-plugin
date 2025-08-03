@@ -3,8 +3,8 @@
  * @license MIT
  */
 
+import { calculateTagLocation, detectTag, stripJSDocPrefix } from '../utils/comment.ts'
 import { createRule } from '../utils/rule.ts'
-import { stripJSDocPrefix, detectTag, calculateTagLocation } from '../utils/comment.ts'
 
 import type { Comment } from '../utils/types.ts'
 
@@ -69,6 +69,9 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     /**
      * Report a missing scope violation
+     *
+     * @param comment - The comment node to report
+     * @param tag - The tag that is missing a scope
      */
     function reportMissingScope(
       comment: Comment,
@@ -113,6 +116,8 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     /**
      * Check if comment starts with a directive and extract the description
+     *
+     * @param text - The comment text to check
      * @returns Object with directive match info or null
      */
     function parseDirectiveComment(text: string): {
@@ -157,6 +162,8 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     /**
      * Check a comment for missing scope
+     *
+     * @param comment - The comment node to check
      */
     function checkComment(comment: Comment) {
       const { value, type } = comment

@@ -12,6 +12,8 @@ type PluginConfigs = {
   recommended: Linter.Config<Linter.RulesRecord>[]
   comment: Linter.Config<Linter.RulesRecord>[]
 }
+
+// eslint-disable-next-line jsdoc/require-jsdoc -- NOTE(kazupon): Complexity of typing
 export const plugin: Omit<ESLint.Plugin, 'configs'> & { configs: PluginConfigs } = {
   meta: {
     name,
@@ -71,8 +73,17 @@ const commentConfig: Linter.Config[] = [
   }
 ]
 
+/**
+ * Plugin Configurations.
+ */
 export const configs: {
+  /**
+   * Recommended configuration
+   */
   recommended: typeof recommendedConfig
+  /**
+   * Comment configuration
+   */
   comment: typeof commentConfig
 } = {
   recommended: recommendedConfig,
@@ -81,5 +92,6 @@ export const configs: {
 
 plugin.configs = configs
 
+// eslint-disable-next-line jsdoc/valid-types -- NOTE(kazupon): `@alias` directive is knip specific
 /** @alias */
 export default plugin

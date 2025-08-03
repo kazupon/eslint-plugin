@@ -4,6 +4,7 @@ import {
   defineConfig,
   imports,
   javascript,
+  jsdoc,
   jsonc,
   markdown,
   prettier,
@@ -31,6 +32,10 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
     rules: {
       'import/extensions': ['error', 'always', { ignorePackages: true }]
     }
+  }),
+  jsdoc({
+    typescript: 'syntax',
+    ignores: ['docs/.vitepress/config.ts']
   }),
   promise(),
   regexp(),

@@ -7,6 +7,9 @@ import type { Comment } from './types.ts'
 
 /**
  * Remove JSDoc asterisk prefix if present
+ *
+ * @param line - The line of text to strip
+ * @returns The stripped line of text
  */
 export function stripJSDocPrefix(line: string): string {
   const trimmed = line.trim()
@@ -23,8 +26,9 @@ interface TagDetectionResult {
 
 /**
  * Check if the text starts with any of the given tags
- * @param text The text to check
- * @param tags Array of tags to search for
+ *
+ * @param text - The text to check
+ * @param tags - Array of tags to search for
  * @returns Tag detection result or null if no tag found
  */
 export function detectTag(text: string, tags: string[]): TagDetectionResult | null {
@@ -58,10 +62,11 @@ export function detectTag(text: string, tags: string[]): TagDetectionResult | nu
 
 /**
  * Calculate the exact location of a tag in a comment
- * @param comment The comment containing the tag
- * @param line The line of text containing the tag
- * @param lineIndex The index of the line within the comment
- * @param tag The tag to locate
+ *
+ * @param comment - The comment containing the tag
+ * @param line - The line of text containing the tag
+ * @param lineIndex - The index of the line within the comment
+ * @param tag - The tag to locate
  * @returns Location with line and column, or null if not found
  */
 export function calculateTagLocation(

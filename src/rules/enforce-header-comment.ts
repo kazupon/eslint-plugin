@@ -47,6 +47,7 @@ const rule: ReturnType<typeof createRule> = createRule({
   create(ctx) {
     /**
      * Report the tag diagnosis
+     *
      * @param comment - A target comment node
      * @param tags - A list of tags to check
      * @param tagDiagnosis - A map of tag diagnosis
@@ -87,6 +88,8 @@ const rule: ReturnType<typeof createRule> = createRule({
        * we need to care the below cases:
        * - source code file has no body in `Program` node
        * - last JSDoc comment is put on nodes (e.g. `export function add(a, b) {}`)
+       *
+       * @param node -- The `Program` node
        */
       Program: node => {
         // reset target comments
@@ -124,6 +127,8 @@ const rule: ReturnType<typeof createRule> = createRule({
       /**
        * NOTE(kazupon):
        * lint the target comments on `Program:exit` node.
+       *
+       * @param node -- The `Program:exit` node
        */
       'Program:exit': node => {
         const comments = taregetComments

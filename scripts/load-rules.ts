@@ -1,5 +1,6 @@
 /**
  * This script is inspired from tools script of `eslint-plugin-module-interop`
+ *
  * @see https://github.com/ota-meshi/eslint-plugin-module-interop/tree/main/tools/lib/load-rules.ts
  *
  * @author kazuya kawaguchi (a.k.a. kazupon)
@@ -13,8 +14,9 @@ import type { RuleModule } from '../src/utils/types.ts'
 
 /**
  * Load rules
- * @param root A root path of rules
- * @param ns A namespace of rule id
+ *
+ * @param rootPath - A root path of rules
+ * @param ns - A namespace of rule id
  * @returns Loaded rules
  */
 export async function loadRules(rootPath: string, ns: string = ''): Promise<RuleModule[]> {

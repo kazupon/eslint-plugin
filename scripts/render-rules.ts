@@ -1,5 +1,6 @@
 /**
  * This script is inspired from tools script of `eslint-plugin-module-interop`
+ *
  * @see https://github.com/ota-meshi/eslint-plugin-module-interop/tree/main/tools/render-rules.ts
  *
  * @author kazuya kawaguchi (a.k.a. kazupon)
@@ -35,7 +36,8 @@ interface RenderRulesTableContentParams {
 
   /**
    * Resolve the path for the rule. This is used to create links to the rule documentation.
-   * @param ruleName The name of the rule to resolve the path for.
+   *
+   * @param ruleName - The name of the rule to resolve the path for.
    * @returns A resolved path for the rule.
    */
   resolveRulePath?: (ruleName: string) => string
@@ -43,7 +45,8 @@ interface RenderRulesTableContentParams {
 
 /**
  * Render the rules table content for the documentation.
- * @param params {@link RenderRulesTableContentParams | A parameters } for rendering rules table content
+ *
+ * @param params - {@link RenderRulesTableContentParams | A parameters } for rendering rules table content
  * @returns A rendered string containing the rules table.
  */
 export async function renderRulesTableContent(

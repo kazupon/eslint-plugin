@@ -51,6 +51,10 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     /**
      * Report a tag comment violation
+     *
+     * @param comment - The comment node to report
+     * @param tag - The tag that was found in the comment
+     * @param loc - Optional location information for the tag
      */
     function reportTag(comment: Comment, tag: string, loc?: { line: number; column: number }) {
       if (loc && comment.loc) {
@@ -81,6 +85,8 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     /**
      * Check a comment for tag violations
+     *
+     * @param comment - The comment node to check
      */
     function checkComment(comment: Comment) {
       const { value, type } = comment

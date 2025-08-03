@@ -1,5 +1,6 @@
 /**
  * This script is inspired from tools script of `eslint-plugin-module-interop`
+ *
  * @see https://github.com/ota-meshi/eslint-plugin-module-interop/tree/main/tools/update-readme.ts
  *
  * @author kazuya kawaguchi (a.k.a. kazupon)
@@ -12,6 +13,14 @@ import { renderRulesTableContent } from './render-rules.ts'
 
 const isWin = os.platform().startsWith('win')
 
+/**
+ * Update the rules table content in the specified target file.
+ *
+ * @param categoryLevel - The level of the category in the table. For example, if you want to render a table under a heading like "## Category", set this to 2.
+ * @param targetFile - The path to the target file where the rules table will be updated.
+ * @param rulesRootPath - The root path of the rules directory. This is where the rules are loaded from.
+ * @param resolveRulePath - A function to resolve the path for a rule.
+ */
 export async function updateRulesTableContent(
   categoryLevel: number,
   targetFile: string,

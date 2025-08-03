@@ -3,31 +3,14 @@
  * @license MIT
  */
 
+import { calculateWordPosition, processAllComments } from '../utils/comment.ts'
+import { createWordBoundaryRegex, isWordWrapped } from '../utils/regex.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
 
 type Options = {
   words: string[]
-}
-
-/**
- * Check if a word is already wrapped in inline code
- *
- * @param text - The text to check
- * @param index - The index of the word in the text
- * @param word - The word to check
- * @returns True if the word is already wrapped in backticks
- */
-function isWrappedInBackticks(text: string, index: number, word: string): boolean {
-  const beforeIndex = index - 1
-  const afterIndex = index + word.length
-  return (
-    beforeIndex >= 0 &&
-    afterIndex < text.length &&
-    text[beforeIndex] === '`' &&
-    text[afterIndex] === '`'
-  )
 }
 
 const rule: ReturnType<typeof createRule> = createRule({
@@ -77,16 +60,10 @@ const rule: ReturnType<typeof createRule> = createRule({
      * @param comment - The comment node to check
      */
     function checkComment(comment: Comment) {
-      const { value, type } = comment
+      const { value } = comment
 
       for (const word of words) {
-        // Escape special regex characters in the word
-        const escapedWord = word.replaceAll(/[.*+?^${}()|[\]\\]/g, String.raw`\$&`)
-
-        // Create regex with word boundaries
-        // For words with dots (like console.log), we still use word boundaries
-        // but the dots are escaped so they match literally
-        const regex = new RegExp(`\\b${escapedWord}\\b`, 'g')
+        const regex = createWordBoundaryRegex(word)
 
         let match
 
@@ -94,43 +71,19 @@ const rule: ReturnType<typeof createRule> = createRule({
           const index = match.index
 
           // Check if the word is already wrapped in backticks
-          if (isWrappedInBackticks(value, index, word)) {
+          if (isWordWrapped(value, index, word)) {
             continue
           }
 
-          // Calculate position based on comment type
-          let line: number
-          let column: number
-
-          if (type === 'Line') {
-            line = comment.loc!.start.line
-            column = comment.loc!.start.column + 2 + index // +2 for "//"
-          } else {
-            // Block comment
-            const beforeMatch = value.slice(0, Math.max(0, index))
-            const beforeLines = beforeMatch.split('\n')
-            const lineIndex = beforeLines.length - 1
-            line = comment.loc!.start.line + lineIndex
-
-            if (lineIndex === 0) {
-              // First line of block comment
-              column = comment.loc!.start.column + 2 + beforeMatch.length // +2 for "/*"
-            } else {
-              // For subsequent lines in block comments
-              const columnInValue =
-                beforeMatch.length -
-                beforeLines.slice(0, -1).join('\n').length -
-                (lineIndex > 0 ? 1 : 0)
-              column = columnInValue
-            }
-          }
+          // Calculate position
+          const position = calculateWordPosition(comment, index, word)
 
           ctx.report({
             messageId: 'missingInlineCode',
             data: { word },
             loc: {
-              start: { line, column },
-              end: { line, column: column + word.length }
+              start: position,
+              end: { line: position.line, column: position.column + word.length }
             },
             fix(fixer) {
               const startOffset = comment.range![0] + 2 + index // +2 for comment start
@@ -144,10 +97,7 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     return {
       Program() {
-        const comments = sourceCode.getAllComments()
-        for (const comment of comments) {
-          checkComment(comment)
-        }
+        processAllComments(sourceCode, checkComment)
       }
     }
   }

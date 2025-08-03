@@ -4,6 +4,7 @@
  */
 
 import { parseComment } from '@es-joy/jsdoccomment'
+import { reportCommentViolation } from '../utils/comment.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
@@ -64,12 +65,12 @@ const rule: ReturnType<typeof createRule> = createRule({
         if (tagDiagnosis[tag] === 'ok') {
           continue
         }
-        ctx.report({
-          loc: comment.loc!,
-          messageId:
-            tagDiagnosis[tag] === 'require' ? 'headerCommentNeedTag' : 'headerCommentNeedTagValue',
-          data: { tag }
-        })
+        reportCommentViolation(
+          ctx,
+          comment,
+          tagDiagnosis[tag] === 'require' ? 'headerCommentNeedTag' : 'headerCommentNeedTagValue',
+          { tag }
+        )
         reported = true
       }
 

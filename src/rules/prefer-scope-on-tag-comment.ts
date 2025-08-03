@@ -3,7 +3,15 @@
  * @license MIT
  */
 
-import { calculateTagLocation, detectTag, stripJSDocPrefix } from '../utils/comment.ts'
+import {
+  calculateTagLocation,
+  detectTag,
+  parseDirectiveComment,
+  processAllComments,
+  reportCommentViolation,
+  stripJSDocPrefix
+} from '../utils/comment.ts'
+import { parseArrayOptions } from '../utils/options.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
@@ -62,9 +70,12 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options: Options = ctx.options[0] || { tags: DEFAULT_TAGS }
-    const tags = options.tags || DEFAULT_TAGS
-    const directives = options.directives || DEFAULT_DIRECTIVES
+    const options = parseArrayOptions<Options>(ctx.options[0], {
+      tags: DEFAULT_TAGS,
+      directives: DEFAULT_DIRECTIVES
+    })
+    const tags = options.tags
+    const directives = options.directives!
     const sourceCode = ctx.sourceCode
 
     /**
@@ -78,86 +89,13 @@ const rule: ReturnType<typeof createRule> = createRule({
       tag: string,
       loc?: { line: number; column: number }
     ) {
-      if (!comment.loc) {
-        // Fallback if comment location is not available
-        ctx.report({
-          messageId: 'missingScope',
-          data: { tag },
-          node: ctx.sourceCode.ast
-        })
-        return
-      }
-
-      if (loc && comment.loc) {
-        // For block comments, report specific location
-        ctx.report({
-          messageId: 'missingScope',
-          data: { tag },
-          loc: {
-            start: {
-              line: loc.line,
-              column: loc.column
-            },
-            end: {
-              line: loc.line,
-              column: loc.column + tag.length
-            }
-          }
-        })
-      } else {
-        // For line comments, report whole comment
-        ctx.report({
-          messageId: 'missingScope',
-          data: { tag },
-          loc: comment.loc
-        })
-      }
-    }
-
-    /**
-     * Check if comment starts with a directive and extract the description
-     *
-     * @param text - The comment text to check
-     * @returns Object with directive match info or null
-     */
-    function parseDirectiveComment(text: string): {
-      directive: string
-      description: string
-      descriptionStart: number
-    } | null {
-      const trimmedText = text.trim()
-
-      // Check if comment starts with any directive
-      for (const directive of directives) {
-        if (trimmedText.startsWith(directive)) {
-          const afterDirective = trimmedText.slice(directive.length)
-
-          // Look for description after -- separator
-          const separatorIndex = afterDirective.indexOf('--')
-          if (separatorIndex !== -1) {
-            const description = afterDirective.slice(separatorIndex + 2).trim()
-            // Calculate where the description starts in the original text
-            const separatorPos = text.indexOf('--')
-            const afterSeparator = text.slice(separatorPos + 2)
-            const descriptionStart =
-              separatorPos + 2 + (afterSeparator.length - afterSeparator.trimStart().length)
-            return { directive, description, descriptionStart }
-          }
-
-          // Also check for space-separated description (for TS directives and custom directives)
-          if (afterDirective.trim()) {
-            const spaceMatch = afterDirective.match(/^\s+/)
-            if (spaceMatch) {
-              const description = afterDirective.trim()
-              const directiveIndex = text.indexOf(directive)
-              const descriptionStart = directiveIndex + directive.length + spaceMatch[0].length
-              return { directive, description, descriptionStart }
-            }
-          }
-        }
-      }
-
-      return null
+      reportCommentViolation(
+        ctx,
+        comment,
+        'missingScope',
+        { tag },
+        loc ? { ...loc, length: tag.length } : undefined
+      )
     }
 
     /**
@@ -170,7 +108,7 @@ const rule: ReturnType<typeof createRule> = createRule({
 
       if (type === 'Line') {
         // First check for directive comments
-        const directiveInfo = parseDirectiveComment(value)
+        const directiveInfo = parseDirectiveComment(value, directives)
         if (directiveInfo) {
           // Check for tags in the description part
           const tagInfo = detectTag(directiveInfo.description, tags)
@@ -205,7 +143,7 @@ const rule: ReturnType<typeof createRule> = createRule({
       const lines = value.split('\n')
 
       // First check if this is a multi-line directive comment
-      const directiveInfo = parseDirectiveComment(value)
+      const directiveInfo = parseDirectiveComment(value, directives)
 
       if (directiveInfo) {
         // Check for tags in the description part
@@ -282,10 +220,7 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     return {
       Program() {
-        const comments = sourceCode.getAllComments()
-        for (const comment of comments) {
-          checkComment(comment)
-        }
+        processAllComments(sourceCode, checkComment)
       }
     }
   }

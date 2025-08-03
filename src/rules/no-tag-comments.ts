@@ -3,7 +3,14 @@
  * @license MIT
  */
 
-import { calculateTagLocation, detectTag, stripJSDocPrefix } from '../utils/comment.ts'
+import {
+  calculateTagLocation,
+  detectTag,
+  stripJSDocPrefix,
+  processAllComments,
+  reportCommentViolation
+} from '../utils/comment.ts'
+import { parseArrayOptions } from '../utils/options.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
@@ -45,8 +52,8 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options: Options = ctx.options[0] || { tags: DEFAULT_TAGS }
-    const tags = options.tags || DEFAULT_TAGS
+    const options = parseArrayOptions<Options>(ctx.options[0], { tags: DEFAULT_TAGS })
+    const tags = options.tags
     const sourceCode = ctx.sourceCode
 
     /**
@@ -57,30 +64,13 @@ const rule: ReturnType<typeof createRule> = createRule({
      * @param loc - Optional location information for the tag
      */
     function reportTag(comment: Comment, tag: string, loc?: { line: number; column: number }) {
-      if (loc && comment.loc) {
-        // For block comments, report specific location
-        ctx.report({
-          messageId: 'tagComment',
-          data: { tag },
-          loc: {
-            start: {
-              line: loc.line,
-              column: loc.column
-            },
-            end: {
-              line: loc.line,
-              column: loc.column + tag.length
-            }
-          }
-        })
-      } else {
-        // For line comments, report whole comment
-        ctx.report({
-          messageId: 'tagComment',
-          data: { tag },
-          loc: comment.loc!
-        })
-      }
+      reportCommentViolation(
+        ctx,
+        comment,
+        'tagComment',
+        { tag },
+        loc ? { ...loc, length: tag.length } : undefined
+      )
     }
 
     /**
@@ -134,10 +124,7 @@ const rule: ReturnType<typeof createRule> = createRule({
 
     return {
       Program() {
-        const comments = sourceCode.getAllComments()
-        for (const comment of comments) {
-          checkComment(comment)
-        }
+        processAllComments(sourceCode, checkComment)
       }
     }
   }

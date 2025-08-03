@@ -1,7 +1,9 @@
 import { defineConfig } from 'tsdown'
 import pkg from './package.json' with { type: 'json' }
 
-const config: ReturnType<typeof defineConfig> = defineConfig({
+import type { UserConfig } from 'tsdown'
+
+const config: UserConfig = defineConfig({
   entry: ['./src/index.ts'],
   define: {
     __NAME__: JSON.stringify(pkg.name),

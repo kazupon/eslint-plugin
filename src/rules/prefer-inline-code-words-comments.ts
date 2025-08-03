@@ -37,7 +37,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     docs: {
       description: 'enforce the use of inline code for specific words on comments',
       category: 'Comment',
-      recommended: false,
+      recommended: true,
       defaultSeverity: 'error'
     },
     fixable: 'code',

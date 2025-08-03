@@ -35,9 +35,7 @@ const rule: ReturnType<typeof createRule> = createRule({
             type: 'array',
             items: {
               type: 'string'
-            },
-            minItems: 1,
-            uniqueItems: true
+            }
           }
         },
         required: ['words'],

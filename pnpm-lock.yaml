@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@es-joy/jsdoccomment':
-        specifier: ^0.54.0
-        version: 0.54.0
+        specifier: ^0.55.0
+        version: 0.55.0
       '@eslint/core':
         specifier: ^0.15.1
         version: 0.15.1
@@ -280,8 +280,8 @@ packages:
     resolution: {integrity: sha512-BXuN7BII+8AyNtn57euU2Yxo9yA/KUDNzrpXyi3pfqKmBhhysR6ZWOebFh3vyPoqA3/j1SOvGgucElMGwlXing==}
     engines: {node: '>=20.11.0'}
 
-  '@es-joy/jsdoccomment@0.54.0':
-    resolution: {integrity: sha512-r+DsSLA9rhdL9+IXySvqi/4VfhVwMlMztv7xJCxki82DvcTSlk4AT878sUKxizUwSJ8UieuCbjjbNi1OL5by+Q==}
+  '@es-joy/jsdoccomment@0.55.0':
+    resolution: {integrity: sha512-yDitdyv0OKlTNSpMLbpX9k1vJqzj2gfj0oReSq1VW7CF4w1ewuyEjaMVTdKl+ISP8cAyH/kXv+o09QoStCf97A==}
     engines: {node: '>=20.11.0'}
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -1594,6 +1594,10 @@ packages:
 
   '@typescript-eslint/types@8.39.1':
     resolution: {integrity: sha512-7sPDKQQp+S11laqTrhHqeAbsCfMkwJMrV7oTDvtDds4mEofJYir414bYKUEb8YPUm9QL3U+8f6L6YExSoAGdQw==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/types@8.42.0':
+    resolution: {integrity: sha512-LdtAWMiFmbRLNP7JNeY0SqEtJvGMYSzfiWBSmx+VSZ1CH+1zyl8Mmw1TT39OrtsRvIYShjJWzTDMPWZJCpwBlw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/typescript-estree@8.38.0':
@@ -2919,8 +2923,8 @@ packages:
     resolution: {integrity: sha512-Hicd6JK5Njt2QB6XYFS7ok9e37O8AYk3jTcppG4YVQnYjOemymvTcmc7OWsmq/Qqj5TdRFO5/x/tIPmBeRtGHg==}
     engines: {node: '>=12.0.0'}
 
-  jsdoc-type-pratt-parser@4.8.0:
-    resolution: {integrity: sha512-iZ8Bdb84lWRuGHamRXFyML07r21pcwBrLkHEuHgEY5UbCouBwv7ECknDRKzsQIXMiqpPymqtIf8TC/shYKB5rw==}
+  jsdoc-type-pratt-parser@5.0.0:
+    resolution: {integrity: sha512-8MX4RrDMZUcPlcQ9ZMwrkQxyx66nrPk5yQVShT+YctYjScbS9jfd9AWJoarIZsTwensqUiOvyRXRDtSlQaCoeg==}
     engines: {node: '>=12.0.0'}
 
   jsesc@3.0.2:
@@ -4399,13 +4403,13 @@ snapshots:
       esquery: 1.6.0
       jsdoc-type-pratt-parser: 4.1.0
 
-  '@es-joy/jsdoccomment@0.54.0':
+  '@es-joy/jsdoccomment@0.55.0':
     dependencies:
       '@types/estree': 1.0.8
-      '@typescript-eslint/types': 8.39.1
+      '@typescript-eslint/types': 8.42.0
       comment-parser: 1.4.1
       esquery: 1.6.0
-      jsdoc-type-pratt-parser: 4.8.0
+      jsdoc-type-pratt-parser: 5.0.0
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
@@ -5413,6 +5417,8 @@ snapshots:
   '@typescript-eslint/types@8.38.0': {}
 
   '@typescript-eslint/types@8.39.1': {}
+
+  '@typescript-eslint/types@8.42.0': {}
 
   '@typescript-eslint/typescript-estree@8.38.0(typescript@5.9.2)':
     dependencies:
@@ -6908,7 +6914,7 @@ snapshots:
 
   jsdoc-type-pratt-parser@4.1.0: {}
 
-  jsdoc-type-pratt-parser@4.8.0: {}
+  jsdoc-type-pratt-parser@5.0.0: {}
 
   jsesc@3.0.2: {}
 

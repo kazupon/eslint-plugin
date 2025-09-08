@@ -74,7 +74,7 @@
     "typecheck:tsc": "tsc --noEmit"
   },
   "dependencies": {
-    "@es-joy/jsdoccomment": "^0.56.0",
+    "@es-joy/jsdoccomment": "^0.57.0",
     "@eslint/core": "^0.15.1"
   },
   "peerDependencies": {

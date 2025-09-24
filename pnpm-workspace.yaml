@@ -3,3 +3,6 @@ onlyBuiltDependencies:
   - oxc-resolver
   - rolldown
   - unrs-resolver
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - rolldown

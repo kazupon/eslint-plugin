@@ -15,8 +15,8 @@ importers:
         specifier: ^0.60.0
         version: 0.60.0
       '@eslint/core':
-        specifier: ^0.15.2
-        version: 0.15.2
+        specifier: ^0.16.0
+        version: 0.16.0
     devDependencies:
       '@eslint/compat':
         specifier: ^1.4.0

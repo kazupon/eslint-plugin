@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@es-joy/jsdoccomment':
-        specifier: ^0.65.0
-        version: 0.65.2
+        specifier: ^0.66.0
+        version: 0.66.0
       '@eslint/core':
         specifier: ^0.16.0
         version: 0.16.0
@@ -292,8 +292,8 @@ packages:
     resolution: {integrity: sha512-nZIXk63VbpIooJVXRWEhLIbVScE8rtbcPWr+zQ0ZQsnflvomq31DvB5hR0T1IoikvrNaF4pNoDOi5se5tmIZIg==}
     engines: {node: '>=20.11.0'}
 
-  '@es-joy/jsdoccomment@0.65.2':
-    resolution: {integrity: sha512-/rrj5oayCc7xdoQZ24Tz/+V41IDm+9ILYpTFJOZgav9vfncMNApKR0t/4d1oRXYTcyLZEcGHGOg4xBsD0Doing==}
+  '@es-joy/jsdoccomment@0.66.0':
+    resolution: {integrity: sha512-gHmvukVq/dHjdsqGZrN3vkBscbKLOyh3Tg/wxg0XusDCwhikRSMw4BZAmPjHRo+C+9po8gPMJnKflnW+v0zRRg==}
     engines: {node: '>=20.11.0'}
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -2880,8 +2880,8 @@ packages:
     resolution: {integrity: sha512-F9GQ+F1ZU6qvSrZV8fNFpjDNf614YzR2eF6S0+XbDjAcUI28FSoXnYZFjQmb1kFx3rrJb5PnxUH3/Yti6fcM+g==}
     engines: {node: '>=12.0.0'}
 
-  jsdoc-type-pratt-parser@6.1.2:
-    resolution: {integrity: sha512-ruy+JcplsWkqnYq1m/qokaErhEURwf/vhdTzlPNpei7RJabVWxPxGWoCPSCP0sbsz03d590hTkjLdXjyMxH0iA==}
+  jsdoc-type-pratt-parser@6.2.0:
+    resolution: {integrity: sha512-wUa1FvG11WUsPQHRjPTLBvfd15DkCU8Lpa/buaguNyWGh/6h7KtUciaypvGThD5/I4daRE4eA7V91O2SuS6yHg==}
     engines: {node: '>=20.0.0'}
 
   jsesc@3.0.2:
@@ -4354,13 +4354,13 @@ snapshots:
       esquery: 1.6.0
       jsdoc-type-pratt-parser: 5.4.0
 
-  '@es-joy/jsdoccomment@0.65.2':
+  '@es-joy/jsdoccomment@0.66.0':
     dependencies:
       '@types/estree': 1.0.8
       '@typescript-eslint/types': 8.46.0
       comment-parser: 1.4.1
       esquery: 1.6.0
-      jsdoc-type-pratt-parser: 6.1.2
+      jsdoc-type-pratt-parser: 6.2.0
 
   '@esbuild/aix-ppc64@0.21.5':
     optional: true
@@ -5262,7 +5262,7 @@ snapshots:
   '@typescript-eslint/project-service@8.38.0(typescript@5.9.2)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.38.0(typescript@5.9.2)
-      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/types': 8.46.0
       debug: 4.4.3
       typescript: 5.9.2
     transitivePeerDependencies:
@@ -5271,7 +5271,7 @@ snapshots:
   '@typescript-eslint/project-service@8.44.1(typescript@5.9.2)':
     dependencies:
       '@typescript-eslint/tsconfig-utils': 8.44.1(typescript@5.9.2)
-      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/types': 8.46.0
       debug: 4.4.3
       typescript: 5.9.2
     transitivePeerDependencies:
@@ -6896,7 +6896,7 @@ snapshots:
 
   jsdoc-type-pratt-parser@5.4.0: {}
 
-  jsdoc-type-pratt-parser@6.1.2: {}
+  jsdoc-type-pratt-parser@6.2.0: {}
 
   jsesc@3.0.2: {}
 

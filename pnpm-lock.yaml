@@ -12,8 +12,8 @@ importers:
   .:
     dependencies:
       '@es-joy/jsdoccomment':
-        specifier: ^0.67.0
-        version: 0.67.3
+        specifier: ^0.68.0
+        version: 0.68.1
       '@eslint/core':
         specifier: ^0.16.0
         version: 0.16.0
@@ -292,8 +292,8 @@ packages:
     resolution: {integrity: sha512-nZIXk63VbpIooJVXRWEhLIbVScE8rtbcPWr+zQ0ZQsnflvomq31DvB5hR0T1IoikvrNaF4pNoDOi5se5tmIZIg==}
     engines: {node: '>=20.11.0'}
 
-  '@es-joy/jsdoccomment@0.67.3':
-    resolution: {integrity: sha512-EJJt2TyxPYP92TKxnka3XIgPC17KKhj7EME5QVa8ySOseueh3cBUcII7jYaawl5io4tEpKnZIPmFr1wK2jqYmw==}
+  '@es-joy/jsdoccomment@0.68.1':
+    resolution: {integrity: sha512-wJJXnfG2Pq7ZC8IeOupkkAVtEH6OYy1uVxRTeshXDQfSNsZneS7FUQlNf710osZ5Yz/b5ev9xChvybTT7CM63g==}
     engines: {node: '>=20.11.0'}
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -4349,12 +4349,12 @@ snapshots:
   '@es-joy/jsdoccomment@0.60.0':
     dependencies:
       '@types/estree': 1.0.8
-      '@typescript-eslint/types': 8.44.1
+      '@typescript-eslint/types': 8.46.0
       comment-parser: 1.4.1
       esquery: 1.6.0
       jsdoc-type-pratt-parser: 5.4.0
 
-  '@es-joy/jsdoccomment@0.67.3':
+  '@es-joy/jsdoccomment@0.68.1':
     dependencies:
       '@types/estree': 1.0.8
       '@typescript-eslint/types': 8.46.0

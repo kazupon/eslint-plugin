@@ -117,7 +117,7 @@
     "vite-plugin-eslint4b": "^0.6.0",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.0.0"
   },
   "pnpm": {
     "overrides": {

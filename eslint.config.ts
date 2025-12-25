@@ -49,7 +49,8 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   typescript({
     parserOptions: {
-      tsconfigRootDir: import.meta.dirname
+      tsconfigRootDir: import.meta.dirname,
+      project: true
     }
   }),
   jsonc({
@@ -63,6 +64,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
   }),
   markdown({
     rules: {
+      // @ts-expect-error -- ignore for eslint
       'import/extensions': 'off',
       'import/no-named-as-default-member': 'off',
       'unused-imports/no-unused-imports': 'off',
@@ -77,7 +79,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
     '**/lib/**',
     'lib',
     '**/dist/**',
-    'docs/.vitepress/cache',
+    'docs/.vitepress',
     'CHANGELOG.md',
     'tsconfig.json',
     'pnpm-lock.yaml'

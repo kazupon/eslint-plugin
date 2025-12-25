@@ -3,7 +3,7 @@
  * @license MIT
  */
 
-import type { SourceCode } from 'eslint'
+import type { Rule, SourceCode } from 'eslint'
 import type { Comment } from './types.ts'
 
 /**
@@ -167,8 +167,7 @@ export function calculateWordPosition(
  * @param location - Optional specific location within the comment
  */
 export function reportCommentViolation(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- Rule context type is complex
-  ctx: any,
+  ctx: Rule.RuleContext,
   comment: Comment,
   messageId: string,
   data?: Record<string, unknown>,

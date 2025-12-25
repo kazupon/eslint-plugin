@@ -20,7 +20,7 @@ export function parseArrayOptions<T extends Record<string, unknown>>(
 
   for (const [field, defaultArray] of Object.entries(arrayFields)) {
     if (!result[field] || !Array.isArray(result[field])) {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any -- NOTE(kazupon): This is a generic utility function
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unsafe-member-access -- NOTE(kazupon): This is a generic utility function
       ;(result as any)[field] = defaultArray
     }
   }

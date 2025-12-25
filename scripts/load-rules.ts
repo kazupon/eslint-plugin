@@ -31,11 +31,16 @@ export async function loadRules(rootPath: string, ns: string = ''): Promise<Rule
     const ruleId = ns ? `${ns}/${ruleName}` : ruleName
 
     rules.push(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument -- ignore
       import(path.join(rootPath, name))
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access -- ignore
         .then(m => m.default || m)
         .then(rule => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment -- ignore
           rule.meta.docs.ruleName = rule.meta.docs.ruleName || ruleName
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment -- ignore
           rule.meta.docs.ruleId = rule.meta.docs.ruleId || ruleId
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-return -- ignore
           return rule
         })
     )

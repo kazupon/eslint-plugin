@@ -16,7 +16,7 @@ type TagDiagnosis = {
 }
 
 function initializeTagDiagnosis(tags: string[]) {
-  const tagDiagnosis: TagDiagnosis = Object.create(null)
+  const tagDiagnosis = Object.create(null) as TagDiagnosis
   for (const tag of tags) {
     tagDiagnosis[tag] = 'require'
   }
@@ -100,7 +100,7 @@ const rule: ReturnType<typeof createRule> = createRule({
         const hasCommentOnly = node.body.length === 0
 
         // keep `Program` node start position
-        const start = hasCommentOnly ? node.range![1] : node.range![0]
+        const start = hasCommentOnly ? node.range[1] : node.range[0]
 
         // get all block comments on `Program` node only
         const comments = ctx.sourceCode
@@ -138,12 +138,12 @@ const rule: ReturnType<typeof createRule> = createRule({
         if (comments.length === 0) {
           const topLoc = {
             start: {
-              line: node.loc!.start.line - 1,
-              column: node.loc!.start.column
+              line: node.loc.start.line - 1,
+              column: node.loc.start.column
             },
             end: {
-              line: node.loc!.end.line - 1,
-              column: node.loc!.end.column
+              line: node.loc.end.line - 1,
+              column: node.loc.end.column
             }
           }
           ctx.report({ loc: topLoc, messageId: 'headerCommentEnforce' })

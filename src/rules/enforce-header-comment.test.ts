@@ -262,6 +262,7 @@ import { create } from './utils.ts'
   }
 ]
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises -- ignore
 run({
   name: 'enforce-header-comment',
   rule,

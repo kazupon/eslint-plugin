@@ -70,7 +70,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options = parseArrayOptions<Options>(ctx.options[0], {
+    const options = parseArrayOptions(ctx.options[0] as Options, {
       tags: DEFAULT_TAGS,
       directives: DEFAULT_DIRECTIVES
     })

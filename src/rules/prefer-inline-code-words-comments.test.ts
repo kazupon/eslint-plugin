@@ -230,6 +230,7 @@ export function getBlogArticle(id) {
   }
 ]
 
+// eslint-disable-next-line @typescript-eslint/no-floating-promises -- ignore
 run({
   name: 'prefer-inline-code-words-comments',
   rule,

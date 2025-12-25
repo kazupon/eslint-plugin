@@ -52,7 +52,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options = parseArrayOptions<Options>(ctx.options[0], { tags: DEFAULT_TAGS })
+    const options = parseArrayOptions(ctx.options[0] as Options, { tags: DEFAULT_TAGS })
     const tags = options.tags
     const sourceCode = ctx.sourceCode
 

@@ -8,6 +8,7 @@ import { createWordBoundaryRegex, isWordWrapped } from '../utils/regex.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
+import type { Rule } from 'eslint'
 
 type Options = {
   words: string[]
@@ -44,7 +45,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options: Options = ctx.options[0]
+    const options = ctx.options[0] as Options
     if (!options || !options.words || options.words.length === 0) {
       return {}
     }
@@ -89,7 +90,7 @@ const rule: ReturnType<typeof createRule> = createRule({
               return [
                 yield fixer.insertTextBeforeRange([start, start], '`'),
                 yield fixer.insertTextAfterRange([start, end], '`')
-              ]
+              ] as Rule.Fix[]
             }
           })
         }

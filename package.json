@@ -13,8 +13,8 @@
   },
   "keywords": [
     "eslint",
-    "plugin",
-    "lint"
+    "lint",
+    "plugin"
   ],
   "publishConfig": {
     "access": "public"

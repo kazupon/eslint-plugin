@@ -15,7 +15,7 @@ import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
 
-export const DEFAULT_TAGS = ['TODO', 'FIXME', 'HACK', 'BUG', 'NOTE']
+export const DEFAULT_TAGS = ['TODO', 'FIXME', 'HACK', 'BUG', 'NOTE'] as const
 export const DEFAULT_DIRECTIVES = [
   'eslint-disable',
   'eslint-disable-next-line',
@@ -23,7 +23,7 @@ export const DEFAULT_DIRECTIVES = [
   '@ts-expect-error',
   '@ts-ignore',
   '@ts-nocheck'
-]
+] as const
 type Options = {
   tags: string[]
   directives: string[]

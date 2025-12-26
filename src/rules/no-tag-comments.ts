@@ -14,7 +14,7 @@ import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
 
-export const DEFAULT_TAGS = ['FIXME', 'BUG']
+export const DEFAULT_TAGS = ['FIXME', 'BUG'] as const
 
 type Options = {
   tags: string[]

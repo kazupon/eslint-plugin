@@ -62,7 +62,7 @@
     "fix": "pnpm run --color \"/^fix:/\"",
     "fix:eslint": "eslint . --fix",
     "fix:knip": "knip --fix --no-exit-code",
-    "fix:oxfmt": "oxfmt . --config ./node_modules/@kazupon/prettier-config/index.json",
+    "fix:oxfmt": "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json",
     "fix:oxlint": "oxlint --type-aware --fix",
     "gen:oxlint:config": "tsx ./scripts/generate-oxlint-config.ts",
     "gen:oxlint:dts": "cat ./node_modules/oxlint/configuration_schema.json | json2ts > scripts/oxlint-config.d.ts",

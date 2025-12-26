@@ -15,7 +15,7 @@ import {
   GLOB_MARKDOWN,
   GLOB_MARKDOWN_CODES
 } from './utils/constants.ts'
-import { enforceHeaderCommentRuleOnly, baseRules, resolveConfigNmae } from './utils/config.ts'
+import { enforceHeaderCommentRuleOnly, baseRules, resolveConfigName } from './utils/config.ts'
 
 import type { ESLint, Linter } from 'eslint'
 
@@ -52,13 +52,13 @@ const baseConfig: Linter.Config = {
 const recommendedConfig: Linter.Config[] = [
   {
     ...baseConfig,
-    name: resolveConfigNmae('recommended/base'),
+    name: resolveConfigName('recommended/base'),
     ignores: baseIgnores,
     rules: baseRules
   },
   {
     ...baseConfig,
-    name: resolveConfigNmae('recommended/enforce-header-comment'),
+    name: resolveConfigName('recommended/enforce-header-comment'),
     ignores: enforceHeaderCommentIgnores,
     rules: enforceHeaderCommentRuleOnly
   }

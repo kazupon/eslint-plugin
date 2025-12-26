@@ -44,7 +44,7 @@ function getNamespacedRulesRecord(
  * @param name - The config name
  * @returns The resolved config name
  */
-export function resolveConfigNmae(name: string): string {
+export function resolveConfigName(name: string): string {
   return `${NAME}/${name}`
 }
 

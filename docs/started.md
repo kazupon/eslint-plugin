@@ -61,7 +61,7 @@ Example [oxlint configuration file](https://oxc.rs/docs/guide/usage/linter/confi
 {
   // ...
 
-  "extends": ["./node_modules/@kazupon/eslint-config/oxlint/recommended.json"]
+  "extends": ["./node_modules/@kazupon/eslint-plugin/oxlint/recommended.json"]
 
   // ...
 }

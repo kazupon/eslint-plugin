@@ -95,3 +95,5 @@ plugin.configs = configs
 // eslint-disable-next-line jsdoc/valid-types -- NOTE(kazupon): `@alias` directive is knip specific
 /** @alias */
 export default plugin
+
+export { defaultOptions } from './rules/index.ts'

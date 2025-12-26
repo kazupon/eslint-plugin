@@ -11,25 +11,23 @@ import {
   reportCommentViolation,
   stripJSDocPrefix
 } from '../utils/comment.ts'
-import { parseArrayOptions } from '../utils/options.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
 
-type Options = {
-  tags: string[]
-  directives?: string[]
-}
-
-const DEFAULT_TAGS = ['TODO', 'FIXME', 'HACK', 'BUG', 'NOTE']
-const DEFAULT_DIRECTIVES = [
+export const DEFAULT_TAGS = ['TODO', 'FIXME', 'HACK', 'BUG', 'NOTE'] as const
+export const DEFAULT_DIRECTIVES = [
   'eslint-disable',
   'eslint-disable-next-line',
   'eslint-disable-line',
   '@ts-expect-error',
   '@ts-ignore',
   '@ts-nocheck'
-]
+] as const
+type Options = {
+  tags: string[]
+  directives: string[]
+}
 
 const rule: ReturnType<typeof createRule> = createRule({
   name: 'prefer-scope-on-tag-comment',
@@ -44,6 +42,12 @@ const rule: ReturnType<typeof createRule> = createRule({
     messages: {
       missingScope: "Tag comment '{{tag}}' is missing a scope. Use format: {{tag}}(scope)"
     },
+    defaultOptions: [
+      {
+        tags: DEFAULT_TAGS,
+        directives: DEFAULT_DIRECTIVES
+      }
+    ],
     schema: [
       {
         type: 'object',
@@ -70,12 +74,9 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options = parseArrayOptions(ctx.options[0] as Options, {
-      tags: DEFAULT_TAGS,
-      directives: DEFAULT_DIRECTIVES
-    })
+    const options = ctx.options[0] as Options
     const tags = options.tags
-    const directives = options.directives!
+    const directives = options.directives
     const sourceCode = ctx.sourceCode
 
     /**

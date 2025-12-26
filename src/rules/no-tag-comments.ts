@@ -10,16 +10,15 @@ import {
   processAllComments,
   reportCommentViolation
 } from '../utils/comment.ts'
-import { parseArrayOptions } from '../utils/options.ts'
 import { createRule } from '../utils/rule.ts'
 
 import type { Comment } from '../utils/types.ts'
 
+export const DEFAULT_TAGS = ['FIXME', 'BUG'] as const
+
 type Options = {
   tags: string[]
 }
-
-const DEFAULT_TAGS = ['FIXME', 'BUG']
 
 const rule: ReturnType<typeof createRule> = createRule({
   name: 'no-tag-comments',
@@ -34,6 +33,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     messages: {
       tagComment: "Exist '{{tag}}' tag comment"
     },
+    defaultOptions: [{ tags: DEFAULT_TAGS }],
     schema: [
       {
         type: 'object',
@@ -52,7 +52,7 @@ const rule: ReturnType<typeof createRule> = createRule({
     ]
   },
   create(ctx) {
-    const options = parseArrayOptions(ctx.options[0] as Options, { tags: DEFAULT_TAGS })
+    const options = ctx.options[0] as Options
     const tags = options.tags
     const sourceCode = ctx.sourceCode
 

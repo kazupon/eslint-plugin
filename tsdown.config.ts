@@ -1,14 +1,16 @@
 import { defineConfig } from 'tsdown'
-import pkg from './package.json' with { type: 'json' }
+import { getMetadata } from './scripts/utils.ts'
 
 import type { UserConfig } from 'tsdown'
+
+const metadata = getMetadata()
 
 const config: UserConfig = defineConfig({
   entry: ['./src/index.ts'],
   define: {
-    __NAME__: JSON.stringify(pkg.name),
-    __VERSION__: JSON.stringify(pkg.version),
-    __NAMESPACE__: JSON.stringify(pkg.name.split('/')[0])
+    __NAMESPACE__: JSON.stringify(metadata.__NAMESPACE__),
+    __NAME__: JSON.stringify(metadata.__NAME__),
+    __VERSION__: JSON.stringify(metadata.__VERSION__)
   },
   outDir: 'lib',
   publint: true,

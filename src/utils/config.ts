@@ -10,6 +10,16 @@ import type { RuleModule } from '../utils/types.ts'
 import type { Linter } from 'eslint'
 
 /**
+ * Resolve rule name
+ *
+ * @param ruleName - The rule name
+ * @returns The resolved rule name
+ */
+export function resolveRuleName(ruleName: string): string {
+  return NAMESPACE ? `${NAMESPACE}/${ruleName}` : ruleName
+}
+
+/**
  * Get namespaced rules
  *
  * @param rules - All rules
@@ -28,8 +38,7 @@ function getNamespacedRulesRecord(
         return rulesRecord
       }
       if (rule.meta?.docs?.recommended) {
-        const ruleId =
-          rule.meta?.docs?.ruleId || (NAMESPACE ? `${NAMESPACE}/${ruleName}` : ruleName)
+        const ruleId = rule.meta?.docs?.ruleId || resolveConfigName(ruleName)
         rulesRecord[ruleId] = rule.meta?.docs?.defaultSeverity || defaultSeverity
       }
       return rulesRecord

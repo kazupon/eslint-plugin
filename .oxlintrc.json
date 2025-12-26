@@ -1,5 +1,5 @@
 {
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "$schema": "https://raw.githubusercontent.com/oxc-project/oxc/main/npm/oxlint/configuration_schema.json",
   "plugins": ["typescript", "import", "promise", "unicorn", "node"],
   "overrides": [
     {
@@ -15,6 +15,8 @@
     "docs/.vitepress",
     "**/tsconfig*.json",
     "CHANGELOG.md",
+    "scripts/oxlint-config.d.ts",
+    "oxlint",
     ".claude",
     ".vscode"
   ]

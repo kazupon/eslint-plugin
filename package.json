@@ -67,7 +67,7 @@
     "gen:oxlint:config": "tsx ./scripts/generate-oxlint-config.ts",
     "gen:oxlint:dts": "cat ./node_modules/oxlint/configuration_schema.json | json2ts > scripts/oxlint-config.d.ts",
     "lint": "pnpm run --color \"/^lint:/\"",
-    "lint:eslint": "eslint .",
+    "lint:eslint": "eslint . --cache",
     "lint:knip": "knip",
     "lint:oxfmt": "oxfmt . --check --config ./node_modules/@kazupon/prettier-config/index.json",
     "lint:oxlint": "oxlint --type-aware",

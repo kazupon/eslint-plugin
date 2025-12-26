@@ -138,7 +138,15 @@
       "oxlint --config .oxlintrc.json --type-aware --fix",
       "eslint --fix"
     ],
-    "*.{json,jsonc,json5,md,yml,yaml}": [
+    "*.{jsonc,json5,md,yml,yaml}": [
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json",
+      "eslint --fix"
+    ],
+    "!(package|jsr).json": [
+      "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json",
+      "eslint --fix"
+    ],
+    "!(pnpm-lock).{yml,yaml}": [
       "oxfmt --config ./node_modules/@kazupon/prettier-config/index.json",
       "eslint --fix"
     ]

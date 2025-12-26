@@ -13,7 +13,7 @@ import preferScopeOnTagComment, {
 
 import type { RuleModule } from '../utils/types.ts'
 
-export const defaultOptions = {
+export const defaultOptions: Record<string, unknown> = {
   'no-tag-comments': {
     tags: NO_TAG_COMMENTS_TAGS
   },

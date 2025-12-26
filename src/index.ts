@@ -4,7 +4,18 @@
  */
 
 import { rules } from './rules/index.ts'
-import { name, namespace, version } from './utils/constants.ts'
+import {
+  NAME,
+  NAMESPACE,
+  VERSION,
+  GLOB_FILES,
+  GLOB_CONFIG_FILES,
+  TEST_GLOB_FILES,
+  TEST_DTS_GLOB_FILES,
+  GLOB_MARKDOWN,
+  GLOB_MARKDOWN_CODES
+} from './utils/constants.ts'
+import { enforceHeaderCommentRuleOnly, baseRules, resolveConfigName } from './utils/config.ts'
 
 import type { ESLint, Linter } from 'eslint'
 
@@ -16,62 +27,45 @@ type PluginConfigs = {
 // eslint-disable-next-line jsdoc/require-jsdoc -- NOTE(kazupon): Complexity of typing
 export const plugin: Omit<ESLint.Plugin, 'configs'> & { configs: PluginConfigs } = {
   meta: {
-    name,
-    version
+    name: NAME,
+    version: VERSION
   },
   rules,
   configs: {} as PluginConfigs
 }
 
+export const baseIgnores: string[] = [GLOB_MARKDOWN, GLOB_MARKDOWN_CODES]
+export const enforceHeaderCommentIgnores: string[] = [
+  ...baseIgnores,
+  GLOB_CONFIG_FILES,
+  TEST_GLOB_FILES,
+  TEST_DTS_GLOB_FILES
+]
+
+const baseConfig: Linter.Config = {
+  files: [GLOB_FILES],
+  plugins: {
+    [NAMESPACE]: plugin
+  }
+}
+
 const recommendedConfig: Linter.Config[] = [
   {
-    name: '@kazupon/eslint-plugin/recommended',
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    ignores: [
-      '**/*.md',
-      '**/*.md/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-      '**/*.config.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
-    ],
-    plugins: {
-      [namespace]: plugin
-    },
-    rules: Object.entries(rules).reduce(
-      (acc, [ruleName, rule]) => {
-        if (rule.meta?.docs?.recommended) {
-          const ruleId =
-            rule.meta?.docs?.ruleId || (namespace ? `${namespace}/${ruleName}` : ruleName)
-          acc[ruleId] = rule.meta?.docs?.defaultSeverity || 'warn'
-        }
-        return acc
-      },
-      Object.create(null) as Linter.RulesRecord
-    )
+    ...baseConfig,
+    name: resolveConfigName('recommended/base'),
+    ignores: baseIgnores,
+    rules: baseRules
+  },
+  {
+    ...baseConfig,
+    name: resolveConfigName('recommended/enforce-header-comment'),
+    ignores: enforceHeaderCommentIgnores,
+    rules: enforceHeaderCommentRuleOnly
   }
 ]
 
-const commentConfig: Linter.Config[] = [
-  {
-    name: '@kazupon/eslint-plugin/comment',
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-    ignores: [
-      '**/*.md',
-      '**/*.md/**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}',
-      '**/*.config.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'
-    ],
-    plugins: {
-      [namespace]: plugin
-    },
-    rules: Object.entries(rules).reduce(
-      (rules, [ruleName, rule]) => {
-        const ruleId =
-          rule.meta?.docs?.ruleId || (namespace ? `${namespace}/${ruleName}` : ruleName)
-        rules[ruleId] = rule.meta?.docs?.defaultSeverity || 'warn'
-        return rules
-      },
-      Object.create(null) as Linter.RulesRecord
-    )
-  }
-]
+// NOTE(kazupon): for the future, we might add more configs tweaking as comment config
+const commentConfig: Linter.Config[] = recommendedConfig
 
 /**
  * Plugin Configurations.

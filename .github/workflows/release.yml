@@ -31,11 +31,8 @@ jobs:
       - name: Setup node.js
         uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 # v5.0.0
         with:
-          node-version: 20
+          node-version: 24
           cache: pnpm
-
-      - name: Update npm
-        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -67,5 +64,3 @@ jobs:
 
       - name: Publish package
         run: ./scripts/release.sh
-        env:
-          NPM_CONFIG_PROVENANCE: true

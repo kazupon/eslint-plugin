@@ -1,7 +1,7 @@
 {
   "name": "@kazupon/eslint-plugin",
   "description": "ESLint plugin for @kazupon",
-  "version": "0.6.2",
+  "version": "0.7.0",
   "license": "MIT",
   "funding": "https://github.com/sponsors/kazupon",
   "bugs": {

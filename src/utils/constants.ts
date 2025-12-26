@@ -51,4 +51,4 @@ export const TEST_GLOB_FILES: string = `**/*.{test,spec}.{${EXTENSIONS}}`
 /**
  * The glob patterns for test declaration files.
  */
-export const TEST_DTS_GLOB_FILES: string = `**/*.{test,spec}.d.{ts,tsx}`
+export const TEST_DTS_GLOB_FILES: string = `**/*.{test,spec}-d.{${EXTENSIONS}}`

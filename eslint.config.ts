@@ -1,52 +1,27 @@
-import { includeIgnoreFile } from '@eslint/compat'
 import {
   comments,
   defineConfig,
-  imports,
-  javascript,
   jsdoc,
   jsonc,
   markdown,
-  prettier,
-  promise,
   regexp,
-  stylistic,
   typescript,
-  unicorn,
+  oxlint,
   vitest,
   yaml
 } from '@kazupon/eslint-config'
-import { globalIgnores } from 'eslint/config'
-import { fileURLToPath } from 'node:url'
-
-import type { Linter } from 'eslint'
-
-const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 
 const config: ReturnType<typeof defineConfig> = defineConfig(
-  javascript(),
-  stylistic(),
-  comments(),
-  imports({
-    typescript: true,
-    rules: {
-      'import/extensions': ['error', 'always', { ignorePackages: true }]
+  comments({
+    kazupon: {
+      ignores: ['./**/test/**', './**/src/**/*.test.ts', './**/src/**/*.test-d.ts']
     }
   }),
   jsdoc({
     typescript: 'syntax',
     ignores: ['docs/.vitepress/config.ts']
   }),
-  promise(),
   regexp(),
-  unicorn({
-    rules: {
-      'unicorn/no-null': 'off',
-      'unicorn/no-array-reduce': 'off',
-      'unicorn/no-array-callback-reference': 'off',
-      'unicorn/prevent-abbreviations': 'off'
-    }
-  }),
   typescript({
     parserOptions: {
       tsconfigRootDir: import.meta.dirname,
@@ -72,18 +47,10 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
     }
   }),
   vitest(),
-  prettier(),
-  includeIgnoreFile(gitignorePath),
-  globalIgnores([
-    '.vscode',
-    '**/lib/**',
-    'lib',
-    '**/dist/**',
-    'docs/.vitepress',
-    'CHANGELOG.md',
-    'tsconfig.json',
-    'pnpm-lock.yaml'
-  ]) as Linter.Config
+  oxlint({
+    presets: ['typescript'],
+    configFile: './.oxlintrc.json'
+  })
 )
 
 export default config

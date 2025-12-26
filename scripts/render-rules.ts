@@ -76,7 +76,6 @@ export async function renderRulesTableContent(
   function toDeprecatedRuleRow(rule: RuleModule) {
     const link = `[${rule.meta?.docs?.ruleId}](${resolveRulePath(rule.meta?.docs?.ruleName || '')})`
     const replacedRules = rule.meta?.replacedBy || []
-    // eslint-disable-next-line unicorn/consistent-function-scoping -- NOTE(kazupon): This is a simple function to resolve rule ID with namespace
     const resolveRuleId = (name: string) => {
       return namespace ? `${namespace}/${name}` : name
     }

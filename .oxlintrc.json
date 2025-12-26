@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "import", "promise", "unicorn", "node"],
+  "overrides": [
+    {
+      "files": ["**/*.{test,spec}.{ts,tsx}"],
+      "plugins": ["vitest"]
+    }
+  ],
+  "ignorePatterns": [
+    "**/node_modules",
+    "**/dist",
+    "**/lib",
+    ".vscode/**/*.json",
+    "docs/.vitepress",
+    "**/tsconfig*.json",
+    "CHANGELOG.md",
+    ".claude",
+    ".vscode"
+  ]
+}

@@ -79,7 +79,7 @@
   },
   "dependencies": {
     "@es-joy/jsdoccomment": "^0.78.0",
-    "@eslint/core": "^0.17.0"
+    "@eslint/core": "^1.0.0"
   },
   "peerDependencies": {
     "eslint": "^9.0.0"

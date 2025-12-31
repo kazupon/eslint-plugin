@@ -1,14 +1,9 @@
-/**
- * @author kazuya kawaguchi (a.k.a. kazupon)
- * @license MIT
- */
-
-import { run } from 'eslint-vitest-rule-tester'
+import { run } from '../utils/tester.ts'
 import rule from './prefer-scope-on-tag-comment.ts'
 
-import type { InvalidTestCase, ValidTestCase } from 'eslint-vitest-rule-tester'
+import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
 
-const valids: ValidTestCase[] = [
+const valid: ValidTestCase[] = [
   {
     filename: 'index.js',
     description: 'TODO with scope',
@@ -144,7 +139,7 @@ const b = '1'
   }
 ]
 
-const invalids: InvalidTestCase[] = [
+const invalid: InvalidTestCase[] = [
   {
     filename: 'index.js',
     description: 'TODO without scope',
@@ -447,10 +442,10 @@ const b = '1'
   }
 ]
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises -- ignore
 run({
   name: 'prefer-scope-on-tag-comment',
   rule,
-  valid: valids,
-  invalid: invalids
+  linter: ['eslint', 'oxlint'],
+  valid,
+  invalid
 })

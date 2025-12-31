@@ -136,19 +136,9 @@ const rule: ReturnType<typeof createRule> = createRule({
 
         // if no header comment found, eslint will report
         if (comments.length === 0) {
-          const topLoc = {
-            start: {
-              line: node.loc.start.line - 1,
-              column: node.loc.start.column
-            },
-            end: {
-              line: node.loc.end.line - 1,
-              column: node.loc.end.column
-            }
-          }
-          ctx.report({ loc: topLoc, messageId: 'headerCommentEnforce' })
-          ctx.report({ loc: topLoc, messageId: 'headerCommentNeedTag', data: { tag: 'author' } })
-          ctx.report({ loc: topLoc, messageId: 'headerCommentNeedTag', data: { tag: 'license' } })
+          ctx.report({ loc: node.loc, messageId: 'headerCommentEnforce' })
+          ctx.report({ loc: node.loc, messageId: 'headerCommentNeedTag', data: { tag: 'author' } })
+          ctx.report({ loc: node.loc, messageId: 'headerCommentNeedTag', data: { tag: 'license' } })
           return
         }
 

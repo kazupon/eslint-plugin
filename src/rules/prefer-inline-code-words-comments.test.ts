@@ -1,14 +1,9 @@
-/**
- * @author kazuya kawaguchi (a.k.a. kazupon)
- * @license MIT
- */
-
-import { run } from 'eslint-vitest-rule-tester'
+import { run } from '../utils/tester.ts'
 import rule from './prefer-inline-code-words-comments.ts'
 
-import type { InvalidTestCase, ValidTestCase } from 'eslint-vitest-rule-tester'
+import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
 
-const valids: ValidTestCase[] = [
+const valid: ValidTestCase[] = [
   {
     filename: 'index.js',
     description: 'no options provided - no checks performed',
@@ -75,7 +70,7 @@ const data = await fetch('https://example.com/api/users/1')`
   }
 ]
 
-const invalids: InvalidTestCase[] = [
+const invalid: InvalidTestCase[] = [
   {
     filename: 'index.js',
     description: 'line comment missing inline code',
@@ -230,10 +225,10 @@ export function getBlogArticle(id) {
   }
 ]
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises -- ignore
 run({
   name: 'prefer-inline-code-words-comments',
   rule,
-  valid: valids,
-  invalid: invalids
+  linter: ['eslint', 'oxlint'],
+  valid,
+  invalid
 })

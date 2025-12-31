@@ -1,17 +1,12 @@
-/**
- * @author kazuya kawaguchi (a.k.a. kazupon)
- * @license MIT
- */
-
-import { run } from 'eslint-vitest-rule-tester'
 import rule from './enforce-header-comment.ts'
+import { run } from '../utils/tester.ts'
 
-import type { InvalidTestCase, ValidTestCase } from 'eslint-vitest-rule-tester'
+import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
 
-const valids: ValidTestCase[] = [
+const valid: ValidTestCase[] = [
   {
-    filename: 'eslint.config.js',
     description: 'single header comment',
+    filename: 'eslint.config.js',
     code: `/**
  * @author kazupon
  * @license MIT
@@ -23,8 +18,8 @@ export default defineConfig({})
 `
   },
   {
+    description: 'multiple header comments',
     filename: 'index.js',
-    description: 'multiple header comments case',
     code: `/**
  * This module is a sample module
  * @module
@@ -49,8 +44,8 @@ export function add(a, b) {
 }`
   },
   {
-    filename: 'eslint.config.js',
     description: 'header comment with multiple tags',
+    filename: 'eslint.config.js',
     code: `/**
  * This module is estlint config.
  * @module
@@ -64,8 +59,8 @@ export default defineConfig({})
 `
   },
   {
-    filename: 'index.js',
     description: 'header comment with standalone license',
+    filename: 'index.js',
     code: `/**
  * @author kazupon
  * @license
@@ -103,10 +98,10 @@ await main()
   }
 ]
 
-const invalids: InvalidTestCase[] = [
+const invalid: InvalidTestCase[] = [
   {
-    filename: 'index.js',
     description: 'should enforce header',
+    filename: 'index.js',
     code: `import { foo } from 'bar'`,
     errors: [
       { message: 'Header comment is enforced' },
@@ -115,8 +110,8 @@ const invalids: InvalidTestCase[] = [
     ]
   },
   {
-    filename: 'index.js',
     description: 'should require `@author` and `@license` tag in header',
+    filename: 'index.js',
     code: `/**
  * copyright (c) kazupon coprporation
  */
@@ -127,8 +122,8 @@ const invalids: InvalidTestCase[] = [
     ]
   },
   {
+    description: 'should enforce `@author` and `@license` tag in header',
     filename: 'index.js',
-    description: 'should enforce `@author` tag in header',
     code: `/**
  * @license MIT
  */
@@ -138,8 +133,8 @@ import { foo } from 'bar'
     errors: [{ message: 'Header comment need `@author` tag' }]
   },
   {
-    filename: 'index.js',
     description: 'should enforce `@author` tag in header',
+    filename: 'index.js',
     code: `/**
  * @author kazupon
  */
@@ -149,8 +144,8 @@ import { foo } from 'bar'
     errors: [{ message: 'Header comment need `@license` tag' }]
   },
   {
+    description: 'should enforce the value in `@author` and `@license` tag',
     filename: 'index.js',
-    description: 'should enforce the value in `@author` tag',
     code: `/**
  * @author
  * @license MIT
@@ -161,8 +156,8 @@ import { foo } from 'bar'
     errors: [{ message: 'Header `@author` tag need a value' }]
   },
   {
-    filename: 'index.js',
     description: 'should enforce the value in `@license` tag',
+    filename: 'index.js',
     code: `/**
  * @author kazupon
  * @license
@@ -173,8 +168,8 @@ import { foo } from 'bar'
     errors: [{ message: 'Header `@license` tag need a value' }]
   },
   {
-    filename: 'index.js',
     description: 'should enforce the values in `@author` and `@license` tag',
+    filename: 'index.js',
     code: `/**
  * @author
  * @license
@@ -188,8 +183,8 @@ import { foo } from 'bar'
     ]
   },
   {
+    description: 'should enforce the `@author` tag in multiple header comments',
     filename: 'index.js',
-    description: 'should enforce the value in `@author` tag in multiple header comments',
     code: `/**
  * This module is a sample module
  * @module
@@ -215,8 +210,8 @@ export function add(a, b) {
     errors: [{ message: 'Header `@author` tag need a value' }]
   },
   {
+    description: 'should enforce the `@license` tag in multiple header comments',
     filename: 'index.js',
-    description: 'should enforce the `@author` and `@license` tag in multiple header comments',
     code: `/**
  * This module is a sample module
  * @module
@@ -241,8 +236,8 @@ export function add(a, b) {
     ]
   },
   {
+    description: 'header comment with standalone license and missing tags',
     filename: 'index.js',
-    description: 'header comment with standalone license and multiple tags',
     code: `/**
  * The entry for usage generator.
  * @example
@@ -262,10 +257,10 @@ import { create } from './utils.ts'
   }
 ]
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises -- ignore
 run({
   name: 'enforce-header-comment',
   rule,
-  valid: valids,
-  invalid: invalids
+  linter: ['eslint', 'oxlint'],
+  valid,
+  invalid
 })

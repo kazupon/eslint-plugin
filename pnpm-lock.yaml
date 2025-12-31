@@ -24,6 +24,9 @@ importers:
       '@kazupon/eslint-config':
         specifier: ^0.42.0
         version: 0.42.0(@eslint/markdown@7.5.1)(@typescript/native-preview@7.0.0-dev.20251218.3)(@vitest/eslint-plugin@1.6.4(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)))(@vue/reactivity@3.5.26)(eslint-plugin-jsdoc@58.1.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-jsonc@2.21.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-markdown-preferences@0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-module-interop@0.3.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-oxlint@1.35.0)(eslint-plugin-regexp@2.10.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-yml@1.19.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(oxc-resolver@11.16.1)(publint@0.3.16)(typescript-eslint@8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3)
+      '@kazupon/jts-utils':
+        specifier: ^0.8.0
+        version: 0.8.0(@vue/reactivity@3.5.26)
       '@kazupon/prettier-config':
         specifier: ^0.2.0
         version: 0.2.0
@@ -66,9 +69,6 @@ importers:
       eslint-plugin-yml:
         specifier: ^1.19.1
         version: 1.19.1(eslint@9.39.2(jiti@2.6.1))
-      eslint-vitest-rule-tester:
-        specifier: ^2.3.0
-        version: 2.3.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))
       gh-changelogen:
         specifier: ^0.2.8
         version: 0.2.8
@@ -804,6 +804,15 @@ packages:
 
   '@kazupon/jts-utils@0.7.1':
     resolution: {integrity: sha512-3oCZH5w+JPAzD/24DxylJGrnqUaq3pt/v5PzxAbCJz3YQ3yxiFm5ZqIMM2cgAewtO9v5EnCtGIJ9/DYw+QcW/w==}
+    engines: {node: '>= 20'}
+    peerDependencies:
+      '@vue/reactivity': ^3.4
+    peerDependenciesMeta:
+      '@vue/reactivity':
+        optional: true
+
+  '@kazupon/jts-utils@0.8.0':
+    resolution: {integrity: sha512-nm+4go9Q3s0WgyDiuCskw7biE0+kbPtXy+GNq5jxZne8cVrzkFeJGHh8xOntSqw7Lx6vkEAzxMtJJdmcK6Z0KA==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@vue/reactivity': ^3.4
@@ -2197,12 +2206,6 @@ packages:
   eslint-visitor-keys@4.2.1:
     resolution: {integrity: sha512-Uhdk5sfqcee/9H/rCOJikYz67o0a2Tw2hGRPOG2Y1R2dg7brRe1uG0yaNQDHu+TO/uQPF/5eCapvYSmHUjt7JQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  eslint-vitest-rule-tester@2.3.0:
-    resolution: {integrity: sha512-RwUpr5s0Up1cJNxdHJGgWLyfvPOGNypSapbtSYTFwdABP/fXqvSg8+AAs0CzM+lr2HV4PmQZ5iU0q0S9DG17Kg==}
-    peerDependencies:
-      eslint: ^9.0.0
-      vitest: ^1.0.0 || ^2.0.0 || ^3.0.0
 
   eslint@9.39.2:
     resolution: {integrity: sha512-LEyamqS7W5HB3ujJyvi0HQK/dtVINZvd5mAAp9eT5S/ujByGjiZLCzPcHVzuXbpJDJF/cxwHlfceVUDZ2lnSTw==}
@@ -4155,6 +4158,10 @@ snapshots:
       - unrun
       - vue-tsc
 
+  '@kazupon/jts-utils@0.8.0(@vue/reactivity@3.5.26)':
+    optionalDependencies:
+      '@vue/reactivity': 3.5.26
+
   '@kazupon/prettier-config@0.2.0': {}
 
   '@napi-rs/wasm-runtime@1.1.0':
@@ -5461,15 +5468,6 @@ snapshots:
   eslint-visitor-keys@3.4.3: {}
 
   eslint-visitor-keys@4.2.1: {}
-
-  eslint-vitest-rule-tester@2.3.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)):
-    dependencies:
-      '@typescript-eslint/utils': 8.50.1(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      eslint: 9.39.2(jiti@2.6.1)
-      vitest: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)
-    transitivePeerDependencies:
-      - supports-color
-      - typescript
 
   eslint@9.39.2(jiti@2.6.1):
     dependencies:

@@ -87,6 +87,7 @@
   "devDependencies": {
     "@eslint/markdown": "^7.5.1",
     "@kazupon/eslint-config": "^0.42.0",
+    "@kazupon/jts-utils": "^0.8.0",
     "@kazupon/prettier-config": "^0.2.0",
     "@shikijs/vitepress-twoslash": "^3.20.0",
     "@types/node": "^25.0.3",
@@ -101,7 +102,6 @@
     "eslint-plugin-oxlint": "^1.35.0",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-yml": "^1.19.1",
-    "eslint-vitest-rule-tester": "^2.3.0",
     "gh-changelogen": "^0.2.8",
     "json-schema-to-typescript": "^15.0.4",
     "knip": "^5.77.1",

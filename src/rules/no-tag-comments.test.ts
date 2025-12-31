@@ -1,14 +1,9 @@
-/**
- * @author kazuya kawaguchi (a.k.a. kazupon)
- * @license MIT
- */
-
-import { run } from 'eslint-vitest-rule-tester'
+import { run } from '../utils/tester.ts'
 import rule from './no-tag-comments.ts'
 
-import type { InvalidTestCase, ValidTestCase } from 'eslint-vitest-rule-tester'
+import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
 
-const valids: ValidTestCase[] = [
+const valid: ValidTestCase[] = [
   {
     filename: 'index.js',
     description: 'no tag comments',
@@ -54,7 +49,7 @@ const valids: ValidTestCase[] = [
   }
 ]
 
-const invalids: InvalidTestCase[] = [
+const invalid: InvalidTestCase[] = [
   {
     filename: 'index.js',
     description: 'FIXME tag in line comment',
@@ -183,10 +178,10 @@ function loop() {
   }
 ]
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises -- ignore
 run({
   name: 'no-tag-comments',
   rule,
-  valid: valids,
-  invalid: invalids
+  linter: ['eslint', 'oxlint'],
+  valid,
+  invalid
 })

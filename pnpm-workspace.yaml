@@ -9,3 +9,4 @@ minimumReleaseAgeExclude:
   - rolldown
   - '@oxc-project/types'
   - '@rolldown/pluginutils'
+  - '@kazupon/jts-utils'

@@ -91,7 +91,7 @@
     "@kazupon/prettier-config": "^0.2.0",
     "@shikijs/vitepress-twoslash": "^3.20.0",
     "@types/node": "^25.0.3",
-    "@typescript/native-preview": "7.0.0-dev.20251225.1",
+    "@typescript/native-preview": "7.0.0-dev.20251226.1",
     "@vitest/eslint-plugin": "^1.6.4",
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",

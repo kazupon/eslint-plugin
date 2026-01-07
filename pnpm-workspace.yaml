@@ -10,3 +10,13 @@ minimumReleaseAgeExclude:
   - '@oxc-project/types'
   - '@rolldown/pluginutils'
   - '@kazupon/jts-utils'
+  - '@shikijs/vitepress-twoslash'
+  - '@vitest/eslint-plugin'
+  - shiki
+  - '@shikijs/twoslash'
+  - '@shikijs/engine-javascript'
+  - '@shikijs/types'
+  - '@shikijs/themes'
+  - '@shikijs/engine-oniguruma'
+  - '@shikijs/core'
+  - '@shikijs/langs'

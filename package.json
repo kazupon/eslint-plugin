@@ -89,33 +89,38 @@
     "@kazupon/eslint-config": "^0.43.0",
     "@kazupon/jts-utils": "^0.8.0",
     "@kazupon/prettier-config": "^0.2.0",
-    "@shikijs/vitepress-twoslash": "^3.20.0",
+    "@shikijs/vitepress-twoslash": "^3.21.0",
     "@types/node": "^25.0.3",
+<<<<<<< HEAD
     "@typescript/native-preview": "7.0.0-dev.20251231.1",
     "@vitest/eslint-plugin": "^1.6.4",
+=======
+    "@typescript/native-preview": "7.0.0-dev.20251225.1",
+    "@vitest/eslint-plugin": "^1.6.6",
+>>>>>>> ad8f876 (chore: bump deps)
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
     "eslint-plugin-jsdoc": "^58.1.1",
     "eslint-plugin-jsonc": "^2.21.0",
     "eslint-plugin-markdown-preferences": "^0.10.0",
     "eslint-plugin-module-interop": "^0.3.1",
-    "eslint-plugin-oxlint": "^1.35.0",
+    "eslint-plugin-oxlint": "^1.38.0",
     "eslint-plugin-regexp": "^2.10.0",
     "eslint-plugin-yml": "^1.19.1",
     "gh-changelogen": "^0.2.8",
     "json-schema-to-typescript": "^15.0.4",
-    "knip": "^5.77.1",
+    "knip": "^5.80.0",
     "lint-staged": "^16.2.7",
     "oxfmt": "^0.21.0",
-    "oxlint": "^1.36.0",
-    "oxlint-tsgolint": "^0.10.0",
+    "oxlint": "^1.38.0",
+    "oxlint-tsgolint": "^0.10.1",
     "pkg-pr-new": "^0.0.62",
     "publint": "^0.3.16",
     "tsdown": "^0.15.12",
     "tsx": "^4.21.0",
     "twoslash-eslint": "^0.3.6",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.50.1",
+    "typescript-eslint": "^8.52.0",
     "vite-plugin-eslint4b": "^0.6.0",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.5",
@@ -123,7 +128,7 @@
   },
   "pnpm": {
     "overrides": {
-      "tsdown@0.15.4>rolldown": "^1.0.0-beta.57"
+      "tsdown@0.15.4>rolldown": "^1.0.0-beta.59"
     }
   },
   "prettier": "@kazupon/prettier-config",

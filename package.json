@@ -91,13 +91,8 @@
     "@kazupon/prettier-config": "^0.2.0",
     "@shikijs/vitepress-twoslash": "^3.21.0",
     "@types/node": "^25.0.3",
-<<<<<<< HEAD
     "@typescript/native-preview": "7.0.0-dev.20251231.1",
-    "@vitest/eslint-plugin": "^1.6.4",
-=======
-    "@typescript/native-preview": "7.0.0-dev.20251225.1",
     "@vitest/eslint-plugin": "^1.6.6",
->>>>>>> ad8f876 (chore: bump deps)
     "bumpp": "^10.3.2",
     "eslint": "^9.39.2",
     "eslint-plugin-jsdoc": "^58.1.1",

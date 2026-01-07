@@ -1,4 +1,4 @@
-import { run } from '../utils/tester.ts'
+import { run, getLinter } from '../utils/tester.ts'
 import rule from './prefer-scope-on-tag-comment.ts'
 
 import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
@@ -445,7 +445,7 @@ const b = '1'
 run({
   name: 'prefer-scope-on-tag-comment',
   rule,
-  linter: ['eslint', 'oxlint'],
+  linter: getLinter(),
   valid,
   invalid
 })

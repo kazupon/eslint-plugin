@@ -1,5 +1,5 @@
 import rule from './enforce-header-comment.ts'
-import { run } from '../utils/tester.ts'
+import { run, getLinter } from '../utils/tester.ts'
 
 import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
 
@@ -260,7 +260,7 @@ import { create } from './utils.ts'
 run({
   name: 'enforce-header-comment',
   rule,
-  linter: ['eslint', 'oxlint'],
+  linter: getLinter(),
   valid,
   invalid
 })

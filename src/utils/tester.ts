@@ -75,6 +75,17 @@ interface RuleTestOptions {
 }
 
 /**
+ * Get linters from environment variable `LINTER`.
+ *
+ * @returns The linter types
+ */
+export function getLinter() {
+  return (process.env.LINTER || 'eslint,oxlint')
+    .split(',')
+    .map(l => l.trim()) as RuleTestLinterType[]
+}
+
+/**
  * Run the rule tests
  *
  * @param options - The rule test options

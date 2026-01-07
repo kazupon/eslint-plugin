@@ -1,4 +1,4 @@
-import { run } from '../utils/tester.ts'
+import { run, getLinter } from '../utils/tester.ts'
 import rule from './no-tag-comments.ts'
 
 import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
@@ -181,7 +181,7 @@ function loop() {
 run({
   name: 'no-tag-comments',
   rule,
-  linter: ['eslint', 'oxlint'],
+  linter: getLinter(),
   valid,
   invalid
 })

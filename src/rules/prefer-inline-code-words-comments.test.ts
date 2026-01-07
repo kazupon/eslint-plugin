@@ -1,4 +1,4 @@
-import { run } from '../utils/tester.ts'
+import { run, getLinter } from '../utils/tester.ts'
 import rule from './prefer-inline-code-words-comments.ts'
 
 import type { ValidTestCase, InvalidTestCase } from '../utils/tester.ts'
@@ -228,7 +228,7 @@ export function getBlogArticle(id) {
 run({
   name: 'prefer-inline-code-words-comments',
   rule,
-  linter: ['eslint', 'oxlint'],
+  linter: getLinter(),
   valid,
   invalid
 })

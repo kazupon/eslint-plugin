@@ -25,8 +25,8 @@ importers:
         specifier: ^0.44.0
         version: 0.44.0(@eslint/markdown@7.5.1)(@typescript/native-preview@7.0.0-dev.20260105.1)(@vitest/eslint-plugin@1.6.6(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2)))(@vue/reactivity@3.5.26)(eslint-plugin-jsdoc@58.1.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-jsonc@2.21.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-markdown-preferences@0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-module-interop@0.3.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-oxlint@1.38.0)(eslint-plugin-regexp@2.10.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-yml@1.19.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(oxc-resolver@11.16.1)(publint@0.3.16)(typescript-eslint@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))(typescript@5.9.3)
       '@kazupon/jts-utils':
-        specifier: ^0.8.0
-        version: 0.8.0(@vue/reactivity@3.5.26)
+        specifier: ^0.9.0
+        version: 0.9.0(@vue/reactivity@3.5.26)
       '@kazupon/prettier-config':
         specifier: ^0.2.0
         version: 0.2.0
@@ -813,8 +813,8 @@ packages:
       '@vue/reactivity':
         optional: true
 
-  '@kazupon/jts-utils@0.8.0':
-    resolution: {integrity: sha512-nm+4go9Q3s0WgyDiuCskw7biE0+kbPtXy+GNq5jxZne8cVrzkFeJGHh8xOntSqw7Lx6vkEAzxMtJJdmcK6Z0KA==}
+  '@kazupon/jts-utils@0.9.0':
+    resolution: {integrity: sha512-vTQUC5JUgB4VMMUqdnD4GBVLqFdMQCK6WPPxXbxvAo1A9Ml7JpEJ3LCD22uVlece2xlGIaSCci2Rq2uAH4s8zw==}
     engines: {node: '>= 20'}
     peerDependencies:
       '@vue/reactivity': ^3.4
@@ -4161,7 +4161,7 @@ snapshots:
       - unrun
       - vue-tsc
 
-  '@kazupon/jts-utils@0.8.0(@vue/reactivity@3.5.26)':
+  '@kazupon/jts-utils@0.9.0(@vue/reactivity@3.5.26)':
     optionalDependencies:
       '@vue/reactivity': 3.5.26
 

@@ -87,7 +87,7 @@
   "devDependencies": {
     "@eslint/markdown": "^7.5.1",
     "@kazupon/eslint-config": "^0.44.0",
-    "@kazupon/jts-utils": "^0.9.0",
+    "@kazupon/jts-utils": "^0.10.0",
     "@kazupon/prettier-config": "^0.2.0",
     "@shikijs/vitepress-twoslash": "^3.21.0",
     "@types/node": "^25.0.3",

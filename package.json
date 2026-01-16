@@ -78,7 +78,7 @@
     "typecheck": "tsgo --noEmit --diagnostics"
   },
   "dependencies": {
-    "@es-joy/jsdoccomment": "^0.78.0",
+    "@es-joy/jsdoccomment": "^0.79.0",
     "@eslint/core": "^1.0.0"
   },
   "peerDependencies": {

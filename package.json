@@ -82,7 +82,7 @@
     "@eslint/core": "^1.0.0"
   },
   "peerDependencies": {
-    "eslint": "^9.0.0"
+    "eslint": "^10.0.0"
   },
   "devDependencies": {
     "@eslint/markdown": "^7.5.1",
@@ -94,7 +94,7 @@
     "@typescript/native-preview": "7.0.0-dev.20260212.1",
     "@vitest/eslint-plugin": "^1.6.6",
     "bumpp": "^10.3.2",
-    "eslint": "^9.39.2",
+    "eslint": "^10.0.0",
     "eslint-plugin-jsdoc": "^58.1.1",
     "eslint-plugin-jsonc": "^2.21.0",
     "eslint-plugin-markdown-preferences": "^0.10.0",

@@ -111,7 +111,7 @@
     "oxlint-tsgolint": "^0.12.0",
     "pkg-pr-new": "^0.0.63",
     "publint": "^0.3.16",
-    "tsdown": "^0.15.12",
+    "tsdown": "^0.20.0",
     "tsx": "^4.21.0",
     "twoslash-eslint": "^0.3.6",
     "typescript": "^5.9.3",

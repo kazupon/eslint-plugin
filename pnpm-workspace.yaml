@@ -20,3 +20,5 @@ minimumReleaseAgeExclude:
   - '@shikijs/engine-oniguruma'
   - '@shikijs/core'
   - '@shikijs/langs'
+  # Renovate security update: vitest@4.1.0
+  - vitest@4.1.0

@@ -23,7 +23,7 @@ importers:
         version: 7.5.1
       '@kazupon/eslint-config':
         specifier: ^0.45.0
-        version: 0.45.0(@eslint/markdown@7.5.1)(@vitest/eslint-plugin@1.6.6(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.1.11(@types/node@25.0.3)(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))))(@vue/reactivity@3.5.26)(eslint-plugin-jsdoc@58.1.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-jsonc@2.21.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-markdown-preferences@0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-module-interop@0.3.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-oxlint@1.38.0)(eslint-plugin-regexp@2.10.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-yml@1.19.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))
+        version: 0.45.0(@eslint/markdown@7.5.1)(@vitest/eslint-plugin@1.6.6(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.1.11(@types/node@25.0.3)(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))))(@vue/reactivity@3.5.26)(eslint-plugin-jsdoc@58.1.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-jsonc@2.21.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-markdown-preferences@0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-module-interop@0.4.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-oxlint@1.38.0)(eslint-plugin-regexp@2.10.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-yml@1.19.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))
       '@kazupon/jts-utils':
         specifier: ^0.17.0
         version: 0.17.0(@vue/reactivity@3.5.26)
@@ -58,8 +58,8 @@ importers:
         specifier: ^0.10.0
         version: 0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-module-interop:
-        specifier: ^0.3.1
-        version: 0.3.1(eslint@9.39.2(jiti@2.6.1))
+        specifier: ^0.4.0
+        version: 0.4.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-oxlint:
         specifier: ^1.38.0
         version: 1.38.0
@@ -2498,8 +2498,8 @@ packages:
       '@eslint/markdown': ^7.1.0
       eslint: '>=9.0.0'
 
-  eslint-plugin-module-interop@0.3.1:
-    resolution: {integrity: sha512-2d2nmqaBKnnZ6pOovSPltXNw9gZFcOdhSy/xULJ83r97clyww5JMiauhBcnBFXqY0AoN0RGAs8w2oyQkq/EL2A==}
+  eslint-plugin-module-interop@0.4.0:
+    resolution: {integrity: sha512-i1Ap0EKZL2+H7ZPp9KWZVENxX4E9rY2tx2qSkwXshgN+fg6Nf4xNz7QVowbTNlexlaR1vvDfKlcL0ZVFNSparQ==}
     engines: {node: ^18.18.0||^20.9.0||>=21.1.0}
     peerDependencies:
       eslint: '>=9.0.0'
@@ -4468,7 +4468,7 @@ snapshots:
 
   '@jsdevtools/ono@7.1.3': {}
 
-  '@kazupon/eslint-config@0.45.0(@eslint/markdown@7.5.1)(@vitest/eslint-plugin@1.6.6(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.1.11(@types/node@25.0.3)(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))))(@vue/reactivity@3.5.26)(eslint-plugin-jsdoc@58.1.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-jsonc@2.21.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-markdown-preferences@0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-module-interop@0.3.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-oxlint@1.38.0)(eslint-plugin-regexp@2.10.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-yml@1.19.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))':
+  '@kazupon/eslint-config@0.45.0(@eslint/markdown@7.5.1)(@vitest/eslint-plugin@1.6.6(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)(vitest@4.1.11(@types/node@25.0.3)(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(tsx@4.21.0)(yaml@2.8.2))))(@vue/reactivity@3.5.26)(eslint-plugin-jsdoc@58.1.1(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-jsonc@2.21.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-markdown-preferences@0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-module-interop@0.4.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-oxlint@1.38.0)(eslint-plugin-regexp@2.10.0(eslint@9.39.2(jiti@2.6.1)))(eslint-plugin-yml@1.19.1(eslint@9.39.2(jiti@2.6.1)))(eslint@9.39.2(jiti@2.6.1))(typescript-eslint@8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3))':
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.6.0(eslint@9.39.2(jiti@2.6.1))
       '@eslint/js': 9.39.2
@@ -4485,7 +4485,7 @@ snapshots:
       eslint-plugin-jsdoc: 58.1.1(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-jsonc: 2.21.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-markdown-preferences: 0.10.0(@eslint/markdown@7.5.1)(eslint@9.39.2(jiti@2.6.1))
-      eslint-plugin-module-interop: 0.3.1(eslint@9.39.2(jiti@2.6.1))
+      eslint-plugin-module-interop: 0.4.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-oxlint: 1.38.0
       eslint-plugin-regexp: 2.10.0(eslint@9.39.2(jiti@2.6.1))
       eslint-plugin-yml: 1.19.1(eslint@9.39.2(jiti@2.6.1))
@@ -5841,9 +5841,9 @@ snapshots:
       '@eslint/markdown': 7.5.1
       eslint: 9.39.2(jiti@2.6.1)
 
-  eslint-plugin-module-interop@0.3.1(eslint@9.39.2(jiti@2.6.1)):
+  eslint-plugin-module-interop@0.4.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:
-      '@eslint-community/eslint-utils': 4.9.0(eslint@9.39.2(jiti@2.6.1))
+      '@eslint-community/eslint-utils': 4.9.1(eslint@9.39.2(jiti@2.6.1))
       enhanced-resolve: 5.18.4
       eslint: 9.39.2(jiti@2.6.1)
       get-tsconfig: 4.13.0

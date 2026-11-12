@@ -109,7 +109,7 @@
     "oxfmt": "^0.74.0",
     "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2006",
-    "pkg-pr-new": "^0.0.91",
+    "pkg-pr-new": "^0.0.93",
     "publint": "^0.3.16",
     "tsdown": "^0.15.12",
     "tsx": "^4.21.0",

@@ -46,6 +46,14 @@ const config: ReturnType<typeof defineConfig> = defineConfig(
       'unicorn/filename-case': 'off'
     }
   }),
+  {
+    name: 'docs/markdown',
+    files: ['docs/**/*.md'],
+    rules: {
+      // NOTE(kazupon): VitePress uses `title` in the frontmatter for the page title, not for an H1 heading
+      'markdown/no-multiple-h1': ['error', { frontmatterTitle: '' }]
+    }
+  },
   vitest(),
   oxlint({
     presets: ['typescript'],

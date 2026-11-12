@@ -17,7 +17,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22]
         os: [ubuntu-latest]
 
     name: Lint on Node.js ${{ matrix.node-version }}
@@ -106,7 +106,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        node-version: [20]
+        node-version: [22]
         os: [ubuntu-latest]
 
     name: Type Checking on Node.js ${{ matrix.node-version }}

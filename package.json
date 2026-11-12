@@ -89,7 +89,7 @@
     "@kazupon/eslint-config": "^0.45.0",
     "@kazupon/jts-utils": "^0.17.0",
     "@kazupon/prettier-config": "^0.2.0",
-    "@shikijs/vitepress-twoslash": "^3.21.0",
+    "@shikijs/vitepress-twoslash": "^4.0.0",
     "@types/node": "^26.6.6",
     "@typescript/native-preview": "7.0.0-dev.20260222.1",
     "@vitest/eslint-plugin": "^1.6.6",

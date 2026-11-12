@@ -19,7 +19,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@10.34.9",
+  "packageManager": "pnpm@12.18.0",
   "engines": {
     "node": "^22.22.2 || >=24.15.0"
   },
@@ -85,24 +85,24 @@
     "eslint": "^9.0.0"
   },
   "devDependencies": {
-    "@eslint/markdown": "^7.5.1",
+    "@eslint/markdown": "^8.0.0",
     "@kazupon/eslint-config": "^0.45.0",
     "@kazupon/jts-utils": "^0.17.0",
     "@kazupon/prettier-config": "^0.2.0",
-    "@shikijs/vitepress-twoslash": "^3.21.0",
+    "@shikijs/vitepress-twoslash": "^4.0.0",
     "@types/node": "^26.6.6",
     "@typescript/native-preview": "7.0.0-dev.20260222.1",
     "@vitest/eslint-plugin": "^1.6.6",
-    "bumpp": "^10.3.2",
+    "bumpp": "^12.0.0",
     "eslint": "^9.39.2",
-    "eslint-plugin-jsdoc": "^58.1.1",
+    "eslint-plugin-jsdoc": "^61.5.1",
     "eslint-plugin-jsonc": "^3.0.0",
-    "eslint-plugin-markdown-preferences": "^0.10.0",
+    "eslint-plugin-markdown-preferences": "^0.43.0",
     "eslint-plugin-module-interop": "^0.4.0",
     "eslint-plugin-oxlint": "^1.38.0",
-    "eslint-plugin-regexp": "^2.10.0",
-    "eslint-plugin-yml": "^1.19.1",
-    "gh-changelogen": "^0.2.8",
+    "eslint-plugin-regexp": "^3.0.0",
+    "eslint-plugin-yml": "^3.0.0",
+    "gh-changelogen": "^2.0.2",
     "json-schema-to-typescript": "^15.0.4",
     "knip": "^6.45.1",
     "lint-staged": "^16.2.7",
@@ -113,18 +113,13 @@
     "publint": "^0.3.16",
     "tsdown": "^0.23.7",
     "tsx": "^4.21.0",
-    "twoslash-eslint": "^0.3.6",
+    "twoslash-eslint": "^0.3.9",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.52.0",
     "vite-plugin-eslint4b": "^0.9.0",
     "vitepress": "^1.6.4",
     "vitepress-plugin-group-icons": "^1.6.5",
     "vitest": "^5.1.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "tsdown@0.15.4>rolldown": "^1.0.0-beta.59"
-    }
   },
   "prettier": "@kazupon/prettier-config",
   "lint-staged": {

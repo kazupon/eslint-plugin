@@ -45,7 +45,9 @@
 
 After cloning the repo, run:
 
-    $ pnpm install
+```
+$ pnpm install
+```
 
 ### Commonly used NPM scripts
 

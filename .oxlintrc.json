@@ -15,8 +15,11 @@
     "docs/.vitepress",
     "**/tsconfig*.json",
     "CHANGELOG.md",
+    "CONTRIBUTING.md",
     "scripts/oxlint-config.d.ts",
     "oxlint",
+    ".notes",
+    ".plans",
     ".claude",
     ".vscode"
   ]

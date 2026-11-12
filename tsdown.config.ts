@@ -13,6 +13,7 @@ const config: UserConfig = defineConfig({
     __VERSION__: JSON.stringify(metadata.__VERSION__)
   },
   outDir: 'lib',
+  fixedExtension: false,
   publint: true,
   clean: true,
   dts: true

@@ -43,3 +43,9 @@ changelog:
     - title: 🪄 Others
       labels:
         - chore
+        - deps
+        - dependency
+    # NOTE(kazupon): the pull requests without a label of the above categories, so that they are not dropped from the release notes
+    - title: 🧩 Other Changes
+      labels:
+        - '*'

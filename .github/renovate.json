@@ -5,5 +5,11 @@
   "major": {
     "automerge": false
   },
-  "minimumReleaseAge": "7 days"
+  "minimumReleaseAge": "7 days",
+  "packageRules": [
+    {
+      "matchPackageNames": ["oxlint", "oxlint-tsgolint"],
+      "rangeStrategy": "bump"
+    }
+  ]
 }

@@ -95,6 +95,35 @@ async function main() {
 // fire!
 await main()
 `
+  },
+  {
+    // oxlint 1.91.0 and later include the leading comments in the span of the `Program` of a TypeScript file
+    description: 'single header comment in a TypeScript file',
+    filename: 'index.ts',
+    code: `/**
+ * @author kazupon
+ * @license MIT
+ */
+
+export const answer = 42
+`
+  },
+  {
+    description: 'module comment and header comment in a TypeScript file',
+    filename: 'index.ts',
+    code: `/**
+ * This module is a sample module
+ * @module
+ */
+/**
+ * @author kazupon
+ * @license MIT
+ */
+
+import { foo } from 'bar'
+
+export { foo }
+`
   }
 ]
 
@@ -251,6 +280,17 @@ import { cli } from './cli.ts'
 import { create } from './utils.ts'
 `,
     errors: [
+      { message: 'Header comment need `@author` tag' },
+      { message: 'Header comment need `@license` tag' }
+    ]
+  },
+  {
+    description: 'should enforce header in a TypeScript file',
+    filename: 'index.ts',
+    code: `import { foo } from 'bar'
+`,
+    errors: [
+      { message: 'Header comment is enforced' },
       { message: 'Header comment need `@author` tag' },
       { message: 'Header comment need `@license` tag' }
     ]

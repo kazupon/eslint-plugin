@@ -4,7 +4,7 @@
  */
 
 import { RuleTester as ESLintRuleTester } from 'eslint'
-import { RuleTester as OxlintRuleTester } from 'oxlint'
+import { RuleTester as OxlintRuleTester } from 'oxlint/plugins-dev'
 import { describe, it } from 'vitest'
 
 import type { Overwrite } from '@kazupon/jts-utils/types'

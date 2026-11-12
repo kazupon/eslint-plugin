@@ -99,8 +99,9 @@ const rule: ReturnType<typeof createRule> = createRule({
         // if `Program` node will not have body, source code file will have comment only
         const hasCommentOnly = node.body.length === 0
 
-        // keep `Program` node start position
-        const start = hasCommentOnly ? node.range[1] : node.range[0]
+        // NOTE(kazupon): keep the start position of the first statement, not of the `Program` node,
+        // since the `Program` node of oxlint 1.91.0 and later starts with the leading comments
+        const start = hasCommentOnly ? node.range[1] : node.body[0].range![0]
 
         // get all block comments on `Program` node only
         const comments = ctx.sourceCode

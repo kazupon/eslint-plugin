@@ -71,4 +71,6 @@ GH_TOKEN="$(gh auth token)" pnpm release
 
 Do not leave unrelated tracked changes: bumpp commits every tracked dirty file (`all: true` in `bump.config.ts`).
 
+Before bumping the version, `scripts/check-release.ts` (the `preversion` script) stops the release unless you are on `main`, the working tree is clean, `HEAD` is `origin/main` after fetching it, and `GH_TOKEN` or `GITHUB_TOKEN` is set. If the release stops after bumping, for example on a failed push, do not rebase the release commit: the tag stays on the old commit. Delete the local tag, reset `main` to `origin/main`, and release again.
+
 Pushing the tag runs the release workflow: it publishes the package to npm, and then creates the GitHub Release. To run a job again for an existing tag, run the workflow manually with the `job` and `tag` inputs.

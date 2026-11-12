@@ -74,7 +74,7 @@ jobs:
         with:
           # npm 11.5 or later (Node.js 24) is needed for OIDC trusted publishing.
           # No dependency cache in the job that publishes the package.
-          node-version: 24
+          node-version: 26
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile

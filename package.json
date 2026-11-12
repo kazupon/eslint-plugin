@@ -106,7 +106,7 @@
     "json-schema-to-typescript": "^15.0.4",
     "knip": "^5.80.0",
     "lint-staged": "^16.2.7",
-    "oxfmt": "^0.74.0",
+    "oxfmt": "^0.78.0",
     "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2006",
     "pkg-pr-new": "^0.0.91",

@@ -94,7 +94,7 @@
     "@vitest/eslint-plugin": "^1.6.6",
     "bumpp": "^12.0.0",
     "eslint": "^9.39.2",
-    "eslint-plugin-jsdoc": "^61.5.1",
+    "eslint-plugin-jsdoc": "^65.0.0",
     "eslint-plugin-jsonc": "^3.0.0",
     "eslint-plugin-markdown-preferences": "^0.43.0",
     "eslint-plugin-module-interop": "^0.4.0",

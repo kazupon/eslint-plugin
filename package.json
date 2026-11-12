@@ -72,6 +72,7 @@
     "lint:oxlint": "oxlint --type-aware",
     "prepack": "pnpm build",
     "prepare": "git config --local core.hooksPath .githooks && pnpm gen:oxlint:dts",
+    "preversion": "tsx scripts/check-release.ts",
     "release": "bumpp",
     "test": "vitest run",
     "typecheck": "tsgo --noEmit --diagnostics"

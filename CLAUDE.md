@@ -16,6 +16,9 @@ pnpm typecheck        # Run TypeScript type checking
 pnpm build            # Build with tsdown bundler
 pnpm docs:dev         # Start VitePress documentation server
 pnpm docs:build       # Build documentation for production
+
+# Release (on a clean `main` whose `HEAD` is on `origin`)
+GH_TOKEN="$(gh auth token)" pnpm release  # Bump, write CHANGELOG.md, commit, tag, and push
 ```
 
 ### Important: Command Execution

@@ -50,7 +50,6 @@
   },
   "scripts": {
     "build": "tsdown && pnpm run gen:oxlint:config",
-    "changelog": "gh-changelogen --repo=kazupon/eslint-plugin",
     "clean": "git clean -df",
     "dev": "pnpx @eslint/config-inspector --config eslint.config.ts",
     "dev:eslint": "pnpx @eslint/config-inspector --config eslint.config.ts",
@@ -73,7 +72,7 @@
     "lint:oxlint": "oxlint --type-aware",
     "prepack": "pnpm build",
     "prepare": "git config --local core.hooksPath .githooks && pnpm gen:oxlint:dts",
-    "release": "bumpp --commit \"release: v%s\" --all --push --tag",
+    "release": "bumpp",
     "test": "vitest run",
     "typecheck": "tsgo --noEmit --diagnostics"
   },

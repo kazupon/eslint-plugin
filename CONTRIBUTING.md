@@ -60,3 +60,15 @@ $ pnpm install
 There are some other scripts available in the `scripts` section of the `package.json` file.
 
 **Please make sure to have this pass successfully before submitting a PR.** Although the lint will be run against your PR on the CI server, it is better to have it working locally beforehand.
+
+### `pnpm release`
+
+Bump the version, write `CHANGELOG.md` from GitHub-generated release notes, then commit, tag, and push. Run it on a clean `main` whose `HEAD` is already on `origin`. Provide a token with Contents: write:
+
+```sh
+GH_TOKEN="$(gh auth token)" pnpm release
+```
+
+Do not leave unrelated tracked changes: bumpp commits every tracked dirty file (`all: true` in `bump.config.ts`).
+
+Pushing the tag runs the release workflow: it publishes the package to npm, and then creates the GitHub Release. To run a job again for an existing tag, run the workflow manually with the `job` and `tag` inputs.

@@ -103,7 +103,7 @@
     "eslint-plugin-regexp": "^3.0.0",
     "eslint-plugin-yml": "^3.0.0",
     "gh-changelogen": "^2.0.2",
-    "json-schema-to-typescript": "^15.0.4",
+    "json-schema-to-typescript": "^16.0.0",
     "knip": "^6.45.1",
     "lint-staged": "^16.2.7",
     "oxfmt": "^0.78.0",

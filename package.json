@@ -105,7 +105,7 @@
     "gh-changelogen": "^2.0.2",
     "json-schema-to-typescript": "^16.0.0",
     "knip": "^6.45.1",
-    "lint-staged": "^16.2.7",
+    "lint-staged": "^17.0.0",
     "oxfmt": "^0.78.0",
     "oxlint": "^1.93.0",
     "oxlint-tsgolint": "^7.0.2006",

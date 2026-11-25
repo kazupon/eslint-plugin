@@ -183,11 +183,11 @@ importers:
         version: 1.0.0
     devDependencies:
       '@eslint/markdown':
-        specifier: ^8.0.0
-        version: 8.0.3(supports-color@7.2.0)
+        specifier: ^9.0.0
+        version: 9.0.0(supports-color@7.2.0)
       '@kazupon/eslint-config':
         specifier: ^0.45.0
-        version: 0.45.0(d23b947895934a52f9944174fe715cf8)
+        version: 0.45.0(07ab603f645e3ae9c75f8debed51a2c1)
       '@kazupon/jts-utils':
         specifier: ^0.17.0
         version: 0.17.0(@vue/reactivity@3.5.45)
@@ -220,7 +220,7 @@ importers:
         version: 3.4.2(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-markdown-preferences:
         specifier: ^0.43.0
-        version: 0.43.0(@eslint/markdown@8.0.3(supports-color@7.2.0))(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
+        version: 0.43.0(@eslint/markdown@9.0.0(supports-color@7.2.0))(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
       eslint-plugin-module-interop:
         specifier: ^0.4.0
         version: 0.4.0(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
@@ -977,8 +977,8 @@ packages:
     resolution: {integrity: sha512-q1mjIoW1VX4IvSocvM/vbTiveKC4k9eLrajNEuSsmjymSDEbpGddtpfOoN7YGAqBK3NG+uqo8ia4PDTt8buCYA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@eslint/markdown@8.0.3':
-    resolution: {integrity: sha512-rBTSSShrq7e4O+PWfeE4azH4/CWPNrC+VGxBXiW00o3vYVJnznsZiDayj3KC9JztIMVRZxZHn2nrDIUau/4j7A==}
+  '@eslint/markdown@9.0.0':
+    resolution: {integrity: sha512-287jt3NwhChN7TLsWq44IB5vUAKwwNXafzLlR1CMcQK5/4mAwbwwAzqr/S7gCYRRJOSHCgGXzIV9uPCh1P810A==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
 
   '@eslint/object-schema@2.1.7':
@@ -4857,12 +4857,12 @@ snapshots:
 
   '@eslint/js@9.39.2': {}
 
-  '@eslint/markdown@8.0.3(supports-color@7.2.0)':
+  '@eslint/markdown@9.0.0(supports-color@7.2.0)':
     dependencies:
       '@eslint/core': 1.2.1
       '@eslint/plugin-kit': 0.7.3
       github-slugger: 2.0.0
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-frontmatter: 2.0.1(supports-color@7.2.0)
       mdast-util-gfm: 3.1.0(supports-color@7.2.0)
       mdast-util-math: 3.0.0(supports-color@7.2.0)
@@ -4938,7 +4938,7 @@ snapshots:
 
   '@jsdevtools/ono@7.1.3': {}
 
-  '@kazupon/eslint-config@0.45.0(d23b947895934a52f9944174fe715cf8)':
+  '@kazupon/eslint-config@0.45.0(07ab603f645e3ae9c75f8debed51a2c1)':
     dependencies:
       '@eslint-community/eslint-plugin-eslint-comments': 4.6.0(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
       '@eslint/js': 9.39.2
@@ -4950,11 +4950,11 @@ snapshots:
       eslint-merge-processors: 2.0.0(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
       globals: 16.5.0
     optionalDependencies:
-      '@eslint/markdown': 8.0.3(supports-color@7.2.0)
+      '@eslint/markdown': 9.0.0(supports-color@7.2.0)
       '@vitest/eslint-plugin': 1.6.6(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)(vitest@5.1.0(@types/node@26.6.6)(vite@7.3.0(@types/node@26.6.6)(jiti@2.7.0)(tsx@4.21.0)(yaml@2.9.1)))
       eslint-plugin-jsdoc: 65.4.5(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@5.9.3)
       eslint-plugin-jsonc: 3.4.2(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
-      eslint-plugin-markdown-preferences: 0.43.0(@eslint/markdown@8.0.3(supports-color@7.2.0))(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
+      eslint-plugin-markdown-preferences: 0.43.0(@eslint/markdown@9.0.0(supports-color@7.2.0))(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)
       eslint-plugin-module-interop: 0.4.0(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
       eslint-plugin-oxlint: 1.38.0
       eslint-plugin-regexp: 3.3.3(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))
@@ -6457,9 +6457,9 @@ snapshots:
     transitivePeerDependencies:
       - '@eslint/json'
 
-  eslint-plugin-markdown-preferences@0.43.0(@eslint/markdown@8.0.3(supports-color@7.2.0))(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0):
+  eslint-plugin-markdown-preferences@0.43.0(@eslint/markdown@9.0.0(supports-color@7.2.0))(eslint@9.39.2(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0):
     dependencies:
-      '@eslint/markdown': 8.0.3(supports-color@7.2.0)
+      '@eslint/markdown': 9.0.0(supports-color@7.2.0)
       diff-sequences: 29.6.3
       emoji-regex-xs: 2.0.1
       eslint: 9.39.2(jiti@2.7.0)(supports-color@7.2.0)
@@ -6992,7 +6992,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       escape-string-regexp: 5.0.0
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       micromark-extension-frontmatter: 2.0.0
     transitivePeerDependencies:
@@ -7010,7 +7010,7 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       micromark-util-normalize-identifier: 2.0.1
     transitivePeerDependencies:
@@ -7019,7 +7019,7 @@ snapshots:
   mdast-util-gfm-strikethrough@2.0.0(supports-color@7.2.0):
     dependencies:
       '@types/mdast': 4.0.4
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
@@ -7029,7 +7029,7 @@ snapshots:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       markdown-table: 3.0.4
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
@@ -7038,14 +7038,14 @@ snapshots:
     dependencies:
       '@types/mdast': 4.0.4
       devlop: 1.1.0
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
     transitivePeerDependencies:
       - supports-color
 
   mdast-util-gfm@3.1.0(supports-color@7.2.0):
     dependencies:
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-gfm-autolink-literal: 2.0.1
       mdast-util-gfm-footnote: 2.1.0(supports-color@7.2.0)
       mdast-util-gfm-strikethrough: 2.0.0(supports-color@7.2.0)
@@ -7057,11 +7057,11 @@ snapshots:
 
   mdast-util-math@3.0.0(supports-color@7.2.0):
     dependencies:
-      '@types/hast': 3.0.4
+      '@types/hast': 3.0.5
       '@types/mdast': 4.0.4
       devlop: 1.1.0
       longest-streak: 3.1.0
-      mdast-util-from-markdown: 2.0.2(supports-color@7.2.0)
+      mdast-util-from-markdown: 2.1.0(supports-color@7.2.0)
       mdast-util-to-markdown: 2.1.2
       unist-util-remove-position: 5.0.0
     transitivePeerDependencies:
